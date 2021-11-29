@@ -1,0 +1,3 @@
+*.log
+
+# Create three file in this directory, `error.log` and `info.log` and `cron.log`
