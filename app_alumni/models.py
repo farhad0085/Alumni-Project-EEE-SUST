@@ -14,7 +14,8 @@ class Alumni(TrackingModel):
     company = models.CharField(max_length=200, blank=True, null=True)
     designation = models.CharField(max_length=500, blank=True, null=True)
     biography = models.TextField(blank=True)
-    pictures = models.ManyToManyField('Picture', blank=True)
+    pictures = models.ManyToManyField('Picture', blank=True, related_name="alumnis")
+    profile_picture = models.ForeignKey('Picture', related_name="dp_alumnis", on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self) -> str:
         return self.name
