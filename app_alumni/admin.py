@@ -3,8 +3,11 @@ from .models import Picture, Alumni
 
 
 class AlumniAdmin(admin.ModelAdmin):
-    list_display = ['name', 'session', 'passing_year', 'contact_number', 'email', 'is_employed', 'company']
-    list_filter = ["session", "passing_year", "is_employed"]
+    list_display = [
+        'name', 'session', 'passing_year', 'contact_number',
+        'email', 'is_employed', 'company', 'is_featured'
+    ]
+    list_filter = ["session", "passing_year", "is_employed", "is_featured"]
     search_fields = ['name', 'contact_number', 'email']
 
 

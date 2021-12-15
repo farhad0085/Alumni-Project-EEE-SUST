@@ -16,6 +16,7 @@ class Alumni(TrackingModel):
     biography = models.TextField(blank=True)
     pictures = models.ManyToManyField('Picture', blank=True, related_name="alumnis")
     profile_picture = models.ForeignKey('Picture', related_name="dp_alumnis", on_delete=models.SET_NULL, blank=True, null=True)
+    is_featured = models.BooleanField(default=False)
 
     def __str__(self) -> str:
         return self.name
@@ -26,3 +27,4 @@ class Picture(TrackingModel):
 
     def __str__(self) -> str:
         return self.picture.url
+
