@@ -1,195 +1,62 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import SidebarLayout from '../../Layout'
 import './styles.css'
+import apiServices from './service'
+import Loader from '../../Components/Loader/Loader'
 
 
 const AlumniList = () => {
 
+  const [loading, setLoading] = useState(false)
+  const [alumnies, setAlumnies] = useState([])
+
+  useEffect(() => {
+    setLoading(true)
+    apiServices.loadAlumnies()
+      .then(res => {
+        setAlumnies(res.data)
+        setLoading(false)
+      })
+      .catch(error => {
+        console.log(error)
+        setLoading(false)
+      })
+    // eslint-disable-next-line
+  }, [])
+
   return (
-    <div className="department-section">
-      <div className="department-faculty">
-        <h2 className="mobile-view">Electrical &amp; Electronic Engineering - Alumni List</h2>
-        <ul id="og-grid" className="faculty-member og-grid">
-          <li className="odd first-child">
-            <a href="#?">
-              <div className="staff-thumb">
-                <img src="https://www.sust.edu/uploads/profile-images/1611465632.png" className="img-responsive" alt="" />
+    <SidebarLayout>
+      <h1>Featured</h1>
+      <div>
+        {loading ? (
+          <Loader withoutBackground />
+        ) : (
+          <div className='alumniGridContainer'>
+            {alumnies.map(alumni => (
+              <div className='alumniGrid_item'>
+                <div>
+                  <img src={alumni.profile_picture.picture} alt={alumni.name} height={'100px'} width={"100px"} />
+                </div>
+                <div>
+                  <h3 className='alumniName'>
+                    {alumni.name}
+                  </h3>
+                  <p className='batchName'>
+                    Batch: {alumni.session}
+                  </p>
+                  <p className='batchName'>
+                    Email: {alumni.email}
+                  </p>
+                  <p className='batchName'>
+                    Phone: {alumni.contact_number}
+                  </p>
+                </div>
               </div>
-              <h4>Dr. Ifte Khairul Amin</h4>
-              <span className="designation">Associate Professor &amp; Head</span>
-            </a>
-            <h3 className="contact-info-h3">
-              Contact Information:
-            </h3>
-            <ul className="contact-info-ul">
-              <li>Phone: +8801911034624</li><li>Email: iftekhar-eee@sust.edu</li>
-            </ul>
-            <h3 className="contact-info-h3">
-              Journal Publication: (2 of 4)
-            </h3>
-            <a href="https://www.sust.edu/d/eee/faculty-profile-detail/284" className="find-more-a">Find More</a>
-          </li><li className="even">
-            <a href="#?">
-              <div className="staff-thumb">
-                <img src="https://www.sust.edu/uploads/profile-images/1465330635.jpg" className="img-responsive" alt="" />
-              </div>
-              <h4>Biswajit Paul</h4>
-              <span className="designation">Associate Professor<i>(On Leave)</i></span>
-            </a>
-            <h3 className="contact-info-h3">
-              Contact Information:
-            </h3>
-            <ul className="contact-info-ul">
-              <li>Phone: +8801911034624</li><li>Email: iftekhar-eee@sust.edu</li>
-            </ul>
-            <h3 className="contact-info-h3">
-              Journal Publication: (2 of 4)
-            </h3>
-            <a href="https://www.sust.edu/d/eee/faculty-profile-detail/284" className="find-more-a">Find More</a>
-          </li><li className="odd">
-            <a href="#?">
-              <div className="staff-thumb">
-                <img src="https://www.sust.edu/uploads/profile-images/1614592767.jpg" className="img-responsive" alt="" />
-              </div>
-              <h4>Md Rasedujjaman</h4>
-              <span className="designation">Assistant Professor<i>(On Leave)</i></span>
-            </a>
-            <h3 className="contact-info-h3">
-              Contact Information:
-            </h3>
-            <ul className="contact-info-ul">
-              <li>Phone: +8801911034624</li><li>Email: iftekhar-eee@sust.edu</li>
-            </ul>
-            <h3 className="contact-info-h3">
-              Journal Publication: (2 of 4)
-            </h3>
-            <a href="https://www.sust.edu/d/eee/faculty-profile-detail/284" className="find-more-a">Find More</a>
-          </li><li className="even">
-            <a href="#?">
-              <div className="staff-thumb">
-                <img src="https://www.sust.edu/uploads/profile-images/1458735731.jpg" className="img-responsive" alt="" />
-              </div>
-              <h4>Tuhin Dev</h4>
-              <span className="designation">Assistant Professor<i>(On Leave)</i></span>
-            </a>
-            <h3 className="contact-info-h3">
-              Contact Information:
-            </h3>
-            <ul className="contact-info-ul">
-              <li>Phone: +8801911034624</li><li>Email: iftekhar-eee@sust.edu</li>
-            </ul>
-            <h3 className="contact-info-h3">
-              Journal Publication: (2 of 4)
-            </h3>
-            <a href="https://www.sust.edu/d/eee/faculty-profile-detail/284" className="find-more-a">Find More</a>
-          </li><li className="odd">
-            <a href="#?">
-              <div className="staff-thumb">
-                <img src="https://www.sust.edu/uploads/profile-images/1465330514.jpg" className="img-responsive" alt="" />
-              </div>
-              <h4>Mohammad Kamruzzaman Khan Prince </h4>
-              <span className="designation">Assistant Professor<i>(On Leave)</i></span>
-            </a>
-            <h3 className="contact-info-h3">
-              Contact Information:
-            </h3>
-            <ul className="contact-info-ul">
-              <li>Phone: +8801911034624</li><li>Email: iftekhar-eee@sust.edu</li>
-            </ul>
-            <h3 className="contact-info-h3">
-              Journal Publication: (2 of 4)
-            </h3>
-            <a href="https://www.sust.edu/d/eee/faculty-profile-detail/284" className="find-more-a">Find More</a>
-          </li><li className="even">
-            <a href="#?">
-              <div className="staff-thumb">
-                <img src="https://www.sust.edu/uploads/profile-images/1487546072.png" className="img-responsive" alt="" />
-              </div>
-              <h4>Arif Ahammad</h4>
-              <span className="designation">Assistant Professor</span>
-            </a>
-            <h3 className="contact-info-h3">
-              Contact Information:
-            </h3>
-            <ul className="contact-info-ul">
-              <li>Phone: +8801911034624</li><li>Email: iftekhar-eee@sust.edu</li>
-            </ul>
-            <h3 className="contact-info-h3">
-              Journal Publication: (2 of 4)
-            </h3>
-            <a href="https://www.sust.edu/d/eee/faculty-profile-detail/284" className="find-more-a">Find More</a>
-          </li><li className="odd">
-            <a href="#?">
-              <div className="staff-thumb">
-                <img src="https://www.sust.edu/uploads/profile-images/1537972529.jpg" className="img-responsive" alt="" />
-              </div>
-              <h4>Tahmid Aziz Chowdhury</h4>
-              <span className="designation">Assistant Professor<i>(On Leave)</i></span>
-            </a>
-            <h3 className="contact-info-h3">
-              Contact Information:
-            </h3>
-            <ul className="contact-info-ul">
-              <li>Phone: +8801911034624</li><li>Email: iftekhar-eee@sust.edu</li>
-            </ul>
-            <h3 className="contact-info-h3">
-              Journal Publication: (2 of 4)
-            </h3>
-            <a href="https://www.sust.edu/d/eee/faculty-profile-detail/284" className="find-more-a">Find More</a>
-          </li><li className="even">
-            <a href="#?"><div className="staff-thumb">
-              <img src="https://www.sust.edu/uploads/profile-images/1489684158.png" className="img-responsive" alt="" />
-            </div>
-              <h4>Jibesh Kanti Saha</h4>
-              <span className="designation">Assistant Professor<i>(On Leave)</i></span>
-            </a>
-            <h3 className="contact-info-h3">
-              Contact Information:
-            </h3>
-            <ul className="contact-info-ul">
-              <li>Phone: +8801911034624</li><li>Email: iftekhar-eee@sust.edu</li>
-            </ul>
-            <h3 className="contact-info-h3">
-              Journal Publication: (2 of 4)
-            </h3>
-            <a href="https://www.sust.edu/d/eee/faculty-profile-detail/284" className="find-more-a">Find More</a>
-          </li><li className="odd">
-            <a href="#?"><div className="staff-thumb">
-              <img src="https://www.sust.edu/uploads/profile-images/1614589712.jpg" className="img-responsive" alt="" />
-            </div>
-              <h4>Md. Mohsinur Rahman Adnan</h4>
-              <span className="designation">Assistant Professor<i>(On Leave)</i></span>
-            </a>
-            <h3 className="contact-info-h3">
-              Contact Information:
-            </h3>
-            <ul className="contact-info-ul">
-              <li>Phone: +8801911034624</li><li>Email: iftekhar-eee@sust.edu</li>
-            </ul>
-            <h3 className="contact-info-h3">
-              Journal Publication: (2 of 4)
-            </h3>
-            <a href="https://www.sust.edu/d/eee/faculty-profile-detail/284" className="find-more-a">Find More</a>
-          </li><li className="even last-child">
-            <a href="#?"><div className="staff-thumb">
-              <img src="https://www.sust.edu/uploads/profile-images/1610911292.jpg" className="img-responsive" alt="" />
-            </div>
-              <h4>Hriteshwar Talukder</h4>
-              <span className="designation">Assistant Professor<i>(On Leave)</i></span>
-            </a>
-            <h3 className="contact-info-h3">
-              Contact Information:
-            </h3>
-            <ul className="contact-info-ul">
-              <li>Phone: +8801911034624</li><li>Email: iftekhar-eee@sust.edu</li>
-            </ul>
-            <h3 className="contact-info-h3">
-              Journal Publication: (2 of 4)
-            </h3>
-            <a href="https://www.sust.edu/d/eee/faculty-profile-detail/284" className="find-more-a">Find More</a>
-          </li>
-        </ul>
+            ))}
+          </div>
+        )}
       </div>
-    </div>
+    </SidebarLayout>
   )
 
 }
