@@ -1,0 +1,69 @@
+.popupWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.144);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup {
+  background-color: rgb(255, 255, 255);
+  width: 88%;
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 5px;
+
+  &_header {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  &_profilePicture {
+    border-radius: 5px;
+  }
+}
+
+.popupButton {
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: #ec0027;
+  font-size: 18px;
+  border-radius: 10px;
+  font-weight: 600;
+
+  &:focus {
+    outline: none;
+    background-color: #d40a2c;
+  }
+
+  &:hover {
+    background-color: #d40a2c;
+  }
+}
+
+.left {
+  grid-area: left;
+}
+
+.right {
+  grid-area: right;
+}
+
+.batchName,
+.email,
+.phone {
+  margin: 0;
+}
+
+.profilePicture {
+  border-radius: 5px;
+}

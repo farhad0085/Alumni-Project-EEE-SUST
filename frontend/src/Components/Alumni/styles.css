@@ -4,7 +4,7 @@
 }
 
 .alumniGrid_item {
-  flex: 1 0 18%;
+  max-width: 350px;
   margin: 5px;
   height: 100px;
   background-color: rgb(233, 224, 224);
@@ -41,4 +41,8 @@
 
 .batchName, .email, .phone {
   margin: 0;
+}
+
+.profilePicture {
+  border-radius: 5px;
 }
