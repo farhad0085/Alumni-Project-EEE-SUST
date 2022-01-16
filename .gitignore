@@ -8,3 +8,6 @@ venv
 staticfiles
 mediafiles
 .vscode
+
+yarn.lock
+package-lock.json

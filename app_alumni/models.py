@@ -1,11 +1,12 @@
 from django.db import models
 from common.models import TrackingModel
+from django.core.validators import RegexValidator
 
 
 class Alumni(TrackingModel):
     name = models.CharField(max_length=200)
     birth_of_date = models.DateField(blank=True, null=True, help_text="Format: YYYY-MM-DD")
-    session = models.CharField(max_length=10, help_text="Eg: 2012-13")
+    session = models.CharField(max_length=10, validators=[RegexValidator(r"[0-9]{4}-[0-9]{2}")], help_text="Eg: 2012-13")
     passing_year = models.CharField(max_length=10)
     is_employed = models.BooleanField(default=True)
     email = models.EmailField(blank=True, null=True)

@@ -1,48 +1,40 @@
-.alumniGridContainer {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.alumniGrid_item {
-  max-width: 350px;
-  margin: 5px;
-  height: 100px;
-  background-color: rgb(233, 224, 224);
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 5px 5px 5px #aaaaaa;
-}
-
-.alumniGrid_item {
-  width: 100%;
-  display: grid;
-  grid-template-areas: "left right";
-  grid-template-columns: 110px auto;
-}
-
-.alumniGrid_item:hover {
-  background-color: rgb(196, 193, 193);
-  cursor: pointer;
-}
-
-.left {
-  grid-area: left;
-}
-
-.right {
-  grid-area: right;
-}
-
-.alumniName {
-  margin: 0;
-  font-size: 18px;
-  color: rgb(53, 53, 53);
-}
-
-.batchName, .email, .phone {
+body, html {
+  height: 100%;
   margin: 0;
 }
 
-.profilePicture {
-  border-radius: 5px;
+.bgimg {
+  background-image: url('../../assets/images/iict_building.jpg');
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 25px;
+}
+
+.topleft {
+  position: absolute;
+  top: 0;
+  left: 16px;
+}
+
+.bottomleft {
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+}
+
+.middle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+hr {
+  margin: auto;
+  width: 40%;
 }

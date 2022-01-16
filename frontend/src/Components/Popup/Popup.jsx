@@ -22,6 +22,7 @@ const Popup = ({ alumni, isOpen, onClose }) => {
               />
             </div>
             <div className={classes.right}>
+              <button onClick={() => handleClose()}>X</button>
               <h3 className={classes.popup_header}>
                 {alumni.name}
               </h3>

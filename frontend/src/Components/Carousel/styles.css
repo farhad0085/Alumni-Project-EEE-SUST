@@ -1,0 +1,19 @@
+.carouselInfo {
+    position: absolute;
+    bottom: 40px;
+    width: 80%;
+    background: rgba(58, 57, 57, 0.527);
+    text-align: left;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    padding: 10px;
+    /* left: -50%; */
+    /* transform: translateX(-50); */
+    margin-left: auto;
+    font-size: 25px;
+}
+
+.title:focus{
+  opacity: 1;
+
+}

@@ -1,1 +1,1 @@
-# Alumni Page for EEE SUST
+# Alumni Application for EEE SUST
