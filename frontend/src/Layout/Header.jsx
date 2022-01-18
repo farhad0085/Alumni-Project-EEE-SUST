@@ -31,13 +31,13 @@ const Header = () => {
                   Batches
                 </a>
                 <div className={`dropdown-menu ${showDropDown ? "show": ""}`} aria-labelledby="navbarDropdown">
-                  <a className="dropdown-item" href="/batch/2010">2010</a>
-                  <a className="dropdown-item" href="/batch/2011">2011</a>
-                  <a className="dropdown-item" href="/batch/2012">2012</a>
-                  <a className="dropdown-item" href="/batch/2013">2013</a>
-                  <a className="dropdown-item" href="/batch/2014">2014</a>
-                  <a className="dropdown-item" href="/batch/2015">2015</a>
-                  <a className="dropdown-item" href="/batch/2016">2016</a>
+                  <a className="dropdown-item" href="/batch/2010">2010 - 11</a>
+                  <a className="dropdown-item" href="/batch/2011">2011 - 12</a>
+                  <a className="dropdown-item" href="/batch/2012">2012 - 13</a>
+                  <a className="dropdown-item" href="/batch/2013">2013 - 14</a>
+                  <a className="dropdown-item" href="/batch/2014">2014 - 15</a>
+                  <a className="dropdown-item" href="/batch/2015">2015 - 16</a>
+                  <a className="dropdown-item" href="/batch/2016">2016 - 17</a>
                 </div>
               </li>
             </ul>
