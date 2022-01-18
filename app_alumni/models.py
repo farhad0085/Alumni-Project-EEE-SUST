@@ -3,10 +3,20 @@ from app_alumni.validators import BatchSessionValidator
 from common.models import TrackingModel
 
 
+class Batch(TrackingModel):
+    batch_name = models.CharField(max_length=200)
+    session = models.CharField(max_length=10, validators=[BatchSessionValidator()], help_text="Eg: 2012 - 13")
+    total_students = models.IntegerField(default=0)
+    batch_pictures = models.ManyToManyField('Picture', blank=True, related_name="+")
+
+    def __str__(self):
+        return self.session
+
+
 class Alumni(TrackingModel):
     name = models.CharField(max_length=200)
     birth_of_date = models.DateField(blank=True, null=True, help_text="Format: YYYY-MM-DD")
-    session = models.CharField(max_length=10, validators=[BatchSessionValidator()], help_text="Eg: 2012 - 13")
+    batch = models.ForeignKey(Batch, on_delete=models.SET_NULL, null=True)
     passing_year = models.CharField(max_length=10)
     is_employed = models.BooleanField(default=True)
     email = models.EmailField(blank=True, null=True)

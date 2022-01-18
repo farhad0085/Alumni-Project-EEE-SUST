@@ -1,17 +1,22 @@
 from django.contrib import admin
-from .models import Address, Picture, Alumni
+from .models import Address, Batch, Picture, Alumni
 from django.utils.html import format_html
+
 
 class AddressAdmin(admin.ModelAdmin):
     list_display = ['address', 'city', 'state', 'zip_code', 'created_at', 'updated_at']
 
 
+class BatchAdmin(admin.ModelAdmin):
+    list_display = ['session', 'batch_name', 'total_students', 'created_at', 'updated_at']
+
+
 class AlumniAdmin(admin.ModelAdmin):
     list_display = [
-        'name', 'session', 'passing_year', 'contact_number',
+        'name', 'batch', 'passing_year', 'contact_number',
         'email', 'is_employed', 'company', 'is_featured', 'image_tag'
     ]
-    list_filter = ["session", "passing_year", "is_employed", "is_featured"]
+    list_filter = ["batch", "passing_year", "is_employed", "is_featured"]
     search_fields = ['name', 'contact_number', 'email']
 
     def image_tag(self, obj):
@@ -29,3 +34,4 @@ class PictureAdmin(admin.ModelAdmin):
 admin.site.register(Picture, PictureAdmin)
 admin.site.register(Alumni, AlumniAdmin)
 admin.site.register(Address, AddressAdmin)
+admin.site.register(Batch, BatchAdmin)
