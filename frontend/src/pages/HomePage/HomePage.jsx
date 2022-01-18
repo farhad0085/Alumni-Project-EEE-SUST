@@ -13,7 +13,7 @@ const HomePage = ({ history }) => {
 
   useEffect(() => {
     setLoading(true)
-    apiServices.loadAlumnies()
+    apiServices.loadFeaturedAlumnies()
       .then(({ data }) => {
         setAlumnis(data.results)
         setLoading(false)
@@ -24,7 +24,6 @@ const HomePage = ({ history }) => {
 
       })
   }, [])
-  console.log(alumnis)
 
   return (
     <Layout>

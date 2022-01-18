@@ -1,7 +1,7 @@
 import axios from "../../utils/axios";
 
 const apiServices = {
-  loadAlumnies: () =>
+  loadFeaturedAlumnies: () =>
     axios.get("/api/alumnies/", {
       params: { is_featured: true, page_size: 8 },
     }),
