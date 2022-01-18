@@ -1,47 +1,41 @@
-import React, { useState } from 'react'
-import Popup from '../Popup/Popup'
+import React from 'react'
+import defaultThumb from '../../assets/icons/thumbnail.svg'
 import './styles.css'
 
 
 const AlumniItem = ({ alumni }) => {
 
-  const [isOpen, setIsOpen] = useState(false)
+  const profilePicture = alumni?.profile_picture?.picture
 
   return (
-    <>
-      <div className='alumniGrid_item' onClick={() => setIsOpen(true)}>
-        <div className='left'>
-          <img
-            className='profilePicture'
-            src={alumni.profile_picture.picture}
-            alt={alumni.name}
-            height={'100px'}
-            width={"100px"}
-          />
-        </div>
-        <div className='right'>
-          <h3 className='alumniName'>
-            {alumni.name}
-          </h3>
-          <p className='batchName'>
-            Batch: {alumni.session}
+    <div class="col-md-3">
+      <div class="card mb-4 shadow-sm">
+        <img
+          class="card-img-top"
+          alt="Thumbnail"
+          style={{ height: "225px", width: "100%", display: "block" }}
+          src={profilePicture ? profilePicture : defaultThumb}
+          data-holder-rendered="true"
+        />
+        <div class="card-body">
+          <h5>{alumni.name}</h5>
+          <hr />
+          <p class="card-text">
+            This is a wider card with supporting text below as a natural lead-in
+            to additional content. This content is a little bit longer.
           </p>
-          <p className='email'>
-            Email: {alumni.email}
-          </p>
-          <p className='phone'>
-            Phone: {alumni.contact_number}
-          </p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-primary">View Profile</button>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">Email</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary">Phone</button>
+            </div>
+          </div>
         </div>
       </div>
-      {isOpen && (
-        <Popup
-          alumni={alumni}
-          isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
-        />
-      )}
-    </>
+    </div>
   )
 
 }

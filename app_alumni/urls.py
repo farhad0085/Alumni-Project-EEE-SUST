@@ -1,7 +1,7 @@
-from django.urls import path, include
-from .views import AlumniListCreateAPIView
+from django.urls import path
+from .views import AlumniListAPIView
 
 
 urlpatterns = [
-    path('alumnies/', AlumniListCreateAPIView.as_view()),
+    path('alumnies/', AlumniListAPIView.as_view()),
 ]

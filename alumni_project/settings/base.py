@@ -84,7 +84,9 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
-    ]
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'common.paginations.StandardResultsSetPagination',
+    'PAGE_SIZE': 100,
 }
 
 AUTH_USER_MODEL = 'user.UserAccount' # Custom User Model

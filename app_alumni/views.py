@@ -1,13 +1,13 @@
-from rest_framework.generics import ListCreateAPIView
+from rest_framework.generics import ListAPIView
+from app_alumni.filters import AlumniFilter
 from app_alumni.models import Alumni
 from app_alumni.serializers import AlumniSerializer
+from django_filters import rest_framework as filters
 
 
-class AlumniListCreateAPIView(ListCreateAPIView):
+class AlumniListAPIView(ListAPIView):
     serializer_class = AlumniSerializer
-    
-    def get_queryset(self):
-        featured_alumnies = Alumni.objects.filter(is_featured=True)
-        if featured_alumnies:
-            return featured_alumnies[:20]
-        return Alumni.objects.all()[:20]
+    queryset = Alumni.objects.all().order_by('-id')
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = AlumniFilter
+    ordering_fields = ('name', 'id', 'session')

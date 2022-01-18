@@ -3,11 +3,13 @@ import './styles.css'
 import AlumniItem from './AlumniItem'
 
 
-const AlumniList = ({ alumnies }) => {
+const AlumniList = ({ alumnies, showPagination }) => {
 
   return (
-    <div className='alumniGridContainer'>
-      {alumnies.map(alumni => <AlumniItem alumni={alumni} />)}
+    <div class="album pt-4 bg-light">
+      <div className="row">
+        {alumnies.map(alumni => <AlumniItem alumni={alumni} />)}
+      </div>
     </div>
   )
 
