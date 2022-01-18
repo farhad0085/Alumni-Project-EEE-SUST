@@ -8,7 +8,7 @@ const AlumniList = ({ alumnies, showPagination }) => {
   return (
     <div class="album pt-4 bg-light">
       <div className="row">
-        {alumnies.map(alumni => <AlumniItem alumni={alumni} />)}
+        {alumnies.map(alumni => <AlumniItem key={alumni.id} alumni={alumni} />)}
       </div>
     </div>
   )

@@ -8,29 +8,41 @@ const AlumniItem = ({ alumni }) => {
   const profilePicture = alumni?.profile_picture?.picture
 
   return (
-    <div class="col-md-3">
-      <div class="card mb-4 shadow-sm">
+    <div className="col-md-3">
+      <div className="card mb-4 shadow-sm">
         <img
-          class="card-img-top"
+          className="card-img-top"
           alt="Thumbnail"
           style={{ height: "225px", width: "100%", display: "block" }}
           src={profilePicture ? profilePicture : defaultThumb}
           data-holder-rendered="true"
         />
-        <div class="card-body">
+        <div className="card-body">
           <h5>{alumni.name}</h5>
           <hr />
-          <p class="card-text">
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-primary">View Profile</button>
+          <div className="card-text">
+            <dl>
+              <dt>Session</dt>
+              <dd>{alumni.session}</dd>
+              <dt>Passing Year</dt>
+              <dd>{alumni.passing_year}</dd>
+              <dt>Designation</dt>
+              <dd>{alumni.designation} at {alumni.company}</dd>
+              <dt>Present Address</dt>
+              <dd>{alumni.present_address.address}</dd>
+            </dl>
+          </div>
+          <div className="d-flex justify-content-between align-items-center">
+            <div className="btn-group">
+              <button type="button" className="btn btn-sm btn-outline-primary">View Profile</button>
             </div>
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">Email</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Phone</button>
+            <div className="btn-group">
+                <a role="button" className="btn btn-sm btn-outline-secondary" href={`mailto:${alumni.email}`}>
+                  Email
+                </a>
+                <a role="button" className="btn btn-sm btn-outline-secondary" href={`tel:${alumni.contact_number}`}>
+                  Phone
+                </a>
             </div>
           </div>
         </div>
