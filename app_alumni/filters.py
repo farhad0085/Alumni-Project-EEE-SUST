@@ -1,5 +1,5 @@
 from django_filters import rest_framework as filters
-from .models import Alumni
+from .models import Alumni, Batch
 
 
 class AlumniFilter(filters.FilterSet):
@@ -9,6 +9,7 @@ class AlumniFilter(filters.FilterSet):
             'name': ['exact'],
             'birth_of_date': ['exact', 'lt', 'gt', 'lte', 'gte'],
             'batch': ['exact'],
+            'batch__session': ['exact'],
             'passing_year': ['exact'],
             'is_employed': ['exact'],
             'email': ['exact'],
@@ -19,4 +20,13 @@ class AlumniFilter(filters.FilterSet):
             'pictures': ['exact'],
             'profile_picture': ['exact'],
             'is_featured': ['exact'],
+        }
+
+
+class BatchFilter(filters.FilterSet):
+    class Meta:
+        model = Batch
+        fields = {
+            'batch_name': ['exact'],
+            'session': ['exact'],
         }

@@ -14,7 +14,7 @@ const BatchList = ({ history }) => {
     setLoading(true)
     apiServices.loadBatchList()
       .then(({ data }) => {
-        setBatches(data)
+        setBatches(data.results)
         setLoading(false)
       })
       .catch((error) => {
@@ -28,12 +28,13 @@ const BatchList = ({ history }) => {
     <Layout>
       <div className='my-4'>
         <h2>Batches</h2>
+        <hr />
         {loading ? (
           <Loader withoutBackground />
         ) : (
           <div className='row'>
             {batches.map(batch => (
-              <div className="col-md-3">
+              <div key={batch.id} className="col-md-4">
                 <div className="card mb-4 shadow-sm">
                   <img
                     className="card-img-top"
@@ -43,17 +44,25 @@ const BatchList = ({ history }) => {
                     data-holder-rendered="true"
                   />
                   <div className="card-body">
-                    <h5>{batch.session}</h5>
+                    <h5>{batch.session} ({batch.batch_name})</h5>
                     <hr />
                     <div className="card-text">
                       <dl>
+                        <dt>Total Students</dt>
+                        <dd>{batch.total_students}</dd>
+                      </dl>
+                      <dl>
                         <dt>Total Alumnies</dt>
-                        <dd>{batch.students}</dd>
+                        <dd>{batch.total_alumnies}</dd>
                       </dl>
                     </div>
-                    {/* <div className="d-flex justify-content-between align-items-center"> */}
-                        <button type="button" className="btn btn-sm btn-block btn-outline-primary">OPEN</button>
-                    {/* </div> */}
+                    <button
+                      onClick={() => history.push(`/batches/${batch.session}`)}
+                      type="button"
+                      className="btn btn-sm btn-block btn-outline-primary"
+                    >
+                      OPEN
+                    </button>
                   </div>
                 </div>
               </div>

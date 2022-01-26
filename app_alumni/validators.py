@@ -14,7 +14,7 @@ class BatchSessionValidator:
 
 
     def __call__(self, value):
-        if not re.fullmatch(r"[0-9]{4} \- [0-9]{2}", value): # match XXXX - XX format
+        if not re.fullmatch(r"[0-9]{4}\-[0-9]{2}", value): # match XXXX - XX format
             raise ValidationError(self.message, code=self.code)
 
         split_by_dash = value.split("-")

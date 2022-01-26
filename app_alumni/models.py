@@ -1,11 +1,12 @@
 from django.db import models
 from app_alumni.validators import BatchSessionValidator
 from common.models import TrackingModel
+from django.utils.safestring import mark_safe
 
 
 class Batch(TrackingModel):
     batch_name = models.CharField(max_length=200)
-    session = models.CharField(max_length=10, validators=[BatchSessionValidator()], help_text="Eg: 2012 - 13")
+    session = models.CharField(max_length=10, unique=True, validators=[BatchSessionValidator()], help_text="Eg: 2012-13")
     total_students = models.IntegerField(default=0)
     batch_pictures = models.ManyToManyField('Picture', blank=True, related_name="+")
 
@@ -37,16 +38,22 @@ class Alumni(TrackingModel):
 class Picture(TrackingModel):
     picture = models.ImageField(upload_to="pictures")
 
+    def image_preview(self):
+        if self.picture:
+            return mark_safe('<img src="{0}" width="150" height="150" />'.format(self.picture.url))
+        else:
+            return '(No image)'
+
     def __str__(self) -> str:
         return self.picture.url
 
 
 class Address(TrackingModel):
-    address = models.TextField(blank=True)
+    address = models.TextField(blank=False, null=False)
     state = models.CharField(max_length=100, blank=True, null=True)
     city = models.CharField(max_length=100, blank=True, null=True)
     zip_code = models.CharField(max_length=100, blank=True, null=True)
     country = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self) -> str:
-        return str(self.id)
+        return self.address

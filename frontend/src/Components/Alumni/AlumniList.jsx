@@ -3,10 +3,10 @@ import './styles.css'
 import AlumniItem from './AlumniItem'
 
 
-const AlumniList = ({ alumnies, showPagination }) => {
+const AlumniList = ({ alumnies }) => {
 
   return (
-    <div class="album pt-4 bg-light">
+    <div className="album pt-4 bg-light">
       <div className="row">
         {alumnies.map(alumni => <AlumniItem key={alumni.id} alumni={alumni} />)}
       </div>

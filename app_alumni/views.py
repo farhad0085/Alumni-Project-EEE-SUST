@@ -1,10 +1,9 @@
 from rest_framework.generics import ListAPIView
-from app_alumni.filters import AlumniFilter
-from app_alumni.models import Alumni
-from app_alumni.serializers import AlumniSerializer
+from app_alumni.filters import AlumniFilter, BatchFilter
+from app_alumni.models import Alumni, Batch
+from app_alumni.serializers import AlumniSerializer, BatchSerializer
 from django_filters import rest_framework as filters
 from django.db.models import Count
-from common.views import LoggerAPIView
 
 
 class AlumniListAPIView(ListAPIView):
@@ -12,18 +11,14 @@ class AlumniListAPIView(ListAPIView):
     queryset = Alumni.objects.all().order_by('-id')
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = AlumniFilter
-    ordering_fields = ('name', 'id', 'session')
+    ordering_fields = ('name', 'id')
+    ordering = ["id"] # default ordering
 
 
-class BatchListAPIView(LoggerAPIView):
+class BatchListAPIView(ListAPIView):
     
-    def get(self, request):
-        batches = Alumni.objects.values('session').annotate(students=Count('session')).distinct()
-
-        batch_data = []
-        for batch in batches:
-            batch_data.append({
-                "session": batch["session"],
-                "students": batch["students"],
-            })
-        return self.send_200(batch_data)
+    serializer_class = BatchSerializer
+    queryset = Batch.objects.all().order_by('-session')
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = BatchFilter
+    ordering_fields = ('name', 'id', 'session')
