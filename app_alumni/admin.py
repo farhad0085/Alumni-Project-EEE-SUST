@@ -14,7 +14,7 @@ class BatchAdmin(admin.ModelAdmin):
 
 class AlumniAdmin(admin.ModelAdmin):
     list_display = [
-        'name', 'batch', 'passing_year', 'contact_number',
+        'name', 'registration_number', 'batch', 'passing_year', 'contact_number',
         'email', 'is_employed', 'company', 'is_featured', 'image_tag'
     ]
     list_filter = ["batch", "passing_year", "is_employed", "is_featured"]
