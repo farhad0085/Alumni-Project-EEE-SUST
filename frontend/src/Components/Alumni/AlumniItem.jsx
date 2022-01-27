@@ -1,9 +1,10 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import defaultThumb from '../../assets/icons/thumbnail.svg'
 import './styles.css'
 
 
-const AlumniItem = ({ alumni }) => {
+const AlumniItem = ({ alumni, history }) => {
 
   const profilePicture = alumni?.profile_picture?.picture
 
@@ -34,7 +35,7 @@ const AlumniItem = ({ alumni }) => {
           </div>
           <div className="d-flex justify-content-between align-items-center">
             <div className="btn-group">
-              <button type="button" className="btn btn-sm btn-outline-primary">View Profile</button>
+              <button onClick={() => history.push('/alumnies/2018338019')} type="button" className="btn btn-sm btn-outline-primary">View Profile</button>
             </div>
             <div className="btn-group">
                 <a role="button" className="btn btn-sm btn-outline-secondary" href={`mailto:${alumni.email}`}>
@@ -53,4 +54,4 @@ const AlumniItem = ({ alumni }) => {
 }
 
 
-export default AlumniItem
+export default withRouter(AlumniItem)

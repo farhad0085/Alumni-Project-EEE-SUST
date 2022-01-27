@@ -23,3 +23,18 @@ class BatchSessionValidator:
         difference = int(end) - int(start)
         if difference != 1:
             raise ValidationError(self.message, self.code)
+
+
+class RegistrationNumberValidator:
+    message = 'Enter a valid registration number'
+    code = "invalid"
+
+    def __init__(self, message=None, code=None):
+        if message is not None:
+            self.message = message
+        if code is not None:
+            self.code = code
+
+    def __call__(self, value):
+        if not re.fullmatch(r"20[1-9]{2}3380[0-9]{2}", value): # match 2010-2099(3380)00-99
+            raise ValidationError(self.message, code=self.code)

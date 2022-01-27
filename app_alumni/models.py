@@ -1,5 +1,5 @@
 from django.db import models
-from app_alumni.validators import BatchSessionValidator
+from app_alumni.validators import BatchSessionValidator, RegistrationNumberValidator
 from common.models import TrackingModel
 from django.utils.safestring import mark_safe
 
@@ -17,6 +17,7 @@ class Batch(TrackingModel):
 class Alumni(TrackingModel):
     name = models.CharField(max_length=200)
     birth_of_date = models.DateField(blank=True, null=True, help_text="Format: YYYY-MM-DD")
+    registration_number = models.CharField(max_length=10, validators=[RegistrationNumberValidator()], unique=True, null=True)
     batch = models.ForeignKey(Batch, on_delete=models.SET_NULL, null=True)
     passing_year = models.CharField(max_length=10)
     is_employed = models.BooleanField(default=True)
