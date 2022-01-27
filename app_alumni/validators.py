@@ -36,5 +36,5 @@ class RegistrationNumberValidator:
             self.code = code
 
     def __call__(self, value):
-        if not re.fullmatch(r"20[1-9][0-9]3380[0-9]{2}", value): # match 2010-2099(3380)00-99
+        if not re.fullmatch(r"20[1-9][0-9]338[0-9]{3}", value): # match 2010-2099(3380)00-99
             raise ValidationError(self.message, code=self.code)
