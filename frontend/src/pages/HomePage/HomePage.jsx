@@ -4,6 +4,10 @@ import Carousel from '../../Components/Carousel/Carousel'
 import Loader from '../../Components/Loader/Loader'
 import Layout from '../../Layout/Layout'
 import apiServices from './service'
+import iictBuilding from '../../assets/images/iict_building.jpg'
+import cat from '../../assets/images/cat.jpg'
+import kid from '../../assets/images/kid.jpg'
+import sparrow from '../../assets/images/sparrow.jpg'
 import './styles.css'
 
 
@@ -25,9 +29,68 @@ const HomePage = ({ history }) => {
       })
   }, [])
 
+  const carouselItems = [
+    <>
+      <img src={iictBuilding} alt="carousel" />
+      <div className="carouselInfo">
+        <p className="title">
+          Welcome to EEE Alumni Association
+        </p>
+        <p className='content'>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Quis fugiat odit explicabo debitis reiciendis repudiandae, cum recusandae.
+          Animi quia accusamus quo adipisci quisquam tempore modi consequuntur,
+          repellat fugit enim mollitia!
+        </p>
+      </div>
+    </>,
+    <>
+      <img src={cat} alt="carousel" />
+      <div className="carouselInfo">
+        <p className="title">
+          Welcome to EEE Alumni Association
+        </p>
+        <p className='content'>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Quis fugiat odit explicabo debitis reiciendis repudiandae, cum recusandae.
+          Animi quia accusamus quo adipisci quisquam tempore modi consequuntur,
+          repellat fugit enim mollitia!
+        </p>
+      </div>
+    </>,
+    <>
+      <img src={kid} alt="carousel" />
+      <div className="carouselInfo">
+        <p className="title">
+          Welcome to EEE Alumni Association
+        </p>
+        <p className='content'>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Quis fugiat odit explicabo debitis reiciendis repudiandae, cum recusandae.
+          Animi quia accusamus quo adipisci quisquam tempore modi consequuntur,
+          repellat fugit enim mollitia!
+        </p>
+      </div>
+    </>,
+    <>
+      <img src={sparrow} alt="carousel" />
+      <div className="carouselInfo">
+        <p className="title">
+          Welcome to EEE Alumni Association
+        </p>
+        <p className='content'>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Quis fugiat odit explicabo debitis reiciendis repudiandae, cum recusandae.
+          Animi quia accusamus quo adipisci quisquam tempore modi consequuntur,
+          repellat fugit enim mollitia!
+        </p>
+      </div>
+    </>
+  ]
+
   return (
     <Layout>
-      <Carousel />
+      <Carousel items={carouselItems} />
       <div className='my-4'>
         <h2>Featured</h2>
         {loading ? (

@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Header = () => {
-
-  const [showDropDown, setShowDropDown] = useState(false)
 
   return (
     <header className='mb-4'>
@@ -26,30 +25,24 @@ const Header = () => {
             <ul className="navbar-nav ml-auto">
               <form className="form-inline my-2 mr-5 my-lg-0">
                 <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button className="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
               </form>
-              <li className="nav-item active">
-                <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
+              <li className="nav-item">
+                <NavLink exact className="nav-link" to="/">Home <span className="sr-only">(current)</span></NavLink>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="https://www.sust.edu/d/eee/faculty">Faculty</a>
               </li>
-              <li className="nav-item dropdown">
-                <a href='#?' onClick={() => setShowDropDown(!showDropDown)} className="nav-link dropdown-toggle">
-                  Batches
-                </a>
-                <div className={`dropdown-menu ${showDropDown ? "show": ""}`} aria-labelledby="navbarDropdown">
-                  <a className="dropdown-item" href="/batch/2010">2010 - 11</a>
-                  <a className="dropdown-item" href="/batch/2011">2011 - 12</a>
-                  <a className="dropdown-item" href="/batch/2012">2012 - 13</a>
-                  <a className="dropdown-item" href="/batch/2013">2013 - 14</a>
-                  <a className="dropdown-item" href="/batch/2014">2014 - 15</a>
-                  <a className="dropdown-item" href="/batch/2015">2015 - 16</a>
-                  <a className="dropdown-item" href="/batch/2016">2016 - 17</a>
-                </div>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/batches">Batches</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink exact className="nav-link" to="/login">Login</NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink exact className="nav-link" to="/register">Register</NavLink>
               </li>
             </ul>
-
           </div>
         </div>
       </nav>

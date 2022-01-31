@@ -3,6 +3,7 @@ import Loader from '../../Components/Loader/Loader'
 import Layout from '../../Layout/Layout'
 import apiServices from './service'
 import defaultThumb from '../../assets/icons/thumbnail.svg'
+import Carousel from '../../Components/Carousel/Carousel'
 
 
 const BatchList = ({ history }) => {
@@ -24,6 +25,23 @@ const BatchList = ({ history }) => {
       })
   }, [])
 
+  const batchPictures = (batch) => {
+    const pictures = batch.batch_pictures.map(p => p.picture)
+    if (!pictures.length) {
+      pictures.push(defaultThumb)
+    }
+    const carouselItems = pictures.map(p => (
+      <img
+        className="card-img-top"
+        alt="Thumbnail"
+        style={{ height: "225px", width: "100%", display: "block" }}
+        src={p}
+        data-holder-rendered="true"
+      />
+    ))
+    return carouselItems
+  }
+
   return (
     <Layout>
       <div className='my-4'>
@@ -36,12 +54,10 @@ const BatchList = ({ history }) => {
             {batches.map(batch => (
               <div key={batch.id} className="col-md-4">
                 <div className="card mb-4 shadow-sm">
-                  <img
-                    className="card-img-top"
-                    alt="Thumbnail"
-                    style={{ height: "225px", width: "100%", display: "block" }}
-                    src={defaultThumb}
-                    data-holder-rendered="true"
+                  <Carousel
+                    showIndicators={false}
+                    showThumbs={false}
+                    items={batchPictures(batch)}
                   />
                   <div className="card-body">
                     <h5>{batch.session} ({batch.batch_name})</h5>
