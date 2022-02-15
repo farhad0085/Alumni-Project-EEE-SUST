@@ -4,7 +4,7 @@ from .serializers import (
     LoginSerializer,
     UserAccountSerializer,
 )
-from django.contrib.auth import authenticate, login as django_login
+from django.contrib.auth import authenticate
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import AllowAny
 from rest_framework.authtoken.models import Token
@@ -28,12 +28,7 @@ class LoginView(LoggerAPIView):
             if not user:
                 return Response({'error': 'Invalid Credentials'}, status=401)
 
-            if not user.is_active:
-                return Response({'error': "Your account is inactive. Please contact support!"}, status=401)
-
-            django_login(request, user)
             token, _ = Token.objects.get_or_create(user=user)
-
             response_data = UserAccountSerializer(user).data
             response_data["key"] = token.key
 

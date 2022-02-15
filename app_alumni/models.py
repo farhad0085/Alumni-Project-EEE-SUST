@@ -19,7 +19,7 @@ class Alumni(TrackingModel):
     birth_of_date = models.DateField(blank=True, null=True, help_text="Format: YYYY-MM-DD")
     registration_number = models.CharField(max_length=10, validators=[RegistrationNumberValidator()], unique=True, null=True)
     batch = models.ForeignKey(Batch, on_delete=models.SET_NULL, null=True)
-    passing_year = models.CharField(max_length=10)
+    graduation_year = models.CharField(max_length=4)
     is_employed = models.BooleanField(default=True)
     email = models.EmailField(blank=True, null=True)
     contact_number = models.CharField(max_length=20, blank=True, null=True)

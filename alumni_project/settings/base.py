@@ -86,7 +86,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
     ],
-    'DEFAULT_PAGINATION_CLASS': 'common.paginations.StandardResultsSetPagination',
+    'DEFAULT_PAGINATION_CLASS': 'common.paginations.LargeResultsSetPagination',
     'PAGE_SIZE': 100,
 }
 

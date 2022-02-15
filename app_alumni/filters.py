@@ -10,7 +10,7 @@ class AlumniFilter(filters.FilterSet):
             'birth_of_date': ['exact', 'lt', 'gt', 'lte', 'gte'],
             'batch': ['exact'],
             'batch__session': ['exact'],
-            'passing_year': ['exact'],
+            'graduation_year': ['exact'],
             'is_employed': ['exact'],
             'email': ['exact'],
             'contact_number': ['exact'],
