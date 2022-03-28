@@ -45,3 +45,4 @@ class RegisterAPIView(LoggerAPIView):
         serializer = RegistrationSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
+            return self.send_200({"message": "User registered successfully"})

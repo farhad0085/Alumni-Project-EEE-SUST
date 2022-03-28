@@ -9,11 +9,14 @@ import { FileUploader } from "react-drag-drop-files";
 import { ToastContainer, toast } from "react-toastify";
 import './styles.css'
 import { registerUser } from '../services'
+import { useHistory } from 'react-router-dom'
 
 
 const EditProfilePage = () => {
-
+  const history = useHistory()
   const [errors, setErrors] = useState({})
+  const [password1, setPassword1] = useState("")
+  const [password2, setPassword2] = useState("")
 
   const [profilePicture, setProfilePicture] = useState()
   const [preview, setPreview] = useState()
@@ -75,8 +78,8 @@ const EditProfilePage = () => {
   // create a preview as a side effect, whenever selected file is changed
   useEffect(() => {
     if (!profilePicture) {
-        setPreview(undefined)
-        return
+      setPreview(undefined)
+      return
     }
 
     const objectUrl = URL.createObjectURL(profilePicture)
@@ -92,6 +95,8 @@ const EditProfilePage = () => {
 
     const data = {
       full_name: full_name,
+      password1: password1,
+      password2: password2,
       email: email,
       date_of_birth: date_of_birth,
       registration_number: registration_no,
@@ -121,12 +126,12 @@ const EditProfilePage = () => {
 
     const formData = new FormData();
     for (let key in data) {
-      if(key === 'present_address') {
+      if (key === 'present_address') {
         for (let presentKey in data[key]) {
           formData.append(`present_address.${presentKey}`, data[key][presentKey]);
         }
       }
-      else if(key === 'permanent_address') {
+      else if (key === 'permanent_address') {
         for (let permanentKey in data[key]) {
           formData.append(`permanent_address.${permanentKey}`, data[key][permanentKey]);
         }
@@ -136,12 +141,19 @@ const EditProfilePage = () => {
     }
 
     registerUser(formData)
-    .then(res => {
-      console.log(res)
-    })
-    .catch(error => {
-      setErrors(error.response?.data || {})
-    })
+      .then(res => {
+        toast.success(res.data?.message, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+        });
+        history.push("/profile")
+      })
+      .catch(error => {
+        setErrors(error.response?.data || {})
+      })
   }
 
   return (
@@ -181,7 +193,7 @@ const EditProfilePage = () => {
                       onChange={setFullName}
                       errorMessage={errors?.full_name}
                     />
-                    
+
                     <Label label={"Email"} />
                     <Input
                       placeholder="Email"
@@ -189,21 +201,53 @@ const EditProfilePage = () => {
                       onChange={setEmail}
                       errorMessage={errors?.email}
                     />
-                    <Label label={"Date of birth"} />
-                    <Input
-                      type="date"
-                      placeholder="Date of birth"
-                      value={date_of_birth}
-                      onChange={setDateOfBirth}
-                      errorMessage={errors?.date_of_birth}
-                    />
-                    <Label label={"Registration No."} />
-                    <Input
-                      type="number"
-                      placeholder="Please enter your registration no."
-                      value={registration_no}
-                      onChange={setRegistrationNo}
-                    />
+
+                    <div className="row">
+                      <div className="col col-md-6">
+                        <Label label={"Password"} />
+                        <Input
+                          type="password"
+                          placeholder="Password"
+                          value={password1}
+                          onChange={setPassword1}
+                          errorMessage={errors?.password1}
+                          autoComplete="new-password"
+                        />
+                      </div>
+                      <div className="col col-md-6">
+                        <Label label={"Confirm Password"} />
+                        <Input
+                          type="password"
+                          placeholder="Confirm Password"
+                          value={password2}
+                          onChange={setPassword2}
+                          errorMessage={errors?.password2}
+                          autoComplete="new-password"
+                        />
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col col-md-6">
+                        <Label label={"Date of birth"} />
+                        <Input
+                          type="date"
+                          placeholder="Date of birth"
+                          value={date_of_birth}
+                          onChange={setDateOfBirth}
+                          errorMessage={errors?.date_of_birth}
+                        />
+                      </div>
+                      <div className="col col-md-6">
+                        <Label label={"Registration No."} />
+                        <Input
+                          type="number"
+                          placeholder="Please enter your registration no."
+                          value={registration_no}
+                          onChange={setRegistrationNo}
+                          errorMessage={errors?.registration_number}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -288,7 +332,7 @@ const EditProfilePage = () => {
                           value={company}
                           onChange={setCompany}
                           errorMessage={errors?.company}
-                      />
+                        />
                       </div>
                       <div className='col-md-6'>
                         <Label label={"Designation"} />
@@ -394,7 +438,7 @@ const EditProfilePage = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div className="row mt-3">
                   <button type="submit" className="btn btn-primary">Register</button>
                 </div>
