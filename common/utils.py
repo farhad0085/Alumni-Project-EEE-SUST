@@ -2,8 +2,10 @@ from typing import List
 from dateutil.relativedelta import relativedelta
 import datetime
 from dateutil.rrule import rrule, MONTHLY
-import math
+import math, random
 import logging
+from random_username.generate import generate_username
+from django.contrib.auth import get_user_model
 
 
 class HelperMethods:
@@ -212,3 +214,23 @@ class LogHelper:
             self.cron_logger.info(message)
         else:
             self.info_logger.info(message)
+
+
+class GenerateUsername:
+    @property
+    def _get_random_integer(self):
+        return str(random.randint(0, 9))
+
+    def _generate_username(self, email=""):
+        if email:
+            username = email.split("@")[0]
+        else:
+            username = generate_username(1)[0]
+        
+        while self._check_if_exist(username):
+            username = username + self._get_random_integer
+
+        return username
+
+    def _check_if_exist(self, username):
+        return get_user_model().objects.filter(username=username).exists()

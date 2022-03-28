@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from '../../../Layout/Layout'
 import './styles.css'
+import { Link } from 'react-router-dom'
 
 
 const LoginPage = () => {
@@ -21,10 +22,14 @@ const LoginPage = () => {
                 <label>Password</label>
                 <input autoComplete='new-password' type="password" className="form-control" placeholder="Password" />
               </div>
-              <button type="submit" className="btn btn-primary">Login</button>
+              <div className="form-group">
+                <button type="submit" className="btn btn-primary">Login</button>
+              </div>
               <hr />
-              Create an Account
-              Reset Password
+              <div className="form-group">
+              Forgot your password? <Link to="/reset-password">Reset Password</Link>
+              </div>
+              Are you graduated? <Link to='/register'>Create an account</Link>
             </form>
           </div>
         </div>

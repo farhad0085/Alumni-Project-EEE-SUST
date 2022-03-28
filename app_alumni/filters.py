@@ -7,7 +7,7 @@ class AlumniFilter(filters.FilterSet):
         model = Alumni
         fields = {
             'name': ['exact'],
-            'birth_of_date': ['exact', 'lt', 'gt', 'lte', 'gte'],
+            'date_of_birth': ['exact', 'lt', 'gt', 'lte', 'gte'],
             'batch': ['exact'],
             'batch__session': ['exact'],
             'graduation_year': ['exact'],
