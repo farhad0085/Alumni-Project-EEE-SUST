@@ -1,12 +1,11 @@
 import React from 'react'
-import Layout from '../../Layout/Layout'
 import './styles.css'
 
 
 const ProfilePage = () => {
 
   return (
-    <Layout>
+    <>
       <div className="container rounded border mt-4 mb-4">
         <div className="row">
           <div className="col-md-3 border-right">
@@ -74,7 +73,7 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   )
 
 }

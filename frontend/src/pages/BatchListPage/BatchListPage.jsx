@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Loader from '../../Components/Loader/Loader'
-import Layout from '../../Layout/Layout'
 import apiServices from './service'
 import defaultThumb from '../../assets/icons/thumbnail.svg'
 import Carousel from '../../Components/Carousel/Carousel'
@@ -43,7 +42,7 @@ const BatchList = ({ history }) => {
   }
 
   return (
-    <Layout>
+    <>
       <div className='my-4'>
         <h2>Batches</h2>
         <hr />
@@ -88,7 +87,7 @@ const BatchList = ({ history }) => {
         <div>
         </div>
       </div>
-    </Layout>
+    </>
   )
 
 }

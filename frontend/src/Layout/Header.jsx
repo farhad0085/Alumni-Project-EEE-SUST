@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 
-const Header = () => {
+const Header = ({ isAuthenticated, setIsAuthenticated }) => {
 
   return (
     <header className='mb-4'>
@@ -36,12 +36,25 @@ const Header = () => {
               <li className="nav-item">
                 <NavLink className="nav-link" to="/batches">Batches</NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink exact className="nav-link" to="/login">Login</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink exact className="nav-link" to="/register">Register</NavLink>
-              </li>
+              {!isAuthenticated ? (
+               <>
+                <li className="nav-item">
+                  <NavLink exact className="nav-link" to="/login">Login</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink exact className="nav-link" to="/register">Register</NavLink>
+                </li>
+               </> 
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <NavLink exact className="nav-link" to="/edit-profile">Edit Profile</NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink exact className="nav-link" to="/register">Logout</NavLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

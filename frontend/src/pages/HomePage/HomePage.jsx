@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import AlumniList from '../../Components/Alumni/AlumniList'
 import Carousel from '../../Components/Carousel/Carousel'
 import Loader from '../../Components/Loader/Loader'
-import Layout from '../../Layout/Layout'
 import apiServices from './service'
 import iictBuilding from '../../assets/images/iict_building.jpg'
 import cat from '../../assets/images/cat.jpg'
@@ -89,7 +88,7 @@ const HomePage = ({ history }) => {
   ]
 
   return (
-    <Layout>
+    <>
       <Carousel items={carouselItems} />
       <div className='my-4'>
         <h2>Featured</h2>
@@ -107,7 +106,7 @@ const HomePage = ({ history }) => {
           </button>
         </div>
       </div>
-    </Layout>
+    </>
   )
 
 }

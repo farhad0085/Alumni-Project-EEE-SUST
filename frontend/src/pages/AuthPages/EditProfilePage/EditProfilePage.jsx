@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Layout from '../../../Layout/Layout'
 import axios from '../../../utils/axios'
 import Label from '../../../Components/FormElements/Label'
 import TextArea from '../../../Components/FormElements/TextArea'
@@ -51,7 +50,7 @@ const EditProfilePage = () => {
   }, [])
 
   return (
-    <Layout>
+    <>
       <div className="container rounded border mt-4 mb-4">
         <div className="row">
           <div className="col">
@@ -269,7 +268,7 @@ const EditProfilePage = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   )
 }
 

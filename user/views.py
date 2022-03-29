@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import AllowAny
 from rest_framework.authtoken.models import Token
-from rest_framework.parsers import MultiPartParser, JSONParser
+from rest_framework.authtoken.models import Token
 
 
 class LoginView(LoggerAPIView):
@@ -44,5 +44,13 @@ class RegisterAPIView(LoggerAPIView):
     def post(self, request):
         serializer = RegistrationSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
-            return self.send_200({"message": "User registered successfully"})
+            user, alumni = serializer.save()
+
+            token, _ = Token.objects.get_or_create(user=user)
+
+            response_data = UserAccountSerializer(user).data
+            response_data["key"] = token.key
+            return self.send_200({
+                "message": "User registered successfully",
+                "key": token.key
+            })

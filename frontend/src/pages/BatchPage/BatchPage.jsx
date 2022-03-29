@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import AlumniList from '../../Components/Alumni/AlumniList'
 import Loader from '../../Components/Loader/Loader'
-import Layout from '../../Layout/Layout'
 import apiServices from './service'
 import './styles.css'
 
@@ -26,7 +25,7 @@ const BatchPage = ({ history, match }) => {
   }, [session])
 
   return (
-    <Layout>
+    <>
       <div className='my-4'>
         <h2>Alumnies of batch: {session}</h2>
         {loading ? (
@@ -35,7 +34,7 @@ const BatchPage = ({ history, match }) => {
           <AlumniList alumnies={alumnis} />
         )}
       </div>
-    </Layout>
+    </>
   )
 
 }

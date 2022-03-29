@@ -4,11 +4,14 @@ import Footer from './Footer'
 import Header from './Header'
 
 
-const Layout = ({ children }) => {
+const Layout = ({ children, isAuthenticated, setIsAuthenticated }) => {
 
   return (
     <>
-      <Header />
+      <Header
+        isAuthenticated={isAuthenticated}
+        setIsAuthenticated={setIsAuthenticated}
+      />
       <ToastContainer />
       <div className='container'>
         {children}

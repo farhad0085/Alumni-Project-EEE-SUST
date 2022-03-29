@@ -136,7 +136,7 @@ class RegistrationSerializer(serializers.Serializer, GenerateUsername):
             permanent_address=permanent_address_obj,
             user=user_obj,
         )
-        return alumni_obj
+        return user_obj, alumni_obj
     
     def validate_username(self, username):
         if not username:

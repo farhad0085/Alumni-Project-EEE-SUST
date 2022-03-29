@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Layout from '../../../Layout/Layout'
 import axios from '../../../utils/axios'
 import Label from '../../../Components/FormElements/Label'
 import TextArea from '../../../Components/FormElements/TextArea'
@@ -10,9 +9,10 @@ import { toast } from "react-toastify";
 import './styles.css'
 import { registerUser } from '../services'
 import { useHistory } from 'react-router-dom'
+import { loginUser } from '../../../utils/auth'
 
 
-const EditProfilePage = () => {
+const RegisterPage = () => {
   const history = useHistory()
   const [errors, setErrors] = useState({})
   const [password1, setPassword1] = useState("")
@@ -145,6 +145,9 @@ const EditProfilePage = () => {
 
     registerUser(formData)
       .then(res => {
+        const userToken = res.data?.key
+        loginUser(userToken)
+        
         toast.success(res.data?.message, {
           position: "bottom-right",
           autoClose: 5000,
@@ -160,7 +163,7 @@ const EditProfilePage = () => {
   }
 
   return (
-    <Layout>
+    <>
       <div className="container rounded border mt-4 mb-4">
         <div className="row">
           <div className="col">
@@ -449,9 +452,9 @@ const EditProfilePage = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   )
 }
 
 
-export default EditProfilePage
+export default RegisterPage
