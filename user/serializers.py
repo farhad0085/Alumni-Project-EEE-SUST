@@ -111,9 +111,12 @@ class RegistrationSerializer(serializers.Serializer, GenerateUsername):
             zip_code=permanent_address.get("zip_code"),
         )
 
-        profile_picture_obj = Picture.objects.create(
-            picture=profile_picture
-        )
+        if profile_picture:
+            profile_picture_obj = Picture.objects.create(
+                picture=profile_picture
+            )
+        else:
+            profile_picture_obj = None
 
         # create alumni
         alumni_obj = Alumni.objects.create(
@@ -131,6 +134,7 @@ class RegistrationSerializer(serializers.Serializer, GenerateUsername):
             profile_picture=profile_picture_obj,
             present_address=present_address_obj,
             permanent_address=permanent_address_obj,
+            user=user_obj,
         )
         return alumni_obj
     

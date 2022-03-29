@@ -2,6 +2,7 @@ from django.db import models
 from app_alumni.validators import BatchSessionValidator, RegistrationNumberValidator
 from common.models import TrackingModel
 from django.utils.safestring import mark_safe
+from user.models import UserAccount
 
 
 class Batch(TrackingModel):
@@ -31,6 +32,8 @@ class Alumni(TrackingModel):
     is_featured = models.BooleanField(default=False, help_text="Show in homepage or not.")
     present_address = models.ForeignKey('Address', on_delete=models.SET_NULL, null=True, blank=True, related_name="present_address")
     permanent_address = models.ForeignKey('Address', on_delete=models.SET_NULL, null=True, blank=True, related_name="permanent_address")
+    is_active = models.BooleanField(default=False)
+    user = models.OneToOneField(UserAccount, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self) -> str:
         return self.name
@@ -46,7 +49,9 @@ class Picture(TrackingModel):
             return '(No image)'
 
     def __str__(self) -> str:
-        return self.picture.url
+        if self.picture:
+            return self.picture.url
+        return str(self.id)
 
 
 class Address(TrackingModel):

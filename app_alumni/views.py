@@ -3,7 +3,6 @@ from app_alumni.filters import AlumniFilter, BatchFilter
 from app_alumni.models import Alumni, Batch
 from app_alumni.serializers import AlumniSerializer, BatchSerializer
 from django_filters import rest_framework as filters
-from django.db.models import Count
 
 
 class AlumniListAPIView(ListAPIView):

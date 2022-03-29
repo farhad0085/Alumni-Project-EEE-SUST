@@ -6,7 +6,7 @@ import TextArea from '../../../Components/FormElements/TextArea'
 import Input from '../../../Components/FormElements/Input'
 import defaultDp from '../../../assets/images/defaultDp.png'
 import { FileUploader } from "react-drag-drop-files";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import './styles.css'
 import { registerUser } from '../services'
 import { useHistory } from 'react-router-dom'
@@ -107,7 +107,6 @@ const EditProfilePage = () => {
       company: company,
       designation: designation,
       biography: biography,
-      profile_picture: profilePicture,
       present_address: {
         address: present_address_address,
         state: present_address_state,
@@ -122,6 +121,10 @@ const EditProfilePage = () => {
         zip_code: permanent_address_zip_code,
         country: permanent_address_country,
       }
+    }
+
+    if (profilePicture) {
+      data["profile_picture"] = profilePicture
     }
 
     const formData = new FormData();
@@ -158,7 +161,6 @@ const EditProfilePage = () => {
 
   return (
     <Layout>
-      <ToastContainer />
       <div className="container rounded border mt-4 mb-4">
         <div className="row">
           <div className="col">
@@ -266,7 +268,7 @@ const EditProfilePage = () => {
                     </select>
                     {errors?.batch && (
                       <div className='text-danger'>
-                        {errors?.batch}
+                        Please select your batch
                       </div>
                     )}
                   </div>
