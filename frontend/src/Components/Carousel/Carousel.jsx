@@ -7,6 +7,7 @@ import { Carousel as ReactCarousel } from 'react-responsive-carousel';
 // import kid from '../../assets/images/kid.jpg'
 // import sparrow from '../../assets/images/sparrow.jpg'
 import './styles.css'
+import { createUUID } from '../../utils';
 
 
 const Carousel = ({items, ...rest}) => {
@@ -20,7 +21,7 @@ const Carousel = ({items, ...rest}) => {
       {...rest}
     >
       {items.map(item => (
-        <div className='carouselItem'>
+        <div key={createUUID()} className='carouselItem'>
           {item}
         </div>
       ))}

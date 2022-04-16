@@ -14,6 +14,7 @@ import './styles.css'
 
 const EditProfilePage = () => {
   const [profileDataLoading, setProfileDataLoading] = useState(false)
+  const [submitLoading, setSubmitLoading] = useState(false)
   const [errors, setErrors] = useState({})
   const [profilePicture, setProfilePicture] = useState()
   const [preview, setPreview] = useState()
@@ -130,6 +131,7 @@ const EditProfilePage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    setSubmitLoading(true)
 
     const data = {
       full_name: full_name,
@@ -159,7 +161,7 @@ const EditProfilePage = () => {
       }
     }
 
-    if (profilePicture) {
+    if (profilePicture && (typeof profilePicture !== 'string')) {
       data["profile_picture"] = profilePicture
     }
 
@@ -181,6 +183,7 @@ const EditProfilePage = () => {
 
     updateProfile(formData)
       .then(res => {
+        setSubmitLoading(false)
         toast.success(res.data?.message, {
           position: "bottom-right",
           autoClose: 5000,
@@ -190,6 +193,7 @@ const EditProfilePage = () => {
         });
       })
       .catch(error => {
+        setSubmitLoading(false)
         setErrors(error.response?.data || {})
       })
   }
@@ -447,7 +451,9 @@ const EditProfilePage = () => {
                   </div>
 
                   <div className="row mt-3">
-                    <button type="submit" className="btn btn-primary">Save Changes</button>
+                    <button type="submit" className="btn btn-primary" disabled={submitLoading}>
+                      {submitLoading ? "Saving..." : "Save Changes"}
+                    </button>
                   </div>
                 </form>
               )}

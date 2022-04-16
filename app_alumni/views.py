@@ -1,7 +1,7 @@
 from rest_framework.generics import ListAPIView
 from app_alumni.filters import AlumniFilter, BatchFilter
 from app_alumni.models import Alumni, Batch
-from app_alumni.serializers import AlumniSerializer, BatchSerializer
+from app_alumni.serializers import AlumniProfileUpdateSerializer, AlumniSerializer, BatchSerializer
 from django_filters import rest_framework as filters
 from rest_framework.permissions import IsAuthenticated
 from common.views import LoggerAPIView
@@ -43,4 +43,7 @@ class AlumniDetailsAPIView(LoggerAPIView):
         # if this user doesn't have any alumni profile
         # we'll create one profile for him and assign user object to him
         # otherwise we'll update his existing profile
-        return self.send_200({"message": "Profile changes saved successfully!"})
+        serializer = AlumniProfileUpdateSerializer(data=request.data, context={'request': request})
+        if serializer.is_valid(raise_exception=True):
+            serializer.save(request.user)
+            return self.send_200({"message": "Profile changes saved successfully!"})
