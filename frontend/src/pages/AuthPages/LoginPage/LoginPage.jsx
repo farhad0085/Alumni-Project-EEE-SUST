@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import './styles.css'
 import { Link, useHistory } from 'react-router-dom'
 import { loginUser } from '../services'
-import { loginUser as loginUserToApp } from '../../../utils/auth'
 import { toast } from "react-toastify";
+import { useDispatch } from 'react-redux'
+import { USER_LOGGED_IN } from '../../../store/actions/actionTypes';
 
 
 const LoginPage = () => {
   const history = useHistory()
+  const dispatch = useDispatch()
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
@@ -25,8 +27,8 @@ const LoginPage = () => {
     e.preventDefault()
     loginUser({ username, password })
       .then(res => {
-        const userToken = res.data?.key
-        loginUserToApp(userToken)
+        localStorage.setItem(process.env.REACT_APP_TOKEN_KEY, res.data.key);
+        dispatch({ type: USER_LOGGED_IN });
         
         toast.success(res.data?.message, {
           position: "bottom-right",

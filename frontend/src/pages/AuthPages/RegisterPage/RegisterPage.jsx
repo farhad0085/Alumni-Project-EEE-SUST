@@ -9,11 +9,12 @@ import { toast } from "react-toastify";
 import './styles.css'
 import { registerUser } from '../services'
 import { useHistory } from 'react-router-dom'
-import { loginUser } from '../../../utils/auth'
-
+import { useDispatch } from 'react-redux'
+import { USER_LOGGED_IN } from '../../../store/actions/actionTypes'
 
 const RegisterPage = () => {
   const history = useHistory()
+  const dispatch = useDispatch()
   const [errors, setErrors] = useState({})
   const [password1, setPassword1] = useState("")
   const [password2, setPassword2] = useState("")
@@ -145,8 +146,8 @@ const RegisterPage = () => {
 
     registerUser(formData)
       .then(res => {
-        const userToken = res.data?.key
-        loginUser(userToken)
+        localStorage.setItem(process.env.REACT_APP_TOKEN_KEY, res.data.key);
+        dispatch({ type: USER_LOGGED_IN })
         
         toast.success(res.data?.message, {
           position: "bottom-right",
