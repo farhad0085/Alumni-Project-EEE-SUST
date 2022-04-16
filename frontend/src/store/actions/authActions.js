@@ -49,22 +49,8 @@ export const register = (registerData, history) => (dispatch) => {
 };
 
 export const logout = (history) => (dispatch) => {
-  dispatch({ type: Types.AUTH_LOADING, payload: true });
-
-  axios
-    .post("/api/auth/logout/", {}, { headers: getHeaders() })
-    .then((res) => {
-      localStorage.removeItem(process.env.REACT_APP_TOKEN_KEY);
-      dispatch({ type: Types.USER_LOGGED_OUT });
-      dispatch({ type: Types.AUTH_LOADING, payload: false });
-    })
-    .catch((error) => {
-      dispatch({
-        type: Types.USER_LOGOUT_ERROR,
-        payload: error.response ? error.response.data : {},
-      });
-      dispatch({ type: Types.AUTH_LOADING, payload: false });
-    });
+  localStorage.removeItem(process.env.REACT_APP_TOKEN_KEY);
+  dispatch({ type: Types.USER_LOGGED_OUT });
 };
 
 export const loadUserInfo = () => (dispatch) => {

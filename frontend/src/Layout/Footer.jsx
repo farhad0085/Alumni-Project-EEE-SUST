@@ -8,7 +8,7 @@ const Footer = () => {
     <>
       <footer className='footer'>
         <div className="container">
-          <p>Footer goes here</p>
+          <p>&copy; {new Date().getFullYear()} {process.env.REACT_APP_SITE_TITLE}</p>
         </div>
       </footer>
     </>

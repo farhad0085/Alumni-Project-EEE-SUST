@@ -55,7 +55,7 @@ const Header = () => {
                     <NavLink exact className="nav-link" to="/edit-profile">Edit Profile</NavLink>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" onClick={() => dispatch(logout())} href="?#">Logout</a>
+                    <span className="nav-link" style={{ cursor: "pointer" }} onClick={() => dispatch(logout())}>Logout</span>
                   </li>
                 </>
               )}

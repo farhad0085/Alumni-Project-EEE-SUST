@@ -12,6 +12,7 @@ const LoginPage = () => {
   const dispatch = useDispatch()
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const handleError = (message, duration) => {
     toast.error(message || "Something went wrong", {
@@ -25,8 +26,10 @@ const LoginPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
+    setLoading(true)
     loginUser({ username, password })
       .then(res => {
+        setLoading(false)
         localStorage.setItem(process.env.REACT_APP_TOKEN_KEY, res.data.key);
         dispatch({ type: USER_LOGGED_IN });
         
@@ -40,6 +43,7 @@ const LoginPage = () => {
         history.push("/edit-profile")
       })
       .catch(error => {
+        setLoading(false)
         handleError("Email or password is incorrect!")
       })
   }
@@ -74,7 +78,9 @@ const LoginPage = () => {
                 />
               </div>
               <div className="form-group">
-                <button type="submit" className="btn btn-primary">Login</button>
+                <button type="submit" className="btn btn-primary" disabled={loading}>
+                  {loading ? "Please wait..." : "Login"}
+                </button>
               </div>
               <hr />
               <div className="form-group">

@@ -8,6 +8,7 @@ import AlumniProfilePage from "./pages/ProfilePage/ProfilePage";
 import EditProfilePage from "./pages/AuthPages/EditProfilePage/EditProfilePage";
 import LoginPage from "./pages/AuthPages/LoginPage/LoginPage";
 import RegisterPage from "./pages/AuthPages/RegisterPage/RegisterPage";
+import PrivateRoute from "./PrivateRoute";
 
 
 const Routes = () => {
@@ -16,7 +17,7 @@ const Routes = () => {
       <Route exact path="/" component={HomePage} />
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/register" component={RegisterPage} />
-      <Route exact path="/edit-profile" component={EditProfilePage} />
+      <PrivateRoute exact path="/edit-profile" component={EditProfilePage} />
       <Route exact path="/batches" component={BatchListPage} />
       <Route exact path="/batches/:batchId" component={BatchPage} />
       <Route exact path="/alumnies/:registrationNumber(20[1-9]{2}3380[0-9]{2})" component={AlumniProfilePage} />
