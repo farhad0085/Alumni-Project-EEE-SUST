@@ -69,7 +69,13 @@ const AlumniItem = ({ alumni, history }) => {
           </div>
           <div className="d-flex justify-content-between align-items-center">
             <div className="btn-group">
-              <button onClick={() => history.push('/alumnies/2018338019')} type="button" className="btn btn-sm btn-outline-primary">View Profile</button>
+              <button
+                onClick={() => history.push(`/alumnies/${alumni.id}`)}
+                type="button"
+                className="btn btn-sm btn-outline-primary"
+              >
+                View Profile
+              </button>
             </div>
             <div className="btn-group">
                 <a role="button" className="btn btn-sm btn-outline-secondary" href={`mailto:${alumni.email}`}>

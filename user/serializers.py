@@ -150,7 +150,6 @@ class RegistrationSerializer(serializers.Serializer, GenerateUsername):
         return batch_obj
     
     def validate_registration_number(self, registration_number):
-        print(registration_number)
         alumni_obj = Alumni.objects.filter(registration_number=registration_number).first()
         if alumni_obj:
             raise serializers.ValidationError("A user with this registration number already exists")

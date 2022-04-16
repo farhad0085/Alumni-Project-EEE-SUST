@@ -1,3 +1,4 @@
+import { getHeaders } from "../../utils";
 import axios from "../../utils/axios";
 
 export const registerUser = (registerData) => {
@@ -17,3 +18,13 @@ export const loginUser = (data) => {
   };
   return axios(config)
 };
+
+export const updateProfile = (profileData) => {
+  var config = {
+    method: 'put',
+    url: '/api/alumni-details/',
+    data: profileData,
+    headers: getHeaders()
+  };
+  return axios(config)
+}

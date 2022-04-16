@@ -76,7 +76,7 @@ const BatchList = ({ history }) => {
                       type="button"
                       className="btn btn-sm btn-block btn-outline-primary"
                     >
-                      OPEN
+                      Open
                     </button>
                   </div>
                 </div>

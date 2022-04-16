@@ -27,10 +27,6 @@ const Header = () => {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
-              <form className="form-inline my-2 mr-5 my-lg-0">
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                <button className="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-              </form>
               <li className="nav-item">
                 <NavLink exact className="nav-link" to="/">Home <span className="sr-only">(current)</span></NavLink>
               </li>
