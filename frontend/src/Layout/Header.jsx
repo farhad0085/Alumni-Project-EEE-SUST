@@ -1,8 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { logout } from '../store/actions/authActions'
 
-const Header = ({ isAuthenticated, setIsAuthenticated }) => {
+const Header = () => {
+  const dispatch = useDispatch()
+  const auth = useSelector(state => state.auth)
 
   return (
     <header className='mb-4'>
@@ -36,7 +40,7 @@ const Header = ({ isAuthenticated, setIsAuthenticated }) => {
               <li className="nav-item">
                 <NavLink className="nav-link" to="/batches">Batches</NavLink>
               </li>
-              {!isAuthenticated ? (
+              {!auth.isAuthenticated ? (
                <>
                 <li className="nav-item">
                   <NavLink exact className="nav-link" to="/login">Login</NavLink>
@@ -51,7 +55,7 @@ const Header = ({ isAuthenticated, setIsAuthenticated }) => {
                     <NavLink exact className="nav-link" to="/edit-profile">Edit Profile</NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink exact className="nav-link" to="/register">Logout</NavLink>
+                    <a className="nav-link" onClick={() => dispatch(logout())} href="?#">Logout</a>
                   </li>
                 </>
               )}

@@ -9,7 +9,7 @@ import store from "./store";
 import { Provider } from "react-redux";
 
 
-const userToken = localStorage.getItem("alumniUserToken");
+const userToken = localStorage.getItem(process.env.REACT_APP_TOKEN_KEY);
 if (userToken) {
 	store.dispatch(loadUserInfo());
 }

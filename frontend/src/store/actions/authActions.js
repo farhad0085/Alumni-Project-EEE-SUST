@@ -52,15 +52,13 @@ export const logout = (history) => (dispatch) => {
   dispatch({ type: Types.AUTH_LOADING, payload: true });
 
   axios
-    .post("/auth/logout/", {}, { headers: getHeaders() })
+    .post("/api/auth/logout/", {}, { headers: getHeaders() })
     .then((res) => {
       localStorage.removeItem(process.env.REACT_APP_TOKEN_KEY);
       dispatch({ type: Types.USER_LOGGED_OUT });
       dispatch({ type: Types.AUTH_LOADING, payload: false });
-      // history.push("/");
     })
     .catch((error) => {
-    //   console.log(error.response);
       dispatch({
         type: Types.USER_LOGOUT_ERROR,
         payload: error.response ? error.response.data : {},
@@ -73,7 +71,7 @@ export const loadUserInfo = () => (dispatch) => {
   dispatch({ type: Types.AUTH_LOADING, payload: true });
 
   axios
-    .get("/auth/user/me/", { headers: getHeaders() })
+    .get("/api/auth/user/me/", { headers: getHeaders() })
     .then((res) => {
       dispatch({ type: Types.USER_LOGGED_IN, payload: res.data });
       dispatch({ type: Types.AUTH_LOADING, payload: false });

@@ -6,11 +6,12 @@ import Input from '../../../Components/FormElements/Input'
 import defaultDp from '../../../assets/images/defaultDp.png'
 import { FileUploader } from "react-drag-drop-files";
 import { toast } from "react-toastify";
-import './styles.css'
 import { registerUser } from '../services'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { USER_LOGGED_IN } from '../../../store/actions/actionTypes'
+import './styles.css'
+
 
 const RegisterPage = () => {
   const history = useHistory()
@@ -156,7 +157,7 @@ const RegisterPage = () => {
           closeOnClick: true,
           pauseOnHover: true,
         });
-        history.push("/profile")
+        history.push("/edit-profile")
       })
       .catch(error => {
         setErrors(error.response?.data || {})

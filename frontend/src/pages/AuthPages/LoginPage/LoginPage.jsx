@@ -37,7 +37,7 @@ const LoginPage = () => {
           closeOnClick: true,
           pauseOnHover: true,
         });
-        history.push("/profile")
+        history.push("/edit-profile")
       })
       .catch(error => {
         handleError("Email or password is incorrect!")
