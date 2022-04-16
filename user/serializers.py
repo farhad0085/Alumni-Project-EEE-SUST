@@ -87,7 +87,7 @@ class RegistrationSerializer(serializers.Serializer, GenerateUsername):
         present_address = self.validated_data.get("present_address")
         permanent_address = self.validated_data.get("permanent_address")
 
-        user_obj = UserModel(
+        user_obj = UserModel.objects.create_user(
             username=username or self._generate_username(),
             first_name=first_name,
             last_name=last_name,
