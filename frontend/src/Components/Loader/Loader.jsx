@@ -1,17 +1,17 @@
-import React from 'react'
-import classes from './styles.module.scss'
+import React from "react";
+import classes from "./styles.module.scss";
 
-const Loader = ({ withoutBackground }) => {
-
+const Loader = ({ height }) => {
   return (
-    <>
-      <div className={withoutBackground ? classes.loader_container_without_background : classes.loader_container}>
-        <div className={classes.loader}>Loading...</div>
+    <div className={classes.wrapper} style={{ height: height || 330 }}>
+      <div className={classes.lds_ring}>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
-    </>
-  )
+    </div>
+  );
+};
 
-}
-
-
-export default Loader
+export default Loader;
