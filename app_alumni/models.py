@@ -17,8 +17,8 @@ class Batch(TrackingModel):
 
 class Alumni(TrackingModel):
     name = models.CharField(max_length=200)
-    date_of_birth = models.DateField(blank=True, null=True, validators=[RegistrationNumberValidator()], help_text="Format: YYYY-MM-DD")
-    registration_number = models.CharField(max_length=10, unique=True, null=True)
+    date_of_birth = models.DateField(blank=True, null=True, help_text="Format: YYYY-MM-DD")
+    registration_number = models.CharField(max_length=10, validators=[RegistrationNumberValidator()], unique=True, null=True)
     batch = models.ForeignKey(Batch, on_delete=models.SET_NULL, null=True)
     graduation_year = models.CharField(max_length=4)
     is_employed = models.BooleanField(default=True)
