@@ -11,7 +11,7 @@ import RegisterPage from "./pages/AuthPages/RegisterPage/RegisterPage";
 import PrivateRoute from "./PrivateRoute";
 import ForgetPasswordPage from "./pages/AuthPages/ForgetPasswordPage/ForgetPasswordPage";
 import ResetPasswordPage from "./pages/AuthPages/ResetPasswordPage/ResetPasswordPage";
-import ResetPasswordConfirmPage from "./pages/AuthPages/ResetPasswordPage/ResetPasswordConfirmPage";
+import ResetPasswordConfirmPage from "./pages/AuthPages/ForgetPasswordPage/ResetPasswordConfirmPage";
 
 
 const Routes = () => {

@@ -20,7 +20,7 @@ const ResetPasswordPage = () => {
       .then(res => {
         setLoading(false)
         setErrors({})
-        
+
         toast.success(res.data?.message, {
           position: "bottom-right",
           autoClose: 5000,
@@ -36,41 +36,37 @@ const ResetPasswordPage = () => {
   }
 
   return (
-    <>
-      <div className="loginComp">
-        <div className="div-center">
-          <div className="loginContent">
-            <h3>Change Password</h3>
-            <hr />
-            <form onSubmit={handleSubmit}>
-            <PasswordField
-              label="Current Password"
-              value={old_password}
-              onChange={setOldPassword}
-              error={errors.old_password}
-            />
-            <PasswordField
-              label="New Password"
-              value={new_password1}
-              onChange={setNewPassword1}
-              error={errors.new_password1}
-            />
-            <PasswordField
-              label="Confirm Password"
-              value={new_password2}
-              onChange={setNewPassword2}
-              error={errors.new_password2}
-            />
-              <div className="form-group">
-                <button type="submit" className="btn btn-primary" disabled={loading}>
-                  {loading ? "Please wait..." : "Change Password"}
-                </button>
-              </div>
-            </form>
+    <div className="div-center">
+      <div className="loginContent">
+        <h3>Change Password</h3>
+        <hr />
+        <form onSubmit={handleSubmit}>
+          <PasswordField
+            label="Current Password"
+            value={old_password}
+            onChange={setOldPassword}
+            error={errors.old_password}
+          />
+          <PasswordField
+            label="New Password"
+            value={new_password1}
+            onChange={setNewPassword1}
+            error={errors.new_password1}
+          />
+          <PasswordField
+            label="Confirm Password"
+            value={new_password2}
+            onChange={setNewPassword2}
+            error={errors.new_password2}
+          />
+          <div className="form-group">
+            <button type="submit" className="btn btn-primary" disabled={loading}>
+              {loading ? "Please wait..." : "Change Password"}
+            </button>
           </div>
-        </div>
+        </form>
       </div>
-    </>
+    </div>
   )
 
 }
@@ -100,7 +96,7 @@ const PasswordField = ({ label, value, onChange, error, ...rest }) => {
           {error}
         </div>
       )}
-      
+
     </div>
   )
 }

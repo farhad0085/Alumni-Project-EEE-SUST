@@ -5,13 +5,11 @@ import './styles.css'
 const Footer = () => {
 
   return (
-    <>
-      <footer className='footer'>
-        <div className="container">
-          <p>&copy; {new Date().getFullYear()} {process.env.REACT_APP_SITE_TITLE}</p>
-        </div>
-      </footer>
-    </>
+    <footer className='footer'>
+      <div className="footerContent">
+        <p>&copy; {new Date().getFullYear()} {process.env.REACT_APP_SITE_TITLE}</p>
+      </div>
+    </footer>
   )
 
 }

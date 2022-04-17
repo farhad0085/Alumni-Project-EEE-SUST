@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 
 const ForgetPasswordPage = () => {
-  
+
   const [email, setEmail] = useState("")
   const [loading, setLoading] = useState(false)
 
@@ -42,38 +42,34 @@ const ForgetPasswordPage = () => {
 
 
   return (
-    <>
-      <div className="forgetPassComp">
-        <div className="div-center">
-          <div className="loginContent">
-            <h3>Forgot password?</h3>
-            <small className="text-muted">No worries, we got you! Just enter your email address and we'll send you a link to reset your password.</small>
-            <hr />
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label>Email Address</label>
-                <input
-                  onChange={e => setEmail(e.target.value)}
-                  type="email"
-                  className="form-control"
-                  placeholder="Email"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <button type="submit" className="btn btn-primary" disabled={loading}>
-                  {loading ? "Please wait..." : "Reset Password"}
-                </button>
-              </div>
-              <hr />
-              <div className="form-group">
-                Or <Link to="/login">Login Here</Link>
-              </div>
-            </form>
+    <div className="div-center">
+      <div className="loginContent">
+        <h3>Forgot password?</h3>
+        <small className="text-muted">No worries, we got you! Just enter your email address and we'll send you a link to reset your password.</small>
+        <hr />
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Email Address</label>
+            <input
+              onChange={e => setEmail(e.target.value)}
+              type="email"
+              className="form-control"
+              placeholder="Email"
+              required
+            />
           </div>
-        </div>
+          <div className="form-group">
+            <button type="submit" className="btn btn-primary" disabled={loading}>
+              {loading ? "Please wait..." : "Reset Password"}
+            </button>
+          </div>
+          <hr />
+          <div className="form-group">
+            Or <Link to="/login">Login Here</Link>
+          </div>
+        </form>
       </div>
-    </>
+    </div>
   )
 
 }

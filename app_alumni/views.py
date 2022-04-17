@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 from app_alumni.filters import AlumniFilter, BatchFilter
 from app_alumni.models import Alumni, Batch
 from app_alumni.serializers import AlumniProfileUpdateSerializer, AlumniSerializer, BatchSerializer
@@ -23,6 +23,11 @@ class BatchListAPIView(ListAPIView):
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = BatchFilter
     ordering_fields = ('name', 'id', 'session')
+
+
+class AlumniRetrieveAPIView(RetrieveAPIView):
+    serializer_class = AlumniSerializer
+    queryset = Alumni.objects.all()
 
 
 class AlumniDetailsAPIView(LoggerAPIView):

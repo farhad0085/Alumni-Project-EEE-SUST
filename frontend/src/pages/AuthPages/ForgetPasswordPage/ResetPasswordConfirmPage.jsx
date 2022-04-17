@@ -25,7 +25,7 @@ const ResetPasswordConfirmPage = (props) => {
     event.preventDefault();
     setSubmitLoading(true)
 
-    resetPasswordConfirm({token, uid, new_password1, new_password2})
+    resetPasswordConfirm({ token, uid, new_password1, new_password2 })
       .then(res => {
         setSubmitLoading(false)
         toast.success("Password has been reset with the new password.", {
@@ -49,33 +49,31 @@ const ResetPasswordConfirmPage = (props) => {
   }
 
   return (
-    <div className="loginComp">
-      <div className="div-center">
-        <div className="loginContent">
-          <h3>Reset Password</h3>
-          <hr />
-          <form onSubmit={submitHandler}>
-            <PasswordField
-              required
-              label="New Password"
-              value={new_password1}
-              onChange={setPassword1}
-            />
-            <PasswordField
-              required
-              label="Confirm Password"
-              value={new_password2}
-              onChange={setPassword2}
-            />
-            <div className="form-group">
-              <button type="submit" className="btn btn-primary" disabled={submitLoading}>
-                {submitLoading ? "Please wait..." : "Reset Password"}
-              </button>
-            </div>
-          </form>
-          <hr />
-          <Link to="/login">Login Here</Link>
-        </div>
+    <div className="div-center">
+      <div className="loginContent">
+        <h3>Reset Password</h3>
+        <hr />
+        <form onSubmit={submitHandler}>
+          <PasswordField
+            required
+            label="New Password"
+            value={new_password1}
+            onChange={setPassword1}
+          />
+          <PasswordField
+            required
+            label="Confirm Password"
+            value={new_password2}
+            onChange={setPassword2}
+          />
+          <div className="form-group">
+            <button type="submit" className="btn btn-primary" disabled={submitLoading}>
+              {submitLoading ? "Please wait..." : "Reset Password"}
+            </button>
+          </div>
+        </form>
+        <hr />
+        <Link to="/login">Login Here</Link>
       </div>
     </div>
   );

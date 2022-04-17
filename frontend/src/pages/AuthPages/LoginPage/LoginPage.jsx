@@ -32,7 +32,7 @@ const LoginPage = () => {
         setLoading(false)
         localStorage.setItem(process.env.REACT_APP_TOKEN_KEY, res.data.key);
         dispatch({ type: USER_LOGGED_IN });
-        
+
         toast.success(res.data?.message, {
           position: "bottom-right",
           autoClose: 5000,
@@ -49,49 +49,45 @@ const LoginPage = () => {
   }
 
   return (
-    <>
-      <div className="loginComp">
-        <div className="div-center">
-          <div className="loginContent">
-            <h3>Login</h3>
-            <hr />
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label>Email Address</label>
-                <input
-                  onChange={e => setUsername(e.target.value)}
-                  type="email"
-                  className="form-control"
-                  placeholder="Email"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label>Password</label>
-                <input
-                  onChange={e => setPassword(e.target.value)}
-                  autoComplete='new-password'
-                  type="password"
-                  className="form-control"
-                  placeholder="Password"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <button type="submit" className="btn btn-primary" disabled={loading}>
-                  {loading ? "Please wait..." : "Login"}
-                </button>
-              </div>
-              <hr />
-              <div className="form-group">
-                Forgot your password? <Link to="/forget-password">Reset Password</Link>
-              </div>
-              Are you graduated? <Link to='/register'>Create an account</Link>
-            </form>
+    <div className="div-center">
+      <div className="loginContent">
+        <h3>Login</h3>
+        <hr />
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Email Address</label>
+            <input
+              onChange={e => setUsername(e.target.value)}
+              type="email"
+              className="form-control"
+              placeholder="Email"
+              required
+            />
           </div>
-        </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              onChange={e => setPassword(e.target.value)}
+              autoComplete='new-password'
+              type="password"
+              className="form-control"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <button type="submit" className="btn btn-primary" disabled={loading}>
+              {loading ? "Please wait..." : "Login"}
+            </button>
+          </div>
+          <hr />
+          <div className="form-group">
+            Forgot your password? <Link to="/forget-password">Reset Password</Link>
+          </div>
+          Are you graduated? <Link to='/register'>Create an account</Link>
+        </form>
       </div>
-    </>
+    </div>
   )
 
 }
