@@ -152,6 +152,7 @@ const RegisterPage = () => {
         localStorage.setItem(process.env.REACT_APP_TOKEN_KEY, res.data.key);
         dispatch({ type: USER_LOGGED_IN })
         setSubmitLoading(false)
+        setErrors({})
         
         toast.success(res.data?.message, {
           position: "bottom-right",

@@ -28,3 +28,13 @@ export const updateProfile = (profileData) => {
   };
   return axios(config)
 }
+
+export const changePassword = (data) => {
+  var config = {
+    method: 'post',
+    url: '/api/auth/password/change/',
+    data: data,
+    headers: getHeaders()
+  };
+  return axios(config)
+}

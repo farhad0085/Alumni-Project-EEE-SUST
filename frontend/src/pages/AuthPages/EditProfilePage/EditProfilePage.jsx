@@ -184,6 +184,7 @@ const EditProfilePage = () => {
     updateProfile(formData)
       .then(res => {
         setSubmitLoading(false)
+        setErrors({})
         toast.success(res.data?.message, {
           position: "bottom-right",
           autoClose: 5000,

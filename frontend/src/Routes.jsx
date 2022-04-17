@@ -10,6 +10,7 @@ import LoginPage from "./pages/AuthPages/LoginPage/LoginPage";
 import RegisterPage from "./pages/AuthPages/RegisterPage/RegisterPage";
 import PrivateRoute from "./PrivateRoute";
 import ForgetPasswordPage from "./pages/AuthPages/ForgetPasswordPage/ForgetPasswordPage";
+import ResetPasswordPage from "./pages/AuthPages/ResetPasswordPage/ResetPasswordPage";
 
 
 const Routes = () => {
@@ -19,6 +20,7 @@ const Routes = () => {
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/register" component={RegisterPage} />
       <Route exact path="/forget-password" component={ForgetPasswordPage} />
+      <Route exact path="/change-password" component={ResetPasswordPage} />
       <PrivateRoute exact path="/edit-profile" component={EditProfilePage} />
       <Route exact path="/batches" component={BatchListPage} />
       <Route exact path="/batches/:batchId" component={BatchPage} />

@@ -1,0 +1,35 @@
+.loginComp {
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  height: calc(100vh - 110px);
+}
+
+.div-center {
+  width: 400px;
+  height: 400px;
+  background-color: rgb(248, 245, 245);
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  padding: 1em 2em;
+  border-radius: 5px;
+  display: table;
+  box-shadow: 5px 5px 8px #888888;
+}
+
+.loginContent {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.errorMessage {
+  color: #f76277;
+  font-weight: 400;
+}

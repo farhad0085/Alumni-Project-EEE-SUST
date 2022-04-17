@@ -2,10 +2,11 @@ from .base import *
 
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-
 ALLOWED_HOSTS = ['*']
-
 DEBUG = False
+
+WEBSITE_BASE_URL = "http://localhost:3000" # react frontend
+WEBSITE_BACKEND_URL = "http://localhost:8000"
 
 DATABASES = {
     'default': {
