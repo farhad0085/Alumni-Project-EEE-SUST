@@ -31,7 +31,7 @@ const BatchList = ({ history }) => {
     }
     const carouselItems = pictures.map(p => (
       <img
-        className="card-img-top"
+        className="card-img-top dp"
         alt="Thumbnail"
         style={{ height: "225px", width: "100%", display: "block" }}
         src={p}

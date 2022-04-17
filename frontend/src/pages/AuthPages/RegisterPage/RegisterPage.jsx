@@ -19,6 +19,7 @@ const RegisterPage = () => {
   const [errors, setErrors] = useState({})
   const [password1, setPassword1] = useState("")
   const [password2, setPassword2] = useState("")
+  const [submitLoading, setSubmitLoading] = useState(false)
 
   const [profilePicture, setProfilePicture] = useState()
   const [preview, setPreview] = useState()
@@ -94,6 +95,7 @@ const RegisterPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    setSubmitLoading(true)
 
     const data = {
       full_name: full_name,
@@ -149,6 +151,7 @@ const RegisterPage = () => {
       .then(res => {
         localStorage.setItem(process.env.REACT_APP_TOKEN_KEY, res.data.key);
         dispatch({ type: USER_LOGGED_IN })
+        setSubmitLoading(false)
         
         toast.success(res.data?.message, {
           position: "bottom-right",
@@ -160,6 +163,7 @@ const RegisterPage = () => {
         history.push("/edit-profile")
       })
       .catch(error => {
+        setSubmitLoading(false)
         setErrors(error.response?.data || {})
       })
   }
@@ -188,7 +192,7 @@ const RegisterPage = () => {
                         classes="mt-4"
                         name="profileDp"
                         handleChange={setProfilePicture}
-                        types={["JPEG", "PNG", "GIF"]}
+                        types={["JPEG", "JPG", "PNG", "GIF"]}
                       />
                     </div>
                   </div>
@@ -447,7 +451,9 @@ const RegisterPage = () => {
                 </div>
 
                 <div className="row mt-3">
-                  <button type="submit" className="btn btn-primary">Register</button>
+                  <button submitLoading={submitLoading} type="submit" className="btn btn-primary">
+                    {submitLoading ? "Please wait..." : "Register"}
+                  </button>
                 </div>
               </form>
             </div>

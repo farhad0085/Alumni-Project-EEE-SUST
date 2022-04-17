@@ -224,7 +224,7 @@ const EditProfilePage = () => {
                           classes="mt-4"
                           name="profileDp"
                           handleChange={setProfilePicture}
-                          types={["JPEG", "PNG", "GIF"]}
+                          types={["JPEG", "JPG", "PNG", "GIF"]}
                         />
                       </div>
                     </div>
