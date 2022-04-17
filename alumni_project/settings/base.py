@@ -91,3 +91,5 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'user.UserAccount' # Custom User Model
+PASSWORD_RESET_TIMEOUT = 86400 # 24 hours in second
+DATA_UPLOAD_MAX_NUMBER_FIELDS = None

@@ -38,3 +38,21 @@ export const changePassword = (data) => {
   };
   return axios(config)
 }
+
+export const requestResetPassword = (data) => {
+  var config = {
+    method: 'post',
+    url: '/api/auth/password/reset/',
+    data: data,
+  };
+  return axios(config)
+}
+
+export const resetPasswordConfirm = (data) => {
+  var config = {
+    method: 'post',
+    url: '/api/auth/password/reset/confirm/',
+    data: data,
+  };
+  return axios(config)
+}

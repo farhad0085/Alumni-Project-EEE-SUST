@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import './styles.css'
-import { Link, useHistory } from 'react-router-dom'
-import { loginUser } from '../services'
+import { Link } from 'react-router-dom'
+import { requestResetPassword } from '../services'
 import { toast } from "react-toastify";
 
 
 const ForgetPasswordPage = () => {
   
-  const history = useHistory()
   const [email, setEmail] = useState("")
   const [loading, setLoading] = useState(false)
 
@@ -24,7 +23,7 @@ const ForgetPasswordPage = () => {
   const handleSubmit = e => {
     e.preventDefault()
     setLoading(true)
-    loginUser({ email })
+    requestResetPassword({ email })
       .then(res => {
         setLoading(false)
         toast.success(res.data?.message, {
@@ -34,11 +33,10 @@ const ForgetPasswordPage = () => {
           closeOnClick: true,
           pauseOnHover: true,
         });
-        history.push("/edit-profile")
       })
       .catch(error => {
         setLoading(false)
-        handleError("Email or password is incorrect!")
+        handleError("No account found for that email address")
       })
   }
 
@@ -69,7 +67,7 @@ const ForgetPasswordPage = () => {
               </div>
               <hr />
               <div className="form-group">
-                Or <Link to="/forget-password">Login Here</Link>
+                Or <Link to="/login">Login Here</Link>
               </div>
             </form>
           </div>

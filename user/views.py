@@ -98,7 +98,7 @@ class PasswordResetAPIView(LoggerAPIView):
         serializer.is_valid(raise_exception=True)
 
         serializer.save()
-        return self.send_200({"detail": "Password reset e-mail has been sent."})
+        return self.send_200({"message": "Password reset e-mail has been sent."})
 
 
 class PasswordResetConfirmAPIView(LoggerAPIView):
