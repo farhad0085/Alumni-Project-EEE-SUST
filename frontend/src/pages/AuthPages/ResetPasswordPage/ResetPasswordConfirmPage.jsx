@@ -74,7 +74,7 @@ const ResetPasswordConfirmPage = (props) => {
             </div>
           </form>
           <hr />
-          <Link to="to">Login Here</Link>
+          <Link to="/login">Login Here</Link>
         </div>
       </div>
     </div>
