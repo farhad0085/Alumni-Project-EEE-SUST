@@ -84,7 +84,7 @@ const LoginPage = () => {
               </div>
               <hr />
               <div className="form-group">
-                Forgot your password? <Link to="/reset-password">Reset Password</Link>
+                Forgot your password? <Link to="/forget-password">Reset Password</Link>
               </div>
               Are you graduated? <Link to='/register'>Create an account</Link>
             </form>

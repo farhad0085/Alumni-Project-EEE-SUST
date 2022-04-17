@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
@@ -7,6 +7,28 @@ import { logout } from '../store/actions/authActions'
 const Header = () => {
   const dispatch = useDispatch()
   const auth = useSelector(state => state.auth)
+  const [menuExpanded, setMenuExpanded] = useState(false)
+  const ref = useRef();
+  const refIcon = useRef();
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      // if user click outside of chartinfo or chartinfo icon
+      // close the info
+      if (
+        ref.current &&
+        !ref.current.contains(event.target) &&
+        !refIcon.current.contains(event.target)
+      ) {
+        setMenuExpanded(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref]);
 
   return (
     <header className='mb-4'>
@@ -19,13 +41,15 @@ const Header = () => {
             data-toggle="collapse"
             data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
-            aria-expanded="false"
+            aria-expanded="true"
             aria-label="Toggle navigation"
+            ref={refIcon}
+            onClick={() => setMenuExpanded(!menuExpanded)}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div ref={ref} className={`collapse navbar-collapse ${menuExpanded && "show"}`} id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <NavLink exact className="nav-link" to="/">Home <span className="sr-only">(current)</span></NavLink>
@@ -44,7 +68,7 @@ const Header = () => {
                 <li className="nav-item">
                   <NavLink exact className="nav-link" to="/register">Register</NavLink>
                 </li>
-               </> 
+               </>
               ) : (
                 <>
                   <li className="nav-item">
