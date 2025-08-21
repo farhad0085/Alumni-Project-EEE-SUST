@@ -47,3 +47,23 @@ The backend will be running on port 8000 i.e [http://localhost:8000](http://loca
 3. Now Run `npm start` to run the app in the development mode.
 4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 5. Run `npm run build` to build the app for production to the `build` folder. The build is minified and the filenames include the hashes.
+
+
+# TODO
+- Faculty
+    - Admin Panel
+    - Upload from Excel
+- Alumni Portal
+    - Admin Panel
+    - Upload data in bulk or one by one
+    - Upload from Excel
+- Notice Board
+    - Admin Panel
+    - Anyone can view notices
+- Student Portal
+    - Login
+    - Registration
+    - Forget Password
+    - Change Password
+    - User Profile
+    - Study Material
