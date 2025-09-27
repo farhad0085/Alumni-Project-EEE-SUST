@@ -1,8 +1,9 @@
 import re
 from django.core.exceptions import ValidationError
+from django.core.validators import BaseValidator
 
 
-class BatchSessionValidator:
+class BatchSessionValidator(BaseValidator):
     message = 'Enter a valid session in this form: 2010 - 11'
     code = 'invalid'
 
@@ -25,7 +26,7 @@ class BatchSessionValidator:
             raise ValidationError(self.message, self.code)
 
 
-class RegistrationNumberValidator:
+class RegistrationNumberValidator(BaseValidator):
     message = 'Enter a valid registration number'
     code = "invalid"
 
