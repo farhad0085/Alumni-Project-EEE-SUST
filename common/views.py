@@ -1,9 +1,9 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from common.utils import HelperMethods, LogHelper
+from app_logs.utils import LogHelper
 
 
-class LoggerAPIView(APIView, HelperMethods, LogHelper):
+class LoggerAPIView(APIView, LogHelper):
     """APIView with Logger"""
 
     def send_200(self, data):

@@ -19,7 +19,7 @@ class LogHelper:
             message = f"{self.base_name}: {message}"
         return message
     
-    def log_error(self, message, error=None, cron=False):
+    def log_error(self, message, error=None):
         if error:
             message = f"{message}: {str(error)}"
         message = f"[ERROR] {self.get_processed_message(message)}"
@@ -29,9 +29,9 @@ class LogHelper:
             traceback_str = "".join(traceback.format_exception(None, error, error.__traceback__))
         else:
             traceback_str = ""
-        self._create_database_log(message + "\n\n" + traceback_str, "error", cron)
+        self._create_database_log(message + "\n\n" + traceback_str, "error")
 
-    def log_info(self, message, cron=False, show_in_console=True, pretty=False, save_db=True):
+    def log_info(self, message, show_in_console=True, pretty=False, save_db=False):
         message = f"[INFO] {self.get_processed_message(message)}"
         
         if show_in_console:
@@ -42,13 +42,12 @@ class LogHelper:
 
         # save only when save_db = True, no need to save everything
         if save_db:
-            self._create_database_log(message, "info", cron)
+            self._create_database_log(message, "info")
     
-    def _create_database_log(self, message, log_level, is_cron):
+    def _create_database_log(self, message, log_level):
 
         Log.objects.create(
             log_level=log_level,
             message=message,
-            is_cron=is_cron,
         )
 
