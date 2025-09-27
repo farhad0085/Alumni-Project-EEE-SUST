@@ -1,8 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from app_alumni.models import Address, Alumni, Batch, Picture
-
-from common.utils import GenerateUsername
 from .models import UserAccount
 
 
@@ -27,9 +25,8 @@ class AddressSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class RegistrationSerializer(serializers.Serializer, GenerateUsername):
+class RegistrationSerializer(serializers.Serializer):
 
-    username = serializers.CharField(required=False, allow_blank=True)
     full_name = serializers.CharField()
     password1 = serializers.CharField()
     password2 = serializers.CharField()
