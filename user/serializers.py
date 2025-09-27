@@ -1,10 +1,6 @@
 from rest_framework import serializers
-from django.contrib.auth import get_user_model
 from app_alumni.models import Address, Alumni, Batch, Picture
-from .models import UserAccount
-
-
-UserModel: UserAccount = get_user_model()
+from user.models import UserAccount
 
 
 class LoginSerializer(serializers.Serializer):
@@ -53,7 +49,7 @@ class RegistrationSerializer(serializers.Serializer):
     
 
     def validate_email(self, email):
-        if UserModel.objects.filter(email=email).exists():
+        if UserAccount.objects.filter(email=email).exists():
             raise serializers.ValidationError("A user already exists with this email address")
         return email
 
@@ -67,7 +63,6 @@ class RegistrationSerializer(serializers.Serializer):
             splitted_name.pop(0)
             last_name = " ".join(splitted_name)
         
-        username = self.validated_data.get("username")
         password1 = self.validated_data.get("password1")
         full_name = self.validated_data.get("full_name")
         email = self.validated_data.get("email")
@@ -84,8 +79,7 @@ class RegistrationSerializer(serializers.Serializer):
         present_address = self.validated_data.get("present_address")
         permanent_address = self.validated_data.get("permanent_address")
 
-        user_obj = UserModel(
-            username=username or self._generate_username(),
+        user_obj = UserAccount(
             first_name=first_name,
             last_name=last_name,
             email=email,
@@ -135,11 +129,6 @@ class RegistrationSerializer(serializers.Serializer):
         )
         return user_obj, alumni_obj
     
-    def validate_username(self, username):
-        if not username:
-            return self._generate_username()
-        return username
-
     def validate_batch(self, batch):
         batch_obj = Batch.objects.filter(id=batch).first()
         if not batch_obj:
@@ -147,7 +136,6 @@ class RegistrationSerializer(serializers.Serializer):
         return batch_obj
     
     def validate_registration_number(self, registration_number):
-        print(registration_number)
         alumni_obj = Alumni.objects.filter(registration_number=registration_number).first()
         if alumni_obj:
             raise serializers.ValidationError("A user with this registration number already exists")
