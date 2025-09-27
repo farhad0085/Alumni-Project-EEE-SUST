@@ -1,0 +1,62 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+  <div class="container">
+    <h3>Confirm Log Deletion</h3>
+
+    <p>Attention! All logs except those from the last 30 days will be deleted.</p>
+    <p>Are you absolutely sure you want to delete these logs?
+      Once they're gone, they're gone! Let alone your grandma, nobody on holy seven kingdom wouldn't be able to find them! 😱</p>
+
+    <p>Total rows to be deleted: {{ total_rows }}</p>
+
+    <form method="post">
+      {% csrf_token %}
+      
+      <div class="form-actions">
+        <input type="submit" value="Confirm Deletion" class="button delete-button">
+        <a href="{% url 'admin:app_logs_log_changelist' %}" class="button cancel-button">Cancel</a>
+      </div>
+    </form>
+  </div>
+
+  <style>
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+    .delete-button {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+    .cancel-button {
+      background-color: gray;
+      color: white !important;
+      padding: 10px 20px;
+      text-decoration: none;
+    }
+    .button:hover {
+      opacity: 0.8;
+    }
+    .messages {
+      padding: 10px;
+      background-color: #dff0d8;
+      border: 1px solid #d6e9c6;
+      color: #3c763d;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+  </style>
+{% endblock %}

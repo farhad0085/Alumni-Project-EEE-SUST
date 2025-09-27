@@ -1,0 +1,32 @@
+{% extends "admin/change_list.html" %}
+
+{% block object-tools %}
+<ul class="object-tools">
+
+  {% block object-tools-items %}
+    {% if has_add_permission %}
+      {{ block.super }}
+    {% endif %}
+
+  <li>
+    <a href="{% url 'admin:delete_old_logs_view' %}" class="button delete-button">Delete Old Logs</a>
+  </li>
+  <style>
+    .delete-button {
+      background-color: red;
+      color: white !important;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+  
+    .delete-button:hover {
+      opacity: 0.8;
+    }
+  </style>
+
+  {% endblock %}
+
+</ul>
+{% endblock %}
+

@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     
     # apps
     'user',
+    "app_logs",
     "app_alumni",
 
 ]
