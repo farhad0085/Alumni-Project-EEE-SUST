@@ -7,7 +7,7 @@ UserModel = get_user_model()
 class AuthBackend(ModelBackend):
     def authenticate(self, request, username=None, password=None, **kwargs):
         try:
-            user = UserModel.objects.filter(Q(email__iexact=username) | Q(username__iexact=username)).first()
+            user = UserModel.objects.filter(email__iexact=username).first()
             if user.check_password(password):
                 return user
         except:
