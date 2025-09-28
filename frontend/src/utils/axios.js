@@ -6,3 +6,16 @@ const instance = axios.create({
 
 export default instance
 
+
+export function getHeaders(additional) {
+  const userToken = localStorage.getItem(import.meta.env.VITE_APP_AUTH_TOKEN_KEY);
+
+  let headers = {
+    ...additional,
+  };
+
+  if (userToken) {
+    headers["Authorization"] = `Token ${userToken}`;
+  }
+  return headers;
+}
