@@ -1,30 +1,45 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import NotFound from "./pages/Others/NotFound";
-import HomePage from "./pages/HomePage/HomePage";
-import BatchListPage from "./pages/BatchListPage/BatchListPage";
-import BatchPage from "./pages/BatchPage/BatchPage";
-import AlumniProfilePage from "./pages/ProfilePage/ProfilePage";
-import EditProfilePage from "./pages/AuthPages/EditProfilePage/EditProfilePage";
-import LoginPage from "./pages/AuthPages/LoginPage/LoginPage";
-import RegisterPage from "./pages/AuthPages/RegisterPage/RegisterPage";
-import ProfilePage from "./pages/AuthPages/ProfilePage/ProfilePage";
-
-
-const Routes = () => {
-  return (
-    <Switch>
-      <Route exact path="/" component={HomePage} />
-      <Route exact path="/login" component={LoginPage} />
-      <Route exact path="/register" component={RegisterPage} />
-      <Route exact path="/edit-profile" component={EditProfilePage} />
-      <Route exact path="/batches" component={BatchListPage} />
-      <Route exact path="/batches/:batchId" component={BatchPage} />
-      <Route exact path="/alumnies/:registrationNumber(20[1-9]{2}338[0-9]{3})" component={AlumniProfilePage} />
-      <Route exact path="/profile" component={ProfilePage} />
-      <Route component={NotFound} />
-    </Switch>
-  );
-};
-
-export default Routes;
+var routes = [
+  {
+    path: "/index",
+    name: "Dashboard",
+    icon: "ni ni-tv-2 text-primary",
+    layout: "/admin",
+  },
+  {
+    path: "/icons",
+    name: "Icons",
+    icon: "ni ni-planet text-blue",
+    layout: "/admin",
+  },
+  {
+    path: "/maps",
+    name: "Maps",
+    icon: "ni ni-pin-3 text-orange",
+    layout: "/admin",
+  },
+  {
+    path: "/user-profile",
+    name: "User Profile",
+    icon: "ni ni-single-02 text-yellow",
+    layout: "/admin",
+  },
+  {
+    path: "/tables",
+    name: "Tables",
+    icon: "ni ni-bullet-list-67 text-red",
+    layout: "/admin",
+  },
+  {
+    path: "/login",
+    name: "Login",
+    icon: "ni ni-key-25 text-info",
+    layout: "/auth",
+  },
+  {
+    path: "/register",
+    name: "Register",
+    icon: "ni ni-circle-08 text-pink",
+    layout: "/auth",
+  },
+];
+export default routes;
