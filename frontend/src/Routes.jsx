@@ -20,7 +20,7 @@ const Routes = () => {
       <Route exact path="/edit-profile" component={EditProfilePage} />
       <Route exact path="/batches" component={BatchListPage} />
       <Route exact path="/batches/:batchId" component={BatchPage} />
-      <Route exact path="/alumnies/:registrationNumber(20[1-9]{2}3380[0-9]{2})" component={AlumniProfilePage} />
+      <Route exact path="/alumnies/:registrationNumber(20[1-9]{2}338[0-9]{3})" component={AlumniProfilePage} />
       <Route exact path="/profile" component={ProfilePage} />
       <Route component={NotFound} />
     </Switch>
