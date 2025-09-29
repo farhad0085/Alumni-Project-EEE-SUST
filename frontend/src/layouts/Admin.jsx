@@ -18,8 +18,6 @@ const Admin = ({ children }) => {
     mainContent.current.scrollTop = 0;
   }, [location]);
 
-  console.log("children", children);
-
   const getBrandText = () => {
     return "Brand Text";
   };
@@ -28,7 +26,7 @@ const Admin = ({ children }) => {
     <>
       <Sidebar
         logo={{
-          innerLink: "/admin/index",
+          innerLink: "/",
           imgSrc: logo,
           imgAlt: "...",
         }}

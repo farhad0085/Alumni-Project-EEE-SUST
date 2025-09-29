@@ -9,15 +9,17 @@ import "assets/scss/argon-dashboard-react.scss";
 import AdminIndex from "views/Index";
 import Login from "views/examples/Login";
 import Register from "views/examples/Register";
+import HomePage from "views/HomePage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <BrowserRouter>
     <Switch>
-      <Route path="/admin" component={AdminIndex} />
-      <Route path="/auth/login" component={Login} />
-      <Route path="/auth/register" component={Register} />
+      <Route exact path="/" component={HomePage} />
+      <Route exact path="/admin" component={AdminIndex} />
+      <Route exact path="/auth/login" component={Login} />
+      <Route exact path="/auth/register" component={Register} />
     </Switch>
   </BrowserRouter>
 );
