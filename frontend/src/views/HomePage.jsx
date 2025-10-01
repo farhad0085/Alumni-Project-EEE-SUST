@@ -39,7 +39,7 @@ function HomePage() {
               </CardBody>
               {/* Centered button with top margin */}
               <div className="mb-3 mx-3 text-center">
-                <Button color="primary" href="/admin/alumni" className="w-100">
+                <Button color="primary" href="/alumni" className="w-100">
                   View Alumni
                 </Button>
               </div>

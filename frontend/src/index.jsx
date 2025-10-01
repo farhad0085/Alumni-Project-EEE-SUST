@@ -10,6 +10,7 @@ import AdminIndex from "views/Index";
 import Login from "views/examples/Login";
 import Register from "views/examples/Register";
 import HomePage from "views/HomePage";
+import AlumniPage from "views/AlumniPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -17,6 +18,7 @@ root.render(
   <BrowserRouter>
     <Switch>
       <Route exact path="/" component={HomePage} />
+      <Route exact path="/alumni" component={AlumniPage} />
       <Route exact path="/admin" component={AdminIndex} />
       <Route exact path="/auth/login" component={Login} />
       <Route exact path="/auth/register" component={Register} />
