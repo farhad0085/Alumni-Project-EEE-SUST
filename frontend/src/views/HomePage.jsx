@@ -10,6 +10,7 @@ import {
   CardText,
   Button,
 } from "reactstrap";
+import { Link } from 'react-router-dom'
 
 function HomePage() {
   return (
@@ -39,7 +40,7 @@ function HomePage() {
               </CardBody>
               {/* Centered button with top margin */}
               <div className="mb-3 mx-3 text-center">
-                <Button color="primary" href="/alumni" className="w-100">
+                <Button color="primary" tag={Link} to="/alumni" className="w-100">
                   View Alumni
                 </Button>
               </div>
@@ -56,7 +57,7 @@ function HomePage() {
               </CardBody>
               <div className="mb-3 mx-3 text-center">
 
-                <Button color="primary" href="/admin/notices" className="w-100">
+                <Button color="primary" tag={Link} to="/admin/notices" className="w-100">
                   View Notices
                 </Button>
               </div>
@@ -73,7 +74,7 @@ function HomePage() {
               </CardBody>
               <div className="mb-3 mx-3 text-center">
 
-                <Button color="primary" href="/admin/study-materials" className="w-100">
+                <Button color="primary" tag={Link} to="/admin/study-materials" className="w-100">
                   Browse Materials
                 </Button>
               </div>
@@ -90,7 +91,7 @@ function HomePage() {
               </CardBody>
               <div className="mb-3 mx-3 text-center">
 
-                <Button color="primary" href="/admin/labs" className="w-100">
+                <Button color="primary" tag={Link} to="/admin/labs" className="w-100">
                   Explore Labs
                 </Button>
               </div>
@@ -107,7 +108,7 @@ function HomePage() {
               </CardBody>
               <div className="mb-3 mx-3 text-center">
 
-                <Button color="primary" href="/admin/events" className="w-100">
+                <Button color="primary" tag={Link} to="/admin/events" className="w-100">
                   View Events
                 </Button>
               </div>
@@ -124,7 +125,7 @@ function HomePage() {
               </CardBody>
               <div className="mb-3 mx-3 text-center">
 
-                <Button color="primary" href="/admin/faculty" className="w-100">
+                <Button color="primary" tag={Link} to="/admin/faculty" className="w-100">
                   View Faculty
                 </Button>
               </div>
