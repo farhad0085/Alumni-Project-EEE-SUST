@@ -10,47 +10,58 @@ import {
   Badge,
   Spinner,
   Button,
+  Pagination,
+  PaginationItem,
+  PaginationLink,
 } from "reactstrap";
 import RegularLayout from "layouts/Regular";
+import apiServices from "./api-services";
 
 const NoticePage = () => {
   const [notices, setNotices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [count, setCount] = useState(0);
+  const [page, setPage] = useState(1);
+  const [pageSize] = useState(30); // matches backend default
 
-  // Simulated API fetch
+  const totalPages = Math.ceil(count / pageSize);
+
+
   useEffect(() => {
-    const mockNotices = [
-      {
-        id: 1,
-        title: "Final Exam Routine (Fall 2023)",
-        date: "2023-11-15",
-        description:
-          "The final exam routine for the Fall 2023 semester has been published. Please check your course schedules and prepare accordingly.",
-        pdf: "/files/final_exam_fall_2023.pdf",
-      },
-      {
-        id: 2,
-        title: "EEE Alumni Meet 2023",
-        date: "2023-12-05",
-        description:
-          "We are pleased to announce the upcoming EEE Alumni Meet. All graduates are encouraged to join and reconnect with friends and faculty.",
-        pdf: "/files/alumni_meet_2023.pdf",
-      },
-      {
-        id: 3,
-        title: "Lab Safety Guidelines",
-        date: "2023-10-20",
-        description:
-          "New lab safety protocols have been introduced. All students are required to review and follow the updated guidelines strictly.",
-        pdf: null, // no PDF, only text
-      },
-    ];
+    const fetchNotices = async () => {
+      setLoading(true);
+      try {
+        const response = await apiServices.loadNotices(page);
+        setNotices(response.data.results);
+        setCount(response.data.count);
+      } catch (error) {
+        console.error("Failed to load notices:", error);
+        setNotices([]);
+        setCount(0);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchNotices();
+  }, [page]);
 
-    setTimeout(() => {
-      setNotices(mockNotices);
-      setLoading(false);
-    }, 800);
-  }, []);
+  // Function to generate page numbers with ellipsis
+  const getPaginationNumbers = (current, total, maxVisible = 5) => {
+    const pages = [];
+    if (total <= maxVisible) {
+      for (let i = 1; i <= total; i++) pages.push(i);
+    } else {
+      let start = Math.max(current - 2, 1);
+      let end = Math.min(start + maxVisible - 1, total);
+
+      if (end - start < maxVisible - 1) start = Math.max(end - maxVisible + 1, 1);
+
+      if (start > 1) pages.push(1, "left-ellipsis");
+      for (let i = start; i <= end; i++) pages.push(i);
+      if (end < total) pages.push("right-ellipsis", total);
+    }
+    return pages;
+  };
 
   return (
     <RegularLayout>
@@ -71,48 +82,83 @@ const NoticePage = () => {
             <Spinner color="primary" />
           </div>
         ) : (
-          <Row>
-            {notices.length > 0 ? (
-              notices.map((notice) => (
-                <Col md="6" className="mb-4" key={notice.id}>
-                  <Card className="shadow-sm h-100">
-                    <CardBody>
-                      <CardTitle tag="h4" className="mb-3">
-                        {notice.title}{" "}
-                        <Badge color="info" pill>
-                          {new Date(notice.date).toLocaleDateString()}
-                        </Badge>
-                      </CardTitle>
+          <>
+            <Row>
+              {notices.length > 0 ? (
+                notices.map((notice) => (
+                  <Col md="6" className="mb-4" key={notice.id}>
+                    <Card className="shadow-sm h-100">
+                      <CardBody>
+                        <CardTitle tag="h4" className="mb-3">
+                          {notice.title}{" "}
+                          <Badge color="info" pill>
+                            {new Date(notice.date).toLocaleDateString()}
+                          </Badge>
+                        </CardTitle>
 
-                      <CardText className="text-muted">
-                        {notice.description.length > 150
-                          ? notice.description.substring(0, 150) + "..."
-                          : notice.description}
-                      </CardText>
+                        <CardText className="text-muted">
+                          {notice.description.length > 150
+                            ? notice.description.substring(0, 150) + "..."
+                            : notice.description}
+                        </CardText>
 
-                      <div className="d-flex gap-2">
-                        {notice.pdf && (
-                          <Button
-                            color="danger"
-                            size="sm"
-                            href={notice.pdf}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <i className="fas fa-file-pdf me-2"></i> View PDF
-                          </Button>
-                        )}
-                      </div>
-                    </CardBody>
-                  </Card>
+                        <div className="d-flex gap-2">
+                          {notice.pdf && (
+                            <Button
+                              color="danger"
+                              size="sm"
+                              href={notice.pdf}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <i className="fas fa-file-pdf me-2"></i>
+                              View PDF
+                            </Button>
+                          )}
+                        </div>
+                      </CardBody>
+                    </Card>
+                  </Col>
+                ))
+              ) : (
+                <Col>
+                  <p className="text-muted">No notices available.</p>
                 </Col>
-              ))
-            ) : (
-              <Col>
-                <p className="text-muted">No notices available.</p>
-              </Col>
+              )}
+            </Row>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="d-flex justify-content-center mt-4">
+                <Pagination>
+                  <PaginationItem disabled={page === 1}>
+                    <PaginationLink previous onClick={() => setPage(page - 1)} />
+                  </PaginationItem>
+
+                  {getPaginationNumbers(page, totalPages).map((p, idx) => {
+                    if (p === "left-ellipsis" || p === "right-ellipsis") {
+                      return (
+                        <PaginationItem key={idx} disabled>
+                          <PaginationLink>...</PaginationLink>
+                        </PaginationItem>
+                      );
+                    }
+                    return (
+                      <PaginationItem active={p === page} key={idx}>
+                        <PaginationLink onClick={() => setPage(p)}>
+                          {p}
+                        </PaginationLink>
+                      </PaginationItem>
+                    );
+                  })}
+
+                  <PaginationItem disabled={page === totalPages}>
+                    <PaginationLink next onClick={() => setPage(page + 1)} />
+                  </PaginationItem>
+                </Pagination>
+              </div>
             )}
-          </Row>
+          </>
         )}
       </Container>
     </RegularLayout>
