@@ -55,7 +55,7 @@ const FacultyProfilePage = () => {
       <RegularLayout>
         <Container className="mt-5 text-center">
           <p className="text-muted">Faculty not found.</p>
-          <Link to="/faculty">
+          <Link to="/faculty-staffs">
             <Button color="primary">Back to Faculty List</Button>
           </Link>
         </Container>

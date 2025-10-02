@@ -1,4 +1,5 @@
 from django.db import models
+from tinymce.models import HTMLField
 
 
 class Faculty(models.Model):
@@ -20,7 +21,8 @@ class Faculty(models.Model):
     photo = models.ImageField(upload_to="faculty/photos", null=True, blank=True)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default="faculty")
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, null=True, blank=True)
-    
+    description = HTMLField(null=True, blank=True)
+
     def __str__(self):
         return f"{self.name} ({self.get_role_display()})"
     
