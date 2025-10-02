@@ -15,7 +15,7 @@ function RegularLayout({ children }) {
         <Container className="py-4">
           <Row className="align-items-center">
             <Col md="6" className="text-md-start text-center mb-3 mb-md-0">
-              <h6 className="mb-0 fw-bold text-muted">EEE SUST Web Portal</h6>
+              <h6 className="mb-0 font-weight-bold text-muted">EEE SUST Web Portal</h6>
               <small className="text-muted">
                 Shahjalal University of Science & Technology
               </small>

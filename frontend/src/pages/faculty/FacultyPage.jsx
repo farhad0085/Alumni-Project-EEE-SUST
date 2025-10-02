@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 import { Link } from 'react-router-dom'
 import RegularLayout from "layouts/Regular";
-import apiServices from "./api-services";
+import apiServices from "../api-services";
 import defaultMale from "assets/icons/default-male.jpg";
 import defaultFemale from "assets/icons/default-female.jpg";
 
@@ -47,7 +47,7 @@ const FacultyPage = () => {
 
     return (
       <Card className="shadow-sm h-100">
-        <Link to={`/faculty/${member.id}`}>
+        <Link to={`/faculty-profile/${member.id}`}>
           <CardImg
             top
             alt="Profile"
@@ -61,7 +61,7 @@ const FacultyPage = () => {
         </Link>
         <CardBody>
           <CardTitle tag="h4">
-            <Link to={`/faculty/${member.id}`} className="text-decoration-none text-primary">
+            <Link to={`/faculty-profile/${member.id}`} className="text-decoration-none text-primary">
               {member.name}
             </Link>
           </CardTitle>
