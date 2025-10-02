@@ -111,7 +111,7 @@ const NoticePage = () => {
                               target="_blank"
                               rel="noopener noreferrer"
                             >
-                              <i className="fas fa-file-pdf me-2"></i>
+                              <i className="fas fa-file-pdf mr-2"></i>
                               View PDF
                             </Button>
                           )}
