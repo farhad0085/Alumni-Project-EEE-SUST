@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Faculty
+from faculty.models import Faculty, Lab, Project
 
 
 class FacultySerializer(serializers.ModelSerializer):
@@ -19,3 +19,14 @@ class FacultySerializer(serializers.ModelSerializer):
             "gender",
             "description",
         ]
+
+
+class LabSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Lab
+        fields = "__all__"
+
+class ProjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Project
+        fields = "__all__"

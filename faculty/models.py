@@ -1,5 +1,24 @@
 from django.db import models
 from tinymce.models import HTMLField
+from common.models import TrackingModel
+
+
+class Lab(TrackingModel):
+    name = models.CharField(max_length=255)
+    thumbnail = models.ImageField(upload_to="labs/thumbnails", null=True, blank=True)
+    description = HTMLField(null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Project(TrackingModel):
+    title = models.CharField(max_length=255)
+    thumbnail = models.ImageField(upload_to="projects/thumbnails", null=True, blank=True)
+    description = HTMLField(null=True, blank=True)
+
+    def __str__(self):
+        return self.title
 
 
 class Faculty(models.Model):
