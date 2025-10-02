@@ -161,8 +161,6 @@
 		"../scss/argon-dashboard/custom/forms/_input-group.scss",
 		"../scss/argon-dashboard/custom/_list-group.scss",
 		"../scss/argon-dashboard/custom/list-groups/_list-group.scss",
-		"../scss/argon-dashboard/custom/_map.scss",
-		"../scss/argon-dashboard/custom/maps/_map.scss",
 		"../scss/argon-dashboard/custom/_mask.scss",
 		"../scss/argon-dashboard/custom/masks/_mask.scss",
 		"../scss/argon-dashboard/custom/_modal.scss",

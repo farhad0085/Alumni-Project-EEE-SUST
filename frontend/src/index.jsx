@@ -6,14 +6,14 @@ import "assets/plugins/nucleo/css/nucleo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/scss/argon-dashboard-react.scss";
 
-import AdminIndex from "views/Index";
-import Login from "views/examples/Login";
-import Register from "views/examples/Register";
-import HomePage from "views/HomePage";
-import AlumniPage from "views/AlumniPage";
-import NoticePage from "views/NoticePage";
-import EventPage from "views/EventsPage";
-import FacultyPage from "views/FacultyPage";
+import AdminIndex from "pages/Index";
+import Login from "pages/examples/Login";
+import Register from "pages/examples/Register";
+import HomePage from "pages/HomePage";
+import AlumniPage from "pages/AlumniPage";
+import NoticePage from "pages/NoticePage";
+import EventPage from "pages/EventsPage";
+import FacultyPage from "pages/FacultyPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
