@@ -50,7 +50,7 @@ The backend will be running on port 8000 i.e [http://localhost:8000](http://loca
 
 
 # TODO
-- Faculty
+- Faculty (Done)
     - Admin Panel
     - Upload from Excel
 - Alumni Portal
@@ -60,6 +60,8 @@ The backend will be running on port 8000 i.e [http://localhost:8000](http://loca
 - Notice Board (Done)
     - Admin Panel
     - Anyone can view notices
+- Events (Done)
+- Labs & Projects
 - Student Portal
     - Login
     - Registration
