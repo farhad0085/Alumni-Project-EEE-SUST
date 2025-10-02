@@ -12,7 +12,7 @@ admin.site.site_title = "EEE SUST Alumni Association Admin Panel" # change html 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('tinymce/', include('tinymce.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 
     path('api/auth/', include('user.urls')),
     path('api/', include('app_alumni.urls')),

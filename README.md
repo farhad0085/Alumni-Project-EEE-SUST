@@ -61,7 +61,7 @@ The backend will be running on port 8000 i.e [http://localhost:8000](http://loca
     - Admin Panel
     - Anyone can view notices
 - Events (Done)
-- Labs & Projects
+- Labs & Projects (Done)
 - Student Portal
     - Login
     - Registration

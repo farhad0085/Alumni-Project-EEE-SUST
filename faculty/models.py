@@ -1,13 +1,13 @@
 from django.db import models
-from tinymce.models import HTMLField
 from common.models import TrackingModel
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Lab(TrackingModel):
     name = models.CharField(max_length=255)
     thumbnail = models.ImageField(upload_to="labs/thumbnails", null=True, blank=True)
     summary = models.TextField(max_length=200, null=True, blank=True)
-    description = HTMLField(null=True, blank=True)
+    description = RichTextUploadingField(null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -17,7 +17,7 @@ class Project(TrackingModel):
     title = models.CharField(max_length=255)
     thumbnail = models.ImageField(upload_to="projects/thumbnails", null=True, blank=True)
     summary = models.TextField(max_length=200, null=True, blank=True)
-    description = HTMLField(null=True, blank=True)
+    description = RichTextUploadingField(null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -42,7 +42,7 @@ class Faculty(models.Model):
     photo = models.ImageField(upload_to="faculty/photos", null=True, blank=True)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default="faculty")
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, null=True, blank=True)
-    description = HTMLField(null=True, blank=True)
+    description = RichTextUploadingField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.name} ({self.get_role_display()})"
