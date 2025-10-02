@@ -13,7 +13,7 @@ import {
 } from "reactstrap";
 import RegularLayout from "layouts/Regular";
 import apiServices from "./api-services";
-import PageNumberPagination from "components/Pagination/PageNumberPagination";
+import PageNumberPagination from "components/common/Pagination/PageNumberPagination";
 
 const NoticePage = () => {
   const [notices, setNotices] = useState([]);

@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 import RegularLayout from "layouts/Regular";
 import apiServices from "./api-services";
-import PageNumberPagination from "components/Pagination/PageNumberPagination";
+import PageNumberPagination from "components/common/Pagination/PageNumberPagination";
 
 const EventPage = () => {
   const [events, setEvents] = useState([]);

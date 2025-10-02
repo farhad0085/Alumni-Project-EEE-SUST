@@ -124,7 +124,7 @@ function HomePage() {
               </CardBody>
               <div className="mb-3 mx-3 text-center">
 
-                <Button color="primary" tag={Link} to="/admin/faculty" className="w-100">
+                <Button color="primary" tag={Link} to="/faculty-staffs" className="w-100">
                   View Faculty
                 </Button>
               </div>

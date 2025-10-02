@@ -17,6 +17,10 @@ const apiServices = {
     axios.get("/api/event/events/", {
       params: { page, page_size, upcoming },
     }),
+
+  // Load all faculty & staff
+  loadFaculty: () =>
+    axios.get("/api/faculty/faculty/"),
 };
 
 export default apiServices;
