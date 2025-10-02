@@ -11,6 +11,7 @@ import {
   Spinner,
   CardImg,
 } from "reactstrap";
+import { Link } from 'react-router-dom'
 import RegularLayout from "layouts/Regular";
 import apiServices from "./api-services";
 import defaultMale from "assets/icons/default-male.jpg";
@@ -42,26 +43,30 @@ const FacultyPage = () => {
 
   // Card component
   const FacultyCard = ({ member }) => {
-console.log(member.photo);
+    console.log(member.photo);
 
     return (
       <Card className="shadow-sm h-100">
-        <CardImg
-          top
-          alt="Profile"
-          src={member.photo || (member.gender === "female" ? defaultFemale : defaultMale)}
-          onError={(e) => {
-            e.target.onerror = null; // prevent infinite loop
-            e.target.src = member.gender === "female" ? defaultFemale : defaultMale;
-          }}
-          style={{ height: "220px", objectFit: "contain" }}
-        />
+        <Link to={`/faculty/${member.id}`}>
+          <CardImg
+            top
+            alt="Profile"
+            src={member.photo || (member.gender === "female" ? defaultFemale : defaultMale)}
+            onError={(e) => {
+              e.target.onerror = null; // prevent infinite loop
+              e.target.src = member.gender === "female" ? defaultFemale : defaultMale;
+            }}
+            style={{ height: "220px", objectFit: "contain" }}
+          />
+        </Link>
         <CardBody>
-          <CardTitle tag="h4">{member.name}</CardTitle>
+          <CardTitle tag="h4">
+            <Link to={`/faculty/${member.id}`} className="text-decoration-none text-primary">
+              {member.name}
+            </Link>
+          </CardTitle>
           <CardText>
             <strong>{member.designation}</strong>
-            <br />
-            {member.department}
           </CardText>
           <div className="d-flex gap-2">
             {member.email && (
@@ -70,7 +75,7 @@ console.log(member.photo);
                 size="sm"
                 href={`mailto:${member.email}`}
               >
-                <i className="fas fa-envelope me-2"></i>Email
+                <i className="fas fa-envelope mr-2"></i>Email
               </Button>
             )}
             {member.phone && (
@@ -79,7 +84,7 @@ console.log(member.photo);
                 size="sm"
                 href={`tel:${member.phone}`}
               >
-                <i className="fas fa-phone me-2"></i>Call
+                <i className="fas fa-phone mr-2"></i>Call
               </Button>
             )}
           </div>
