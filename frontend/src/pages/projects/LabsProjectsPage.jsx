@@ -70,16 +70,7 @@ const LabsProjectsPage = () => {
             <CardTitle tag="h5" className={isLab ? "text-primary" : "text-success"}>
               {isLab ? item.name : item.title}
             </CardTitle>
-            <CardText>{item.summary || item.description || ""}</CardText>
-            {item.tags && (
-              <div className="mt-2">
-                {item.tags.map((tag, i) => (
-                  <Badge key={i} color={isLab ? "info" : "secondary"} className="mr-1">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-            )}
+            <CardText>{item.summary}</CardText>
           </CardBody>
         </Card>
       </Col>
