@@ -11,6 +11,12 @@ const apiServices = {
     axios.get("/api/notice/notices/", {
       params: { page, page_size },
     }),
+
+  // Load events with pagination (and optional upcoming filter)
+  loadEvents: (page = 1, page_size = 30, upcoming = false) =>
+    axios.get("/api/event/events/", {
+      params: { page, page_size, upcoming },
+    }),
 };
 
 export default apiServices;

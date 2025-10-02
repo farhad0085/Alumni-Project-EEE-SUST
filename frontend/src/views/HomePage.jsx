@@ -107,8 +107,7 @@ function HomePage() {
                 </CardText>
               </CardBody>
               <div className="mb-3 mx-3 text-center">
-
-                <Button color="primary" tag={Link} to="/admin/events" className="w-100">
+                <Button color="primary" tag={Link} to="/events" className="w-100">
                   View Events
                 </Button>
               </div>
