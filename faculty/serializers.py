@@ -16,4 +16,5 @@ class FacultySerializer(serializers.ModelSerializer):
             "photo",
             "role",
             "role_display",
+            "gender",
         ]

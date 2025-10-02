@@ -8,7 +8,8 @@ import {
   CardText,
   Button,
 } from "reactstrap";
-import defaultThumb from "assets/icons/thumbnail.png";
+import defaultMale from "assets/icons/default-male.jpg";
+import defaultFemale from "assets/icons/default-female.jpg";
 
 const AlumniCard = ({ alumni, history }) => {
   const profilePicture = alumni?.profile_picture?.picture;
@@ -18,10 +19,10 @@ const AlumniCard = ({ alumni, history }) => {
       <CardImg
         top
         alt="Thumbnail"
-        src={profilePicture ? profilePicture : defaultThumb}
+        src={profilePicture || (alumni.gender === "female" ? defaultFemale : defaultMale)}
         onError={(e) => {
           e.target.onerror = null; // prevent infinite loop
-          e.target.src = defaultThumb;
+          e.target.src = alumni.gender === "female" ? defaultFemale : defaultMale;
         }}
         style={{ height: "225px", objectFit: "cover" }}
       />

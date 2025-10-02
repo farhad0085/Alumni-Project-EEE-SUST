@@ -13,7 +13,8 @@ import {
 } from "reactstrap";
 import RegularLayout from "layouts/Regular";
 import apiServices from "./api-services";
-import defaultThumb from "assets/icons/thumbnail.png";
+import defaultMale from "assets/icons/default-male.jpg";
+import defaultFemale from "assets/icons/default-female.jpg";
 
 const FacultyPage = () => {
   const [faculty, setFaculty] = useState([]);
@@ -40,44 +41,52 @@ const FacultyPage = () => {
   const staff = faculty.filter((m) => m.role === "staff");
 
   // Card component
-  const FacultyCard = ({ member }) => (
-    <Card className="shadow-sm h-100">
-      <CardImg
-        top
-        alt="Profile"
-        src={member.photo ? member.photo : defaultThumb}
-        style={{ height: "220px", objectFit: "cover" }}
-      />
-      <CardBody>
-        <CardTitle tag="h4">{member.name}</CardTitle>
-        <CardText>
-          <strong>{member.designation}</strong>
-          <br />
-          {member.department}
-        </CardText>
-        <div className="d-flex gap-2">
-          {member.email && (
-            <Button
-              color="secondary"
-              size="sm"
-              href={`mailto:${member.email}`}
-            >
-              <i className="fas fa-envelope me-2"></i>Email
-            </Button>
-          )}
-          {member.phone && (
-            <Button
-              color="secondary"
-              size="sm"
-              href={`tel:${member.phone}`}
-            >
-              <i className="fas fa-phone me-2"></i>Call
-            </Button>
-          )}
-        </div>
-      </CardBody>
-    </Card>
-  );
+  const FacultyCard = ({ member }) => {
+console.log(member.photo);
+
+    return (
+      <Card className="shadow-sm h-100">
+        <CardImg
+          top
+          alt="Profile"
+          src={member.photo || (member.gender === "female" ? defaultFemale : defaultMale)}
+          onError={(e) => {
+            e.target.onerror = null; // prevent infinite loop
+            e.target.src = member.gender === "female" ? defaultFemale : defaultMale;
+          }}
+          style={{ height: "220px", objectFit: "contain" }}
+        />
+        <CardBody>
+          <CardTitle tag="h4">{member.name}</CardTitle>
+          <CardText>
+            <strong>{member.designation}</strong>
+            <br />
+            {member.department}
+          </CardText>
+          <div className="d-flex gap-2">
+            {member.email && (
+              <Button
+                color="secondary"
+                size="sm"
+                href={`mailto:${member.email}`}
+              >
+                <i className="fas fa-envelope me-2"></i>Email
+              </Button>
+            )}
+            {member.phone && (
+              <Button
+                color="secondary"
+                size="sm"
+                href={`tel:${member.phone}`}
+              >
+                <i className="fas fa-phone me-2"></i>Call
+              </Button>
+            )}
+          </div>
+        </CardBody>
+      </Card>
+    );
+  };
 
   return (
     <RegularLayout>
@@ -116,7 +125,7 @@ const FacultyPage = () => {
                 <h2 className="mb-4 text-dark">Faculty Members</h2>
                 <Row>
                   {otherFaculty.map((member) => (
-                    <Col md="4" sm="6" className="mb-4" key={member.id}>
+                    <Col md="3" sm="6" className="mb-4" key={member.id}>
                       <FacultyCard member={member} />
                     </Col>
                   ))}
@@ -130,7 +139,7 @@ const FacultyPage = () => {
                 <h2 className="mb-4 text-dark">Office Staffs</h2>
                 <Row>
                   {staff.map((member) => (
-                    <Col md="4" sm="6" className="mb-4" key={member.id}>
+                    <Col md="3" sm="6" className="mb-4" key={member.id}>
                       <FacultyCard member={member} />
                     </Col>
                   ))}
