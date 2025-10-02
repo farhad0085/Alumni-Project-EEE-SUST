@@ -58,17 +58,23 @@ const LabsProjectsPage = () => {
     items.map((item) => (
       <Col md="6" lg="4" key={item.id} className="mb-4">
         <Card className="h-100 shadow-sm">
+
           {item.thumbnail && (
-            <CardImg
-              top
-              src={item.thumbnail}
-              alt={isLab ? item.name : item.title}
-              style={{ height: "200px", objectFit: "cover" }}
-            />
+            <Link to={`/labs-projects/${isLab ? "lab" : "project"}/${item.id}`} style={{ textDecoration: "none" }}>
+              <CardImg
+                top
+                src={item.thumbnail}
+                alt={isLab ? item.name : item.title}
+                style={{ height: "200px", objectFit: "cover" }}
+              />
+            </Link>
           )}
           <CardBody>
             <CardTitle tag="h5" className={isLab ? "text-primary" : "text-success"}>
-              {isLab ? item.name : item.title}
+              <Link to={`/labs-projects/${isLab ? "lab" : "project"}/${item.id}`}
+                style={{ textDecoration: "none", color: "inherit" }}>
+                {isLab ? item.name : item.title}
+              </Link>
             </CardTitle>
             <CardText>{item.summary}</CardText>
           </CardBody>

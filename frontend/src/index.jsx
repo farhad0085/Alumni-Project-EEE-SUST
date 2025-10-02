@@ -16,6 +16,7 @@ import EventPage from "pages/EventsPage";
 import FacultyPage from "pages/faculty/FacultyPage";
 import FacultyProfilePage from "pages/faculty/FacultyProfilePage";
 import LabsProjectsPage from "pages/projects/LabsProjectsPage";
+import LabsProjectsDetailPage from "pages/projects/LabsProjectsDetailPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -29,6 +30,7 @@ root.render(
       <Route exact path="/faculty-staffs" component={FacultyPage} />
       <Route exact path="/faculty-profile/:id" component={FacultyProfilePage} />
       <Route exact path="/labs-projects" component={LabsProjectsPage} />
+      <Route exact path="/labs-projects/:type(lab|project)/:id" component={LabsProjectsDetailPage} />
       <Route exact path="/admin" component={AdminIndex} />
       <Route exact path="/auth/login" component={Login} />
       <Route exact path="/auth/register" component={Register} />
