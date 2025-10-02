@@ -57,7 +57,7 @@ The backend will be running on port 8000 i.e [http://localhost:8000](http://loca
     - Admin Panel
     - Upload data in bulk or one by one
     - Upload from Excel
-- Notice Board
+- Notice Board (Done)
     - Admin Panel
     - Anyone can view notices
 - Student Portal

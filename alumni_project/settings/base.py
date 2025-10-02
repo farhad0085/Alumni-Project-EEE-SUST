@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'user',
     "app_logs",
     "app_alumni",
+    "events",
     "notice_board",
 
 ]
