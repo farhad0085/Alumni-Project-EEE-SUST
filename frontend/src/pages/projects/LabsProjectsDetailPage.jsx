@@ -96,11 +96,19 @@ const LabsProjectsDetailPage = () => {
                 {item.summary && (
                   <CardText className="text-muted mb-3">{item.summary}</CardText>
                 )}
-                {item.description && (
-                  <div dangerouslySetInnerHTML={{ __html: item.description }} />
-                )}
               </Col>
             </Row>
+            {item.description && (
+              <Row>
+                <Col>
+                  <CardText tag={"h3"} className="mt-4 mb-0">
+                    About
+                  </CardText>
+                  <hr className="mt-2" />
+                  <div dangerouslySetInnerHTML={{ __html: item.description }} />
+                </Col>
+              </Row>
+            )}
           </CardBody>
         </Card>
       </Container>
