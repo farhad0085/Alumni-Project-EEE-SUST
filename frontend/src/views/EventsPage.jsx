@@ -10,13 +10,11 @@ import {
   Badge,
   Spinner,
   Button,
-  Pagination,
-  PaginationItem,
-  PaginationLink,
   CardImg,
 } from "reactstrap";
 import RegularLayout from "layouts/Regular";
 import apiServices from "./api-services";
+import PageNumberPagination from "components/Pagination/PageNumberPagination";
 
 const EventPage = () => {
   const [events, setEvents] = useState([]);
@@ -151,32 +149,12 @@ const EventPage = () => {
 
             {/* Pagination */}
             {totalPages > 1 && (
-              <div className="d-flex justify-content-center mt-4">
-                <Pagination>
-                  <PaginationItem disabled={page === 1}>
-                    <PaginationLink previous onClick={() => setPage(page - 1)} />
-                  </PaginationItem>
-
-                  {getPaginationNumbers(page, totalPages).map((p, idx) => {
-                    if (p === "left-ellipsis" || p === "right-ellipsis") {
-                      return (
-                        <PaginationItem key={idx} disabled>
-                          <PaginationLink>...</PaginationLink>
-                        </PaginationItem>
-                      );
-                    }
-                    return (
-                      <PaginationItem active={p === page} key={idx}>
-                        <PaginationLink onClick={() => setPage(p)}>{p}</PaginationLink>
-                      </PaginationItem>
-                    );
-                  })}
-
-                  <PaginationItem disabled={page === totalPages}>
-                    <PaginationLink next onClick={() => setPage(page + 1)} />
-                  </PaginationItem>
-                </Pagination>
-              </div>
+              <PageNumberPagination
+                page={page}
+                totalPages={totalPages}
+                setPage={setPage}
+                maxVisible={5}
+              />
             )}
           </>
         )}
