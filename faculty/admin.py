@@ -1,20 +1,45 @@
 from django.contrib import admin
-from faculty.models import Faculty, Lab, Project
-
-
-@admin.register(Faculty)
-class FacultyAdmin(admin.ModelAdmin):
-    list_display = ("name", "designation", "role", "email", "phone")
-    list_filter = ["role"]
-    search_fields = ["name", "email"]
-
+from django.utils.html import format_html
+from .models import Lab, Project, Faculty
 
 @admin.register(Lab)
 class LabAdmin(admin.ModelAdmin):
-    list_display = ("name", "created_at", "updated_at")
-    search_fields = ("name",)
+    list_display = ("name", "thumbnail_tag")
+    readonly_fields = ("thumbnail_tag",)
+
+    def thumbnail_tag(self, obj):
+        if obj.thumbnail:
+            return format_html(
+                '<img src="{}" style="width: 80px; height:auto; object-fit:cover;" />',
+                obj.thumbnail.url
+            )
+        return "-"
+    thumbnail_tag.short_description = "Thumbnail"
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ("title", "created_at", "updated_at")
-    search_fields = ("title",)
+    list_display = ("title", "thumbnail_tag")
+    readonly_fields = ("thumbnail_tag",)
+
+    def thumbnail_tag(self, obj):
+        if obj.thumbnail:
+            return format_html(
+                '<img src="{}" style="width: 80px; height:auto; object-fit:cover;" />',
+                obj.thumbnail.url
+            )
+        return "-"
+    thumbnail_tag.short_description = "Thumbnail"
+
+@admin.register(Faculty)
+class FacultyAdmin(admin.ModelAdmin):
+    list_display = ("name", "role", "gender", "photo_tag")
+    readonly_fields = ("photo_tag",)
+
+    def photo_tag(self, obj):
+        if obj.photo:
+            return format_html(
+                '<img src="{}" style="width: 60px; height:auto; object-fit:cover;" />',
+                obj.photo.url
+            )
+        return "-"
+    photo_tag.short_description = "Photo"
