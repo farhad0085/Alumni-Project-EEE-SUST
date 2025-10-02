@@ -81,28 +81,25 @@ const FacultyProfilePage = () => {
         </Breadcrumb>
         <Card className="shadow-lg">
           <CardBody>
-            <Row className="">
+            <Row>
               {/* Left Column: Info */}
-              <Col md="7">
-                <CardTitle tag="h2" className="text-primary">
+              <Col md="7" className="order-2 order-md-1">
+                <CardTitle tag="h2" className="text-primary mt-2">
                   {faculty.name}
                 </CardTitle>
 
                 <CardText>
                   <strong>Designation:</strong> {faculty.designation}
                   <br />
+                  <br />
                   <strong>Role:</strong> {faculty.role_display}
                   <br />
-                  {faculty.department && (
-                    <>
-                      <strong>Department:</strong> {faculty.department}
-                      <br />
-                    </>
-                  )}
+                  <br />
                   {faculty.email && (
                     <>
                       <strong>Email:</strong>{" "}
                       <a href={`mailto:${faculty.email}`}>{faculty.email}</a>
+                      <br />
                       <br />
                     </>
                   )}
@@ -110,6 +107,7 @@ const FacultyProfilePage = () => {
                     <>
                       <strong>Phone:</strong>{" "}
                       <a href={`tel:${faculty.phone}`}>{faculty.phone}</a>
+                      <br />
                       <br />
                     </>
                   )}
@@ -123,7 +121,7 @@ const FacultyProfilePage = () => {
               </Col>
 
               {/* Right Column: Photo + Buttons */}
-              <Col md="5" className="text-center">
+              <Col md="5" className="text-center order-1 order-md-2">
                 <CardImg
                   top
                   src={photo}
@@ -154,18 +152,20 @@ const FacultyProfilePage = () => {
                 </div>
               </Col>
             </Row>
+            {/* Faculty Description */}
+            {faculty.description && (
+              <Row>
+                <Col>
+                  <h2 className="text-dark mb-3">Profile</h2>
+                  <hr />
+                  <div dangerouslySetInnerHTML={{ __html: faculty.description }} />
+                </Col>
+              </Row>
+            )}
           </CardBody>
         </Card>
 
-        {/* Faculty Description */}
-        {faculty.description && (
-          <Card className="shadow-sm mt-4">
-            <CardBody>
-              <h4 className="text-dark mb-3">About</h4>
-              <div dangerouslySetInnerHTML={{ __html: faculty.description }} />
-            </CardBody>
-          </Card>
-        )}
+
       </Container>
     </RegularLayout>
   );

@@ -17,4 +17,5 @@ class FacultySerializer(serializers.ModelSerializer):
             "role",
             "role_display",
             "gender",
+            "description",
         ]

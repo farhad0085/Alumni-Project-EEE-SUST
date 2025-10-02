@@ -42,7 +42,7 @@ const TopNavbar = () => {
     <Navbar className="navbar-top navbar-dark bg-primary" expand="md">
       <Container>
         {/* Left: App Logo */}
-        <NavbarBrand tag={Link} to="/" className="text-white">
+        <NavbarBrand tag={Link} to="/" className="text-white font-weight-bold">
           EEE SUST Portal
         </NavbarBrand>
 
