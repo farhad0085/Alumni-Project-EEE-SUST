@@ -15,6 +15,7 @@ urlpatterns = [
     path('api/auth/', include('user.urls')),
     path('api/', include('app_alumni.urls')),
     path('api/notice/', include('notice_board.urls')),
+    path('api/event/', include('events.urls')),
 
 ]
 if settings.DEBUG:

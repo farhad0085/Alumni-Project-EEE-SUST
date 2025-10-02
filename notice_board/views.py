@@ -5,6 +5,6 @@ from common.paginations import StandardResultsSetPagination
 
 
 class NoticeViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Notice.objects.all()
+    queryset = Notice.objects.all().order_by('-id')
     serializer_class = NoticeSerializer
     pagination_class = StandardResultsSetPagination

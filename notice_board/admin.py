@@ -7,5 +7,4 @@ class NoticeAdmin(admin.ModelAdmin):
     list_display = ["title", "date", "pdf"]
     list_filter = ["date"]
     search_fields = ["title"]
-    save_as=True
 
