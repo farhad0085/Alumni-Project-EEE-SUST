@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Row,
@@ -11,54 +11,89 @@ import {
   Badge,
   Breadcrumb,
   BreadcrumbItem,
+  Spinner,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import RegularLayout from "layouts/Regular";
-
-// Dummy labs & projects data
-const labs = [
-  {
-    id: 1,
-    name: "Artificial Intelligence Lab",
-    description: "Focused on research in machine learning, natural language processing, and computer vision.",
-    image: "https://via.placeholder.com/400x250?text=AI+Lab",
-    tags: ["AI", "ML", "Research"],
-  },
-  {
-    id: 2,
-    name: "Networking & Security Lab",
-    description: "Explores network architectures, cybersecurity, and cryptography.",
-    image: "https://via.placeholder.com/400x250?text=Networking+Lab",
-    tags: ["Networking", "Security", "IoT"],
-  },
-];
-
-const projects = [
-  {
-    id: 1,
-    title: "Smart Campus System",
-    description:
-      "An IoT-driven project that integrates smart sensors and automation to create an intelligent campus environment.",
-    image: "https://via.placeholder.com/400x250?text=Smart+Campus",
-    tags: ["IoT", "Automation", "AI"],
-  },
-  {
-    id: 2,
-    title: "Healthcare Chatbot",
-    description:
-      "An AI-powered chatbot that assists patients with medical queries and schedules doctor appointments.",
-    image: "https://via.placeholder.com/400x250?text=Chatbot",
-    tags: ["AI", "Healthcare", "NLP"],
-  },
-];
+import apiServices from "../api-services";
+import PageNumberPagination from "components/common/Pagination/PageNumberPagination";
 
 const LabsProjectsPage = () => {
   const [activeTab, setActiveTab] = useState("labs");
 
+  const [labs, setLabs] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const [page, setPage] = useState(1);
+  const [count, setCount] = useState(0);
+  const pageSize = 30;
+
+  const totalPages = Math.ceil(count / pageSize);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        if (activeTab === "labs") {
+          const res = await apiServices.loadLabs(page, pageSize);
+          setLabs(res.data.results);
+          setCount(res.data.count);
+        } else {
+          const res = await apiServices.loadProjects(page, pageSize);
+          setProjects(res.data.results);
+          setCount(res.data.count);
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [activeTab, page]);
+
+  const renderCards = (items, isLab = true) =>
+    items.map((item) => (
+      <Col md="6" lg="4" key={item.id} className="mb-4">
+        <Card className="h-100 shadow-sm">
+          {item.thumbnail && (
+            <CardImg
+              top
+              src={item.thumbnail}
+              alt={isLab ? item.name : item.title}
+              style={{ height: "200px", objectFit: "cover" }}
+            />
+          )}
+          <CardBody>
+            <CardTitle tag="h5" className={isLab ? "text-primary" : "text-success"}>
+              {isLab ? item.name : item.title}
+            </CardTitle>
+            <CardText>{item.summary || item.description || ""}</CardText>
+            {item.tags && (
+              <div className="mt-2">
+                {item.tags.map((tag, i) => (
+                  <Badge key={i} color={isLab ? "info" : "secondary"} className="mr-1">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            )}
+          </CardBody>
+        </Card>
+      </Col>
+    ));
+
+  // Reset page number when tab changes
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    setPage(1);
+  };
+
   return (
     <RegularLayout>
       <Container className="mt-4">
-        {/* Breadcrumb */}
         <Breadcrumb>
           <BreadcrumbItem>
             <Link to="/">Home</Link>
@@ -68,82 +103,41 @@ const LabsProjectsPage = () => {
 
         <h1 className="text-center mb-5">Labs & Projects</h1>
 
-        {/* Tabs */}
         <div className="d-flex justify-content-center mb-4">
           <button
             className={`btn ${activeTab === "labs" ? "btn-primary" : "btn-outline-primary"} mx-2`}
-            onClick={() => setActiveTab("labs")}
+            onClick={() => handleTabChange("labs")}
           >
             Labs
           </button>
           <button
             className={`btn ${activeTab === "projects" ? "btn-primary" : "btn-outline-primary"} mx-2`}
-            onClick={() => setActiveTab("projects")}
+            onClick={() => handleTabChange("projects")}
           >
             Projects
           </button>
         </div>
 
-        {/* Labs Section */}
-        {activeTab === "labs" && (
-          <Row>
-            {labs.map((lab) => (
-              <Col md="6" lg="4" key={lab.id} className="mb-4">
-                <Card className="h-100 shadow-sm">
-                  <CardImg
-                    top
-                    src={lab.image}
-                    alt={lab.name}
-                    style={{ height: "200px", objectFit: "cover" }}
-                  />
-                  <CardBody>
-                    <CardTitle tag="h5" className="text-primary">
-                      {lab.name}
-                    </CardTitle>
-                    <CardText>{lab.description}</CardText>
-                    <div className="mt-2">
-                      {lab.tags.map((tag, i) => (
-                        <Badge key={i} color="info" className="mr-1">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardBody>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        )}
+        {loading ? (
+          <div className="d-flex justify-content-center my-5">
+            <Spinner color="primary" />
+          </div>
+        ) : (
+          <>
+            <Row>
+              {activeTab === "labs" ? renderCards(labs, true) : renderCards(projects, false)}
+            </Row>
 
-        {/* Projects Section */}
-        {activeTab === "projects" && (
-          <Row>
-            {projects.map((proj) => (
-              <Col md="6" lg="4" key={proj.id} className="mb-4">
-                <Card className="h-100 shadow-sm">
-                  <CardImg
-                    top
-                    src={proj.image}
-                    alt={proj.title}
-                    style={{ height: "200px", objectFit: "cover" }}
-                  />
-                  <CardBody>
-                    <CardTitle tag="h5" className="text-success">
-                      {proj.title}
-                    </CardTitle>
-                    <CardText>{proj.description}</CardText>
-                    <div className="mt-2">
-                      {proj.tags.map((tag, i) => (
-                        <Badge key={i} color="secondary" className="mr-1">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardBody>
-                </Card>
-              </Col>
-            ))}
-          </Row>
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <PageNumberPagination
+                page={page}
+                totalPages={totalPages}
+                setPage={setPage}
+                maxVisible={5}
+              />
+            )}
+          </>
         )}
       </Container>
     </RegularLayout>

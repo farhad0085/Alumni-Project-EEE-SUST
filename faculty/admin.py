@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from .models import Lab, Project, Faculty
 
+
 @admin.register(Lab)
 class LabAdmin(admin.ModelAdmin):
     list_display = ("name", "thumbnail_tag")
@@ -16,6 +17,7 @@ class LabAdmin(admin.ModelAdmin):
         return "-"
     thumbnail_tag.short_description = "Thumbnail"
 
+
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ("title", "thumbnail_tag")
@@ -29,6 +31,7 @@ class ProjectAdmin(admin.ModelAdmin):
             )
         return "-"
     thumbnail_tag.short_description = "Thumbnail"
+
 
 @admin.register(Faculty)
 class FacultyAdmin(admin.ModelAdmin):

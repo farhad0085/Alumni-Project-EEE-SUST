@@ -6,6 +6,7 @@ from common.models import TrackingModel
 class Lab(TrackingModel):
     name = models.CharField(max_length=255)
     thumbnail = models.ImageField(upload_to="labs/thumbnails", null=True, blank=True)
+    summary = models.TextField(max_length=200, null=True, blank=True)
     description = HTMLField(null=True, blank=True)
 
     def __str__(self):
@@ -15,6 +16,7 @@ class Lab(TrackingModel):
 class Project(TrackingModel):
     title = models.CharField(max_length=255)
     thumbnail = models.ImageField(upload_to="projects/thumbnails", null=True, blank=True)
+    summary = models.TextField(max_length=200, null=True, blank=True)
     description = HTMLField(null=True, blank=True)
 
     def __str__(self):
