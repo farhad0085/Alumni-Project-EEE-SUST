@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import RegularLayout from "layouts/Regular";
 import apiServices from "../api-services";
 import PageNumberPagination from "components/common/Pagination/PageNumberPagination";
+import { setPageTitle } from "utils";
 
 const LabsProjectsPage = () => {
   const [activeTab, setActiveTab] = useState("labs");
@@ -30,6 +31,7 @@ const LabsProjectsPage = () => {
   const pageSize = 30;
 
   const totalPages = Math.ceil(count / pageSize);
+  setPageTitle("Labs and Projects")
 
   useEffect(() => {
     const fetchData = async () => {

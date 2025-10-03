@@ -16,6 +16,7 @@ import { Link } from 'react-router-dom'
 import RegularLayout from "layouts/Regular";
 import apiServices from "../api-services";
 import PageNumberPagination from "components/common/Pagination/PageNumberPagination";
+import { setPageTitle } from "utils";
 
 const EventPage = () => {
   const [events, setEvents] = useState([]);
@@ -25,6 +26,7 @@ const EventPage = () => {
   const pageSize = 12;
 
   const totalPages = Math.ceil(count / pageSize);
+  setPageTitle("Events")
 
   // Fetch events
   useEffect(() => {

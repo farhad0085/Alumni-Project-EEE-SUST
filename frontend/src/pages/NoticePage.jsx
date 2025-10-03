@@ -14,6 +14,7 @@ import {
 import RegularLayout from "layouts/Regular";
 import apiServices from "./api-services";
 import PageNumberPagination from "components/common/Pagination/PageNumberPagination";
+import { setPageTitle } from "utils";
 
 const NoticePage = () => {
   const [notices, setNotices] = useState([]);
@@ -21,6 +22,7 @@ const NoticePage = () => {
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(1);
   const [pageSize] = useState(30); // matches backend default
+  setPageTitle("Notices")
 
   const totalPages = Math.ceil(count / pageSize);
 

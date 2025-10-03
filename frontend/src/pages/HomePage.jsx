@@ -11,8 +11,10 @@ import {
   Button,
 } from "reactstrap";
 import { Link } from 'react-router-dom'
+import { setPageTitle } from "utils";
 
 function HomePage() {
+  setPageTitle("Home")
   return (
     <RegularLayout>
       <Container className="mt-4">

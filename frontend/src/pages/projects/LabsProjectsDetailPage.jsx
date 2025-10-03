@@ -15,6 +15,7 @@ import {
 } from "reactstrap";
 import RegularLayout from "layouts/Regular";
 import apiServices from "../api-services";
+import { setPageTitle } from "utils";
 
 const LabsProjectsDetailPage = () => {
   const { type, id } = useParams();
@@ -30,6 +31,7 @@ const LabsProjectsDetailPage = () => {
             ? await apiServices.loadLabById(id)
             : await apiServices.loadProjectById(id);
         setItem(response.data);
+        setPageTitle(response.data.name || response.data.title)
       } catch (err) {
         console.error("Failed to load data:", err);
       } finally {

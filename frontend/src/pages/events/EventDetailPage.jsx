@@ -16,6 +16,7 @@ import {
 } from "reactstrap";
 import RegularLayout from "layouts/Regular";
 import apiServices from "../api-services";
+import { setPageTitle } from "utils";
 
 const EventDetailPage = () => {
   const { id } = useParams();
@@ -28,6 +29,7 @@ const EventDetailPage = () => {
         setLoading(true);
         const response = await apiServices.loadEventById(id);
         setItem(response.data);
+        setPageTitle(response.data.title)
       } catch (err) {
         console.error("Failed to load event:", err);
       } finally {

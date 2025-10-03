@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Button,
   Card,
@@ -15,7 +14,6 @@ import Admin from "layouts/Admin";
 const Index = (props) => {
   return (
     <Admin>
-      {console.log("here ")}
       <Header />
       {/* Page content */}
       <Container className="mt--7" fluid>

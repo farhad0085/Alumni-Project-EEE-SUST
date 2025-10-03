@@ -18,7 +18,7 @@ import RegularLayout from "layouts/Regular";
 import apiServices from "../api-services";
 import defaultMale from "assets/icons/default-male.jpg";
 import defaultFemale from "assets/icons/default-female.jpg";
-import { toTitleCase } from "utils";
+import { setPageTitle, toTitleCase } from "utils";
 
 const FacultyProfilePage = () => {
   const { id } = useParams();
@@ -31,6 +31,7 @@ const FacultyProfilePage = () => {
         setLoading(true);
         const response = await apiServices.loadFacultyById(id);
         setFaculty(response.data);
+        setPageTitle(response.data.name)
       } catch (err) {
         console.error("Failed to load faculty:", err);
       } finally {

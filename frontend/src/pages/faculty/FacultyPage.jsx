@@ -16,10 +16,12 @@ import RegularLayout from "layouts/Regular";
 import apiServices from "../api-services";
 import defaultMale from "assets/icons/default-male.jpg";
 import defaultFemale from "assets/icons/default-female.jpg";
+import { setPageTitle } from "utils";
 
 const FacultyPage = () => {
   const [faculty, setFaculty] = useState([]);
   const [loading, setLoading] = useState(true);
+  setPageTitle("Faculty & Staffs")
 
   useEffect(() => {
     const fetchFaculty = async () => {
