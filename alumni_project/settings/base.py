@@ -11,6 +11,7 @@ ENVIRONMENT = os.environ.get("ENVIRONMENT")
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -105,3 +106,6 @@ CKEDITOR_CONFIGS = {
         'toolbar': None,
     }
 }
+
+# import admin settings
+from .admin import *
