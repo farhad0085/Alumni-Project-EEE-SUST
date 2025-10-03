@@ -12,11 +12,12 @@ import Register from "pages/examples/Register";
 import HomePage from "pages/HomePage";
 import AlumniPage from "pages/AlumniPage";
 import NoticePage from "pages/NoticePage";
-import EventPage from "pages/EventsPage";
+import EventPage from "pages/events/EventsPage";
 import FacultyPage from "pages/faculty/FacultyPage";
 import FacultyProfilePage from "pages/faculty/FacultyProfilePage";
 import LabsProjectsPage from "pages/projects/LabsProjectsPage";
 import LabsProjectsDetailPage from "pages/projects/LabsProjectsDetailPage";
+import EventDetailPage from "pages/events/EventDetailPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -27,6 +28,7 @@ root.render(
       <Route exact path="/alumni" component={AlumniPage} />
       <Route exact path="/notices" component={NoticePage} />
       <Route exact path="/events" component={EventPage} />
+      <Route exact path="/events/:id" component={EventDetailPage} />
       <Route exact path="/faculty-staffs" component={FacultyPage} />
       <Route exact path="/faculty-profile/:id" component={FacultyProfilePage} />
       <Route exact path="/labs-projects" component={LabsProjectsPage} />

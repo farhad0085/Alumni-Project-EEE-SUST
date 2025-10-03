@@ -12,8 +12,9 @@ import {
   Button,
   CardImg,
 } from "reactstrap";
+import { Link } from 'react-router-dom'
 import RegularLayout from "layouts/Regular";
-import apiServices from "./api-services";
+import apiServices from "../api-services";
 import PageNumberPagination from "components/common/Pagination/PageNumberPagination";
 
 const EventPage = () => {
@@ -118,19 +119,19 @@ const EventPage = () => {
                           </p>
                         )}
 
-                        <CardText className="text-muted">
-                          {event.description.length > 120
-                            ? event.description.substring(0, 120) + "..."
-                            : event.description}
+                        {/* Summary instead of description */}
+                        <CardText className="flex-grow-1">
+                          {event.summary?.length > 150
+                            ? event.summary.substring(0, 150) + "..."
+                            : event.summary}
                         </CardText>
 
-                        {event.link && (
+                        {event.description && (
                           <Button
                             color="primary"
                             size="sm"
-                            href={event.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            tag={Link}
+                            to={`/events/${event.id}`}
                             className="mt-2 w-100"
                           >
                             Learn More

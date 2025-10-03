@@ -54,7 +54,7 @@ const LabsProjectsDetailPage = () => {
       <RegularLayout>
         <Container className="mt-5 text-center">
           <p className="text-muted">{type === "lab" ? "Lab" : "Project"} not found.</p>
-          <Link to={`/${type === "lab" ? "labs" : "projects"}`}>
+          <Link to={"/labs-projects"}>
             <button className="btn btn-primary">Back</button>
           </Link>
         </Container>

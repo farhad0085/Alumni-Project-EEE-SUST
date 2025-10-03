@@ -17,6 +17,8 @@ const apiServices = {
     axios.get("/api/event/events/", {
       params: { page, page_size, upcoming },
     }),
+  // Load event details
+  loadEventById: (id) => axios.get(`/api/event/events/${id}`),
 
   // Load all faculty & staff
   loadFaculty: () =>

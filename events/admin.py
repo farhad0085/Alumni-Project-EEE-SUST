@@ -6,4 +6,4 @@ from .models import Event
 class EventAdmin(admin.ModelAdmin):
     list_display = ("title", "date", "time", "location", "created_at")
     list_filter = ["date"]
-    search_fields = ["title", "description"]
+    search_fields = ["title"]
