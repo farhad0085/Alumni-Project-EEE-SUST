@@ -11,6 +11,8 @@ import {
   Spinner,
   Button,
   CardImg,
+  Breadcrumb,
+  BreadcrumbItem
 } from "reactstrap";
 import { Link } from 'react-router-dom'
 import RegularLayout from "layouts/Regular";
@@ -47,27 +49,17 @@ const EventPage = () => {
     fetchEvents();
   }, [page]);
 
-  // Pagination helper
-  const getPaginationNumbers = (current, total, maxVisible = 5) => {
-    const pages = [];
-    if (total <= maxVisible) {
-      for (let i = 1; i <= total; i++) pages.push(i);
-    } else {
-      let start = Math.max(current - 2, 1);
-      let end = Math.min(start + maxVisible - 1, total);
-
-      if (end - start < maxVisible - 1) start = Math.max(end - maxVisible + 1, 1);
-
-      if (start > 1) pages.push(1, "left-ellipsis");
-      for (let i = start; i <= end; i++) pages.push(i);
-      if (end < total) pages.push("right-ellipsis", total);
-    }
-    return pages;
-  };
-
   return (
     <RegularLayout>
       <Container className="mt-4">
+        {/* Breadcrumb */}
+        <Breadcrumb>
+          <BreadcrumbItem>
+            <Link to="/">Home</Link>
+          </BreadcrumbItem>
+          <BreadcrumbItem active>Events</BreadcrumbItem>
+        </Breadcrumb>
+
         {/* Header */}
         <Row className="mb-4">
           <Col>

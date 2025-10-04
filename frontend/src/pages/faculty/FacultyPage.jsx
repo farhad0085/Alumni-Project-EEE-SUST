@@ -10,6 +10,8 @@ import {
   Button,
   Spinner,
   CardImg,
+  Breadcrumb,
+  BreadcrumbItem
 } from "reactstrap";
 import { Link } from 'react-router-dom'
 import RegularLayout from "layouts/Regular";
@@ -45,8 +47,6 @@ const FacultyPage = () => {
 
   // Card component
   const FacultyCard = ({ member }) => {
-    console.log(member.photo);
-
     return (
       <Card className="shadow-sm h-100">
         <Link to={`/faculty-profile/${member.id}`}>
@@ -98,6 +98,13 @@ const FacultyPage = () => {
   return (
     <RegularLayout>
       <Container className="mt-4">
+        {/* Breadcrumb */}
+        <Breadcrumb>
+          <BreadcrumbItem>
+            <Link to="/">Home</Link>
+          </BreadcrumbItem>
+          <BreadcrumbItem active>Faculty & Staffs</BreadcrumbItem>
+        </Breadcrumb>
         {/* Header */}
         <Row className="mb-4">
           <Col>

@@ -10,11 +10,14 @@ import {
   Badge,
   Spinner,
   Button,
+  Breadcrumb,
+  BreadcrumbItem
 } from "reactstrap";
 import RegularLayout from "layouts/Regular";
 import apiServices from "./api-services";
 import PageNumberPagination from "components/common/Pagination/PageNumberPagination";
 import { setPageTitle } from "utils";
+import { Link } from 'react-router-dom'
 
 const NoticePage = () => {
   const [notices, setNotices] = useState([]);
@@ -48,6 +51,14 @@ const NoticePage = () => {
   return (
     <RegularLayout>
       <Container className="mt-4">
+        {/* Breadcrumb */}
+        <Breadcrumb>
+          <BreadcrumbItem>
+            <Link to="/">Home</Link>
+          </BreadcrumbItem>
+          <BreadcrumbItem active>Notices</BreadcrumbItem>
+        </Breadcrumb>
+
         {/* Header */}
         <Row className="mb-4">
           <Col>
