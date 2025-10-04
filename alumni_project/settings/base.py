@@ -98,6 +98,7 @@ REST_FRAMEWORK = {
 
 AUTH_USER_MODEL = 'user.UserAccount' # Custom User Model
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 # CKEditor settings
 CKEDITOR_UPLOAD_PATH = "uploads/"

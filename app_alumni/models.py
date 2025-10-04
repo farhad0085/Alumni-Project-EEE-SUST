@@ -13,6 +13,9 @@ class Batch(TrackingModel):
 
     def __str__(self):
         return self.session
+    
+    class Meta:
+        verbose_name_plural = "Batches"
 
 
 class Alumni(TrackingModel):
@@ -37,6 +40,9 @@ class Alumni(TrackingModel):
 
     def __str__(self) -> str:
         return self.name
+    
+    class Meta:
+        verbose_name_plural = "Alumni"
 
 
 class Picture(TrackingModel):
