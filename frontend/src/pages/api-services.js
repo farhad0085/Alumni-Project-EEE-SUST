@@ -6,6 +6,8 @@ const apiServices = {
       params: { is_featured: true, page_size: 9 },
     }),
   
+  loadBatchList: () => axios.get("/api/alumni/batches/"),
+  
   loadAlumniById: (id) => axios.get(`/api/alumni/alumni/${id}`),
 
   // Load notices with pagination
