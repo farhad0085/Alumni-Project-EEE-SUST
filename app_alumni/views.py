@@ -3,9 +3,10 @@ from app_alumni.filters import AlumniFilter, BatchFilter
 from app_alumni.models import Alumni, Batch
 from app_alumni.serializers import AlumniSerializer, BatchSerializer
 from django_filters import rest_framework as filters
+from rest_framework import viewsets
 
 
-class AlumniListAPIView(ListAPIView):
+class AlumniViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = AlumniSerializer
     queryset = Alumni.objects.all().order_by('-id')
     filter_backends = (filters.DjangoFilterBackend,)

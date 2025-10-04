@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Col, Row, Spinner } from "reactstrap";
 import RegularLayout from "layouts/Regular";
 import AlumniCard from "components/Alumni/AlumniCard";
-import apiServices from "./api-services";
+import apiServices from "../api-services";
 import { setPageTitle } from "utils";
 
 const AlumniPage = () => {

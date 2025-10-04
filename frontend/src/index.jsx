@@ -10,7 +10,7 @@ import AdminIndex from "pages/Index";
 import Login from "pages/examples/Login";
 import Register from "pages/examples/Register";
 import HomePage from "pages/HomePage";
-import AlumniPage from "pages/AlumniPage";
+import AlumniPage from "pages/alumni/AlumniPage";
 import NoticePage from "pages/NoticePage";
 import EventPage from "pages/events/EventsPage";
 import FacultyPage from "pages/faculty/FacultyPage";
@@ -18,6 +18,7 @@ import FacultyProfilePage from "pages/faculty/FacultyProfilePage";
 import LabsProjectsPage from "pages/projects/LabsProjectsPage";
 import LabsProjectsDetailPage from "pages/projects/LabsProjectsDetailPage";
 import EventDetailPage from "pages/events/EventDetailPage";
+import AlumniProfilePage from "pages/alumni/AlumniProfilePage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -26,6 +27,7 @@ root.render(
     <Switch>
       <Route exact path="/" component={HomePage} />
       <Route exact path="/alumni" component={AlumniPage} />
+      <Route exact path="/alumni/:id" component={AlumniProfilePage} />
       <Route exact path="/notices" component={NoticePage} />
       <Route exact path="/events" component={EventPage} />
       <Route exact path="/events/:id" component={EventDetailPage} />

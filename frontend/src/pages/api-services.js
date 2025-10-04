@@ -2,9 +2,11 @@ import axios from "utils/axios";
 
 const apiServices = {
   loadFeaturedAlumni: () =>
-    axios.get("/api/alumnies/", {
+    axios.get("/api/alumni/alumni/", {
       params: { is_featured: true, page_size: 9 },
     }),
+  
+  loadAlumniById: (id) => axios.get(`/api/alumni/alumni/${id}`),
 
   // Load notices with pagination
   loadNotices: (page = 1, page_size = 30) =>

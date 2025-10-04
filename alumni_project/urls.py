@@ -9,7 +9,7 @@ urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
 
     path('api/auth/', include('user.urls')),
-    path('api/', include('app_alumni.urls')),
+    path('api/alumni/', include('app_alumni.urls')),
     path('api/notice/', include('notice_board.urls')),
     path('api/event/', include('events.urls')),
     path('api/faculty/', include('faculty.urls')),

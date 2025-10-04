@@ -53,7 +53,7 @@ const AlumniCard = ({ alumni, history }) => {
           <Button
             color="primary"
             size="sm"
-            onClick={() => history.push(`/alumnies/${alumni.id}`)}
+            onClick={() => history.push(`/alumni/${alumni.id}`)}
           >
             View Profile
           </Button>
