@@ -19,6 +19,7 @@ import LabsProjectsPage from "pages/projects/LabsProjectsPage";
 import LabsProjectsDetailPage from "pages/projects/LabsProjectsDetailPage";
 import EventDetailPage from "pages/events/EventDetailPage";
 import AlumniProfilePage from "pages/alumni/AlumniProfilePage";
+import BatchAlumniPage from "pages/alumni/BatchAlumniPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -28,6 +29,7 @@ root.render(
       <Route exact path="/" component={HomePage} />
       <Route exact path="/alumni" component={AlumniPage} />
       <Route exact path="/alumni/:id" component={AlumniProfilePage} />
+      <Route exact path="/batches/:session" component={BatchAlumniPage} />
       <Route exact path="/notices" component={NoticePage} />
       <Route exact path="/events" component={EventPage} />
       <Route exact path="/events/:id" component={EventDetailPage} />

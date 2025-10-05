@@ -12,7 +12,7 @@ import {
   BreadcrumbItem,
   Button,
 } from "reactstrap";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import RegularLayout from "layouts/Regular";
 import apiServices from "../api-services";
 import { setPageTitle } from "utils";
@@ -20,7 +20,6 @@ import { setPageTitle } from "utils";
 const BatchList = () => {
   const [loading, setLoading] = useState(false);
   const [batches, setBatches] = useState([]);
-  const history = useHistory();
 
   setPageTitle("Batches");
 
@@ -46,6 +45,17 @@ const BatchList = () => {
           alt={`${batch.session} thumbnail`}
           className="card-img-top"
           style={{ height: "225px", width: "100%", objectFit: "cover" }}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.replaceWith(
+              Object.assign(document.createElement("div"), {
+                textContent: "Image failed to load",
+                className: "text-muted small",
+                style:
+                  "height:225px;width:100%;font-style:italic;display:flex;align-items:center;justify-content:center;background:#f8f9fa;",
+              })
+            );
+          }}
         />
       );
     }
@@ -115,7 +125,8 @@ const BatchList = () => {
                       color="primary"
                       block
                       size="sm"
-                      onClick={() => history.push(`/batches/${batch.session}`)}
+                      tag={Link}
+                      to={`/batches/${batch.session}`}
                     >
                       View Alumni
                     </Button>
