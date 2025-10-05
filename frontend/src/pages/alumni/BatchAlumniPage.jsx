@@ -16,6 +16,7 @@ import RegularLayout from "layouts/Regular";
 import apiServices from "../api-services";
 import AlumniCard from "components/Alumni/AlumniCard";
 import { setPageTitle } from "utils";
+import PageNumberPagination from "components/common/Pagination/PageNumberPagination";
 
 const BatchAlumniPage = () => {
   const { session } = useParams();
@@ -25,6 +26,7 @@ const BatchAlumniPage = () => {
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(1);
   const [pageSize] = useState(30);
+  const totalPages = Math.ceil(count / pageSize);
 
   // first load batch data
   useEffect(() => {
@@ -61,7 +63,7 @@ const BatchAlumniPage = () => {
     };
 
     fetchBatchDetails();
-  }, [session]);
+  }, [page]);
 
   if (loading) {
     return (
@@ -110,16 +112,14 @@ const BatchAlumniPage = () => {
                   Batch {batch.session} {batch.batch_name ? `(${batch.batch_name})` : ""}
                 </CardTitle>
                 <CardText className="text-muted">
-                  <div className="d-flex justify-content-between flex-wrap">
-                    <div>
-                      <strong>Total Students:</strong> {batch.total_students}
-                    </div>
-                    {batch.total_alumnies !== undefined && (
-                      <div>
-                        <strong>Total Alumni:</strong> {batch.total_alumnies}
-                      </div>
-                    )}
+                  <div>
+                    <strong>Total Students:</strong> {batch.total_students}
                   </div>
+                  {batch.total_alumnies !== undefined && (
+                    <div>
+                      <strong>Total Alumni:</strong> {batch.total_alumnies}
+                    </div>
+                  )}
                 </CardText>
               </Col>
               {batch.batch_pictures?.length > 0 && (
@@ -156,13 +156,24 @@ const BatchAlumniPage = () => {
         {alumniList.length === 0 ? (
           <p className="text-muted text-center">No alumni available for this batch.</p>
         ) : (
-          <Row>
-            {alumniList.map((alumni) => (
-              <Col md={6} lg={4} key={alumni.id} className="mb-4">
-                <AlumniCard alumni={alumni} />
-              </Col>
-            ))}
-          </Row>
+          <>
+            <Row>
+              {alumniList.map((alumni) => (
+                <Col md={6} lg={4} key={alumni.id} className="mb-4">
+                  <AlumniCard alumni={alumni} />
+                </Col>
+              ))}
+            </Row>
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <PageNumberPagination
+                page={page}
+                totalPages={totalPages}
+                setPage={setPage}
+                maxVisible={5}
+              />
+            )}
+          </>
         )}
       </Container>
     </RegularLayout>
