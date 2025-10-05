@@ -101,19 +101,20 @@ const BatchList = () => {
                     </CardTitle>
 
                     <CardText className="text-muted">
-                      <dl className="mb-2">
-                        <dt>Total Students:</dt>
-                        <dd>{batch.total_students}</dd>
-                      </dl>
-                      <dl className="mb-2">
-                        <dt>Total Alumni:</dt>
-                        <dd>{batch.total_alumnies || "N/A"}</dd>
-                      </dl>
+                      <div className="d-flex justify-content-between align-items-center">
+                        <div>
+                          <strong>Total Students:</strong> {batch.total_students}
+                        </div>
+                        <div>
+                          <strong>Total Alumni:</strong> {batch.total_alumnies}
+                        </div>
+                      </div>
                     </CardText>
 
                     <Button
-                      color="outline-primary"
+                      color="primary"
                       block
+                      size="sm"
                       onClick={() => history.push(`/batches/${batch.session}`)}
                     >
                       View Alumni
