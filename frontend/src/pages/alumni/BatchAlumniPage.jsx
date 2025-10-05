@@ -115,11 +115,9 @@ const BatchAlumniPage = () => {
                   <div>
                     <strong>Total Students:</strong> {batch.total_students}
                   </div>
-                  {batch.total_alumnies !== undefined && (
-                    <div>
-                      <strong>Total Alumni:</strong> {batch.total_alumnies}
-                    </div>
-                  )}
+                  <div>
+                    <strong>Total Alumni:</strong> {batch.total_alumnies}
+                  </div>
                 </CardText>
               </Col>
               {batch.batch_pictures?.length > 0 && (
