@@ -5,11 +5,12 @@ import Alumni from './pages/Alumni';
 import NoticeBoard from './pages/Notice/NoticeBoard';
 import StudyMaterials from './pages/StudyMaterials';
 import Labs from './pages/Labs';
-import Events from './pages/Events';
 import FacultyStaff from './pages/FacultyStaff';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
+import EventPage from './pages/Event/EventPage';
+import EventDetailPage from './pages/Event/EventDetailPage';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
         <Route path="notice-board" element={<NoticeBoard />} />
         <Route path="study-materials" element={<StudyMaterials />} />
         <Route path="labs-projects" element={<Labs />} />
-        <Route path="events" element={<Events />} />
+        <Route path="events" element={<EventPage />} />
+        <Route path="events/:id" element={<EventDetailPage />} />
         <Route path="faculty-staff" element={<FacultyStaff />} />
       </Route>
 

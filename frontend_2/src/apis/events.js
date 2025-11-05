@@ -1,4 +1,4 @@
-import axios from "utils/axios";
+import axios from "../utils/axios";
 
 const eventServices = {
   // Load events with pagination (and optional upcoming filter)
