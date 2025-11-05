@@ -1,0 +1,149 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'sass:color';
+
+.hero {
+  background: linear-gradient(45deg, rgba(6, 90, 146, 0.8), rgba(10, 160, 255, 0.7)),
+    url('https://www.sust.edu/storage/images/slider/1685368417.jpg') no-repeat center center/cover;
+  color: $light-text-color;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 $spacing-md;
+}
+
+.heroContent {
+  max-width: 800px;
+
+  h1 {
+    font-size: $font-size-3xl;
+    margin-bottom: $spacing-md;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  p {
+    font-size: $font-size-lg;
+    margin-bottom: $spacing-xl;
+    font-weight: 400;
+  }
+
+  .heroBtn {
+    background: $accent-2;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      background: color.adjust($accent-2, $lightness: -8%);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.pageContent {
+  padding-top: $spacing-xl;
+  padding-bottom: $spacing-xl;
+}
+
+.homeCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $spacing-xl;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: $spacing-xl;
+  text-align: left;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  }
+
+  .cardIcon {
+    font-size: 32px;
+    color: $accent;
+    margin-bottom: $spacing-md;
+  }
+
+  h3 {
+    color: $primary-color;
+    margin-bottom: $spacing-sm;
+    font-size: $font-size-lg;
+  }
+
+  p {
+    flex-grow: 1;
+    margin-bottom: $spacing-md;
+    color: $gray-600;
+  }
+
+  .cardLink {
+    color: $accent;
+    font-weight: 600;
+    text-decoration: none;
+    align-self: flex-start;
+  }
+}
+
+@include mobile {
+  .hero h1 {
+    font-size: $font-size-2xl;
+  }
+
+  .hero p {
+    font-size: $font-size-base;
+  }
+}
+
+.highlights {
+  padding: $spacing-xl 0;
+  background: linear-gradient(180deg, rgba(244, 245, 246, 0.6), rgba(255, 255, 255, 0.6));
+  border-radius: 12px;
+  margin-top: $spacing-xl;
+}
+
+.highlightsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: $spacing-lg;
+  margin-top: $spacing-md;
+}
+
+.highlightCard {
+  background: #fff;
+  border-radius: 10px;
+  padding: $spacing-md;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+  h3 {
+    margin: 0 0 $spacing-sm 0;
+    color: $primary-color;
+  }
+
+  p {
+    margin: 0;
+    color: $gray-600;
+    font-size: $font-size-sm;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+  }
+}

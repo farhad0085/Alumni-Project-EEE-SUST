@@ -1,0 +1,48 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.facultyGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: $spacing-2xl;
+}
+
+.facultyCard {
+  background: #fff;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-lg;
+  text-align: center;
+  padding: $spacing-md;
+  box-shadow: $shadow-sm;
+  transition: transform $transition-normal, box-shadow $transition-normal;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-md;
+  }
+  
+  img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: $spacing-md;
+  }
+  
+  h3 {
+    margin-bottom: $spacing-sm;
+    color: $primary-color;
+  }
+  
+  p {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    margin-bottom: $spacing-md;
+  }
+  
+  a {
+    text-decoration: none;
+    color: $accent-color;
+    font-weight: $font-weight-bold;
+  }
+}

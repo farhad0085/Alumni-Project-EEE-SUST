@@ -1,0 +1,25 @@
+@use './scss/variables' as *;
+@use './scss/mixins' as *;
+
+// Global Styles
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-family-base;
+  line-height: 1.6;
+  color: $text-color;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+.container {
+  @include container;
+}

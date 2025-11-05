@@ -1,0 +1,54 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.main {
+  min-height: calc(100vh - 140px); // Header + Footer height
+}
+
+.pageHeader {
+  background-color: $secondary-color;
+  padding: $spacing-md 0;
+  border-bottom: 1px solid $border-color;
+}
+
+.pageContent {
+  @include section-padding;
+}
+
+.pageTitle {
+  text-align: center;
+  color: $primary-color;
+  font-size: $font-size-2xl;
+  margin-bottom: $spacing-md;
+}
+
+.sectionTitle {
+  text-align: center;
+  color: $primary-color;
+  font-size: $font-size-xl;
+  margin-bottom: $spacing-2xl;
+}
+
+// Breadcrumbs
+.breadcrumbs {
+  font-size: $font-size-sm;
+  color: $gray-600;
+  
+  a {
+    color: $accent-color;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  span {
+    margin: 0 $spacing-sm;
+  }
+}
+
+// Responsive
+@include mobile {
+  .pageTitle { font-size: $font-size-xl; }
+}

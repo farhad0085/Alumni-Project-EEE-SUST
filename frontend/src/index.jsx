@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { AuthProvider } from 'contexts/AuthContext';
+// import { AuthProvider } from 'contexts/AuthContext';
 
 import "assets/plugins/nucleo/css/nucleo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -25,7 +25,7 @@ import BatchAlumniPage from "pages/alumni/BatchAlumniPage";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
-  <AuthProvider>
+  // <AuthProvider>
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={HomePage} />
@@ -44,5 +44,5 @@ root.render(
         <Route exact path="/auth/register" component={Register} />
       </Switch>
     </BrowserRouter>
-  </AuthProvider>
+  // </AuthProvider>
 );

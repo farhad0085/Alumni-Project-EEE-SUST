@@ -1,0 +1,23 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.listView {
+  .listItem {
+    background-color: $secondary-color;
+    border-radius: $border-radius-sm;
+    padding: $spacing-md;
+    margin-bottom: $spacing-md;
+    border-left: 5px solid $primary-color;
+    
+    h3 {
+      color: $primary-color;
+      margin-bottom: $spacing-sm;
+    }
+    
+    &Meta {
+      font-size: $font-size-sm;
+      color: $gray-600;
+      margin-bottom: $spacing-md;
+    }
+  }
+}

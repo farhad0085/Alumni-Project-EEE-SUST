@@ -1,0 +1,31 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  padding: $spacing-md 0;
+  margin-bottom: $spacing-xl;
+  font-size: $font-size-sm;
+  color: $gray-600;
+}
+
+.crumb, .crumbActive {
+  color: $gray-700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+.crumbActive {
+  color: $primary-color;
+  font-weight: 500;
+}
+
+.separator {
+  margin: 0 $spacing-sm;
+  color: $gray-400;
+}
