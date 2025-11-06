@@ -11,6 +11,8 @@ import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import EventPage from './pages/Event/EventPage';
 import EventDetailPage from './pages/Event/EventDetailPage';
+import FacultyProfilePage from './pages/Faculty/FacultyProfilePage';
+
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
         <Route path="events" element={<EventPage />} />
         <Route path="events/:id" element={<EventDetailPage />} />
         <Route path="faculty-staff" element={<FacultyStaff />} />
+        <Route path="faculty-profile/:id" element={<FacultyProfilePage />} />
       </Route>
 
       {/* Routes outside layout */}
