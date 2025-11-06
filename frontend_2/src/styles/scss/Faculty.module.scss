@@ -7,6 +7,10 @@
   gap: $spacing-2xl;
 }
 
+.sectionTitle {
+  margin-top: 20px;
+}
+
 .facultyCard {
   background: #fff;
   border: 1px solid $border-color;
@@ -15,31 +19,31 @@
   padding: $spacing-md;
   box-shadow: $shadow-sm;
   transition: transform $transition-normal, box-shadow $transition-normal;
-  
+
   &:hover {
     transform: translateY(-5px);
     box-shadow: $shadow-md;
   }
-  
-  img {
-    width: 120px;
-    height: 120px;
+
+  .profileImage {
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: $spacing-md;
   }
-  
+
   h3 {
     margin-bottom: $spacing-sm;
     color: $primary-color;
   }
-  
+
   p {
     font-size: $font-size-sm;
     color: $gray-600;
     margin-bottom: $spacing-md;
   }
-  
+
   a {
     text-decoration: none;
     color: $accent-color;

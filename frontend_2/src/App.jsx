@@ -5,7 +5,7 @@ import Alumni from './pages/Alumni';
 import NoticeBoard from './pages/Notice/NoticeBoard';
 import StudyMaterials from './pages/StudyMaterials';
 import Labs from './pages/Labs';
-import FacultyStaff from './pages/FacultyStaff';
+import FacultyStaff from './pages/Faculty/FacultyStaff';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
