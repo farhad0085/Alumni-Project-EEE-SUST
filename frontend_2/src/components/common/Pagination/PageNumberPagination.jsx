@@ -1,6 +1,9 @@
-import styles from "./styles.module.scss";
+import React from "react";
+import { Pagination, PaginationItem, PaginationLink } from "reactstrap";
 
 const PageNumberPagination = ({ page, totalPages, setPage, maxVisible = 5 }) => {
+  
+  // Function to generate page numbers with ellipsis
   const getPaginationNumbers = (current, total, maxVisible) => {
     const pages = [];
     if (total <= maxVisible) {
@@ -21,40 +24,34 @@ const PageNumberPagination = ({ page, totalPages, setPage, maxVisible = 5 }) => 
   if (totalPages <= 1) return null;
 
   return (
-    <div className={styles.paginationWrapper}>
-      <ul className={styles.pagination}>
-        {/* Prev */}
-        <li className={`${styles.pageItem} ${page === 1 ? styles.disabled : ""}`}>
-          <button onClick={() => page > 1 && setPage(page - 1)}>‹</button>
-        </li>
+    <div className="d-flex justify-content-center mt-4">
+      <Pagination>
+        {/* Previous button */}
+        <PaginationItem disabled={page === 1}>
+          <PaginationLink previous onClick={() => setPage(page - 1)} />
+        </PaginationItem>
 
+        {/* Page numbers */}
         {getPaginationNumbers(page, totalPages, maxVisible).map((p, idx) => {
           if (p === "left-ellipsis" || p === "right-ellipsis") {
             return (
-              <li key={idx} className={`${styles.pageItem} ${styles.disabled}`}>
-                <button>...</button>
-              </li>
+              <PaginationItem key={idx} disabled>
+                <PaginationLink>...</PaginationLink>
+              </PaginationItem>
             );
           }
           return (
-            <li
-              key={idx}
-              className={`${styles.pageItem} ${p === page ? styles.active : ""}`}
-            >
-              <button onClick={() => setPage(p)}>{p}</button>
-            </li>
+            <PaginationItem active={p === page} key={idx}>
+              <PaginationLink onClick={() => setPage(p)}>{p}</PaginationLink>
+            </PaginationItem>
           );
         })}
 
-        {/* Next */}
-        <li
-          className={`${styles.pageItem} ${
-            page === totalPages ? styles.disabled : ""
-          }`}
-        >
-          <button onClick={() => page < totalPages && setPage(page + 1)}>›</button>
-        </li>
-      </ul>
+        {/* Next button */}
+        <PaginationItem disabled={page === totalPages}>
+          <PaginationLink next onClick={() => setPage(page + 1)} />
+        </PaginationItem>
+      </Pagination>
     </div>
   );
 };

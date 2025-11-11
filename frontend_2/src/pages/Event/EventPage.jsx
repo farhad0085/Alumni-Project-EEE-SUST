@@ -4,7 +4,7 @@ import apiServices from "../../apis/events";
 import PageNumberPagination from "../../components/common/Pagination/PageNumberPagination";
 import { setPageTitle } from "../../utils";
 import styles from "./styles.module.scss";
-import Spinner from "../../components/common/Spinner/Spinner";
+import { Spinner } from "reactstrap";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const EventPage = () => {

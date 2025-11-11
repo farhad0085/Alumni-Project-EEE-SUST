@@ -5,7 +5,7 @@ import { setPageTitle } from '../../utils';
 import apiServices from '../../apis/faculty'
 import defaultMale from "../../assets/images/default-male.jpg";
 import defaultFemale from "../../assets/images/default-female.jpg";
-import Spinner from '../../components/common/Spinner/Spinner';
+import { Spinner } from "reactstrap";
 
 const FacultyStaff = () => {
   const [faculty, setFaculty] = useState([]);

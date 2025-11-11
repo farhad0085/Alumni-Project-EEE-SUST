@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import apiServices from "../../apis/events";
 import { setPageTitle } from "../../utils";
-import Spinner from "../../components/common/Spinner/Spinner";
+import { Spinner } from "reactstrap";
 import styles from "./styles.module.scss";
 import { FaCalendarAlt, FaClock, FaMapMarkerAlt } from "react-icons/fa";
 

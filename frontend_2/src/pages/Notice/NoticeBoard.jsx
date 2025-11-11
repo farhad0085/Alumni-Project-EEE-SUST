@@ -5,7 +5,7 @@ import { setPageTitle } from '../../utils';
 import noticeServices from '../../apis/notices';
 import PageNumberPagination from '../../components/common/Pagination/PageNumberPagination';
 import { FaFilePdf } from "react-icons/fa";
-import Spinner from '../../components/common/Spinner/Spinner';
+import { Spinner } from "reactstrap";
 
 const NoticeBoard = () => {
 

@@ -5,7 +5,7 @@ import defaultMale from "../../assets/images/default-male.jpg";
 import defaultFemale from "../../assets/images/default-female.jpg";
 import { setPageTitle, toTitleCase } from "../../utils";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
-import Spinner from "../../components/common/Spinner/Spinner";
+import { Spinner } from "reactstrap";
 import styles from "./styles.module.scss";
 
 const FacultyProfilePage = () => {
