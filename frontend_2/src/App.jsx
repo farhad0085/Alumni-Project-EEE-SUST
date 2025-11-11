@@ -4,7 +4,6 @@ import Home from './pages/Home';
 import Alumni from './pages/Alumni';
 import NoticeBoard from './pages/Notice/NoticeBoard';
 import StudyMaterials from './pages/StudyMaterials';
-import Labs from './pages/Labs';
 import FacultyStaff from './pages/Faculty/FacultyStaff';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -12,6 +11,8 @@ import NotFound from './pages/NotFound';
 import EventPage from './pages/Event/EventPage';
 import EventDetailPage from './pages/Event/EventDetailPage';
 import FacultyProfilePage from './pages/Faculty/FacultyProfilePage';
+import LabsProjectsPage from './pages/Projects/LabsProjectsPage';
+import LabsProjectsDetailPage from './pages/Projects/LabsProjectsDetailPage';
 
 
 function App() {
@@ -23,7 +24,8 @@ function App() {
         <Route path="alumni" element={<Alumni />} />
         <Route path="notice-board" element={<NoticeBoard />} />
         <Route path="study-materials" element={<StudyMaterials />} />
-        <Route path="labs-projects" element={<Labs />} />
+        <Route exact path="labs-projects" element={<LabsProjectsPage />} />
+        <Route exact path="/labs-projects/:type/:id" element={<LabsProjectsDetailPage />} />
         <Route path="events" element={<EventPage />} />
         <Route path="events/:id" element={<EventDetailPage />} />
         <Route path="faculty-staff" element={<FacultyStaff />} />

@@ -24,7 +24,7 @@ const cardData = [
   {
     title: 'Labs & Projects',
     text: 'Explore our state-of-the-art labs and projects.',
-    link: '/labs',
+    link: '/labs-projects',
     icon: <FiCpu />,
   },
   {
