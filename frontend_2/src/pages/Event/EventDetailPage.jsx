@@ -2,9 +2,20 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import apiServices from "../../apis/events";
 import { setPageTitle } from "../../utils";
-import { Spinner } from "reactstrap";
-import styles from "./styles.module.scss";
-import { FaCalendarAlt, FaClock, FaMapMarkerAlt } from "react-icons/fa";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardBody,
+  CardImg,
+  CardTitle,
+  CardText,
+  Spinner,
+  Breadcrumb,
+  BreadcrumbItem,
+  Badge,
+} from "reactstrap";
 
 const EventDetailPage = () => {
   const { id } = useParams();
@@ -29,97 +40,128 @@ const EventDetailPage = () => {
 
   if (loading) {
     return (
-      <Spinner />
+      <div className="d-flex justify-content-center my-5">
+        <Spinner color="primary" />
+      </div>
     );
   }
 
   if (!item) {
     return (
-      <div className={styles.notFound}>
-        <p>Event not found.</p>
-        <Link to="/events" className={styles.backBtn}>
-          Back to Events
+      <Container className="text-center">
+        <p className="text-muted">Event not found.</p>
+        <Link to="/events">
+          <button className="btn btn-primary">Back to Events</button>
         </Link>
-      </div>
+      </Container>
     );
   }
 
   return (
-    <div className={styles.card}>
-      <div className={styles.cardContent}>
-        <div className={styles.left}>
-          {item.banner && (
-            <img
-              src={item.banner}
-              alt={item.title}
-              className={styles.banner}
-            />
+    <Container>
+      {/* Breadcrumb */}
+      <Breadcrumb>
+        <BreadcrumbItem>
+          <Link to="/">Home</Link>
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+          <Link to="/events">Events</Link>
+        </BreadcrumbItem>
+        <BreadcrumbItem active>{item.title}</BreadcrumbItem>
+      </Breadcrumb>
+
+      <Card className="shadow-lg">
+        <CardBody>
+          <Row>
+            {/* Left: Banner */}
+            <Col md="5" className="text-center mb-3 mb-md-0">
+              {item.banner && (
+                <CardImg
+                  top
+                  src={item.banner}
+                  alt={item.title}
+                  style={{
+                    maxHeight: "320px",
+                    objectFit: "cover",
+                    borderRadius: "8px",
+                  }}
+                />
+              )}
+            </Col>
+
+            {/* Right: Info */}
+            <Col md="7">
+              <CardTitle tag="h2" className="text-primary mb-3">
+                {item.title}
+              </CardTitle>
+
+              {item.summary && (
+                <CardText className="text-muted mb-3">{item.summary}</CardText>
+              )}
+
+              {/* Event Meta */}
+              <ul className="list-unstyled text-muted">
+                {item.date && (
+                  <li>
+                    <i className="fas fa-calendar-alt mr-2 text-primary"></i>
+                    {new Date(item.date).toLocaleDateString()}
+                  </li>
+                )}
+                {item.time && (
+                  <li>
+                    <i className="fas fa-clock mr-2 text-primary"></i>
+                    {item.time.substring(0, 5)}
+                  </li>
+                )}
+                {item.location && (
+                  <li>
+                    <i className="fas fa-map-marker-alt mr-2 text-primary"></i>
+                    {item.location}
+                  </li>
+                )}
+              </ul>
+
+              {/* Optional tags (if you add them later) */}
+              {item.tags?.length > 0 && (
+                <div className="mt-2">
+                  {item.tags.map((tag, i) => (
+                    <Badge key={i} color="info" className="me-1">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              )}
+            </Col>
+          </Row>
+
+          {/* Full Description */}
+          {item.description && (
+            <Row>
+              <Col>
+                <h3 className="mt-4 mb-2">About this Event</h3>
+                <hr />
+                <div
+                  dangerouslySetInnerHTML={{ __html: item.description }}
+                />
+              </Col>
+            </Row>
           )}
-        </div>
 
-        <div className={styles.right}>
-          <h2 className={styles.title}>{item.title}</h2>
-
-          {item.summary && (
-            <p className={styles.summary}>{item.summary}</p>
+          {/* Published Date */}
+          {item.created_at && (
+            <Row>
+              <Col>
+                <p className="text-muted mt-4">
+                  <small>
+                    Published on {new Date(item.created_at).toLocaleDateString()}
+                  </small>
+                </p>
+              </Col>
+            </Row>
           )}
-
-          <ul className={styles.meta}>
-            {item.date && (
-              <li>
-                <FaCalendarAlt className={styles.icon} />
-                {new Date(item.date).toLocaleDateString()}
-              </li>
-            )}
-            {item.time && (
-              <li>
-                <FaClock className={styles.icon} />
-                {item.time.substring(0, 5)}
-              </li>
-            )}
-            {item.location && (
-              <li>
-                <FaMapMarkerAlt className={styles.icon} />
-                {item.location}
-              </li>
-            )}
-          </ul>
-
-          {/* Tags (optional future feature) */}
-          {item.tags?.length > 0 && (
-            <div className={styles.tags}>
-              {item.tags.map((tag, i) => (
-                <span key={i} className={styles.tag}>
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Full Description */}
-      {item.description && (
-        <div className={styles.section}>
-          <h3>About this Event</h3>
-          <hr />
-          <div
-            dangerouslySetInnerHTML={{ __html: item.description }}
-            className={styles.description}
-          />
-        </div>
-      )}
-
-      {/* Published */}
-      {item.created_at && (
-        <p className={styles.published}>
-          <small>
-            Published on{" "}
-            {new Date(item.created_at).toLocaleDateString()}
-          </small>
-        </p>
-      )}
-    </div>
+        </CardBody>
+      </Card>
+    </Container>
   );
 };
 

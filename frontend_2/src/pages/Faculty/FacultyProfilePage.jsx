@@ -31,7 +31,9 @@ const FacultyProfilePage = () => {
 
   if (loading) {
     return (
-      <Spinner />
+      <div className="d-flex justify-content-center my-5">
+        <Spinner color="primary" />
+      </div>
     );
   }
 

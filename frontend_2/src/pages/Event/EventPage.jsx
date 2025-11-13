@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom'
 import apiServices from "../../apis/events";
 import PageNumberPagination from "../../components/common/Pagination/PageNumberPagination";
 import { setPageTitle } from "../../utils";
-import styles from "./styles.module.scss";
-import { Spinner } from "reactstrap";
-import { FaMapMarkerAlt } from "react-icons/fa";
+import {
+  Badge,
+  Breadcrumb,
+  BreadcrumbItem, Button,
+  Card, CardBody, CardImg,
+  CardText, CardTitle, Col,
+  Container, Row, Spinner
+} from "reactstrap";
 
 const EventPage = () => {
   const [events, setEvents] = useState([]);
@@ -37,69 +42,96 @@ const EventPage = () => {
   }, [page]);
 
   return (
-    <div>
+    <Container className="mt-4">
+      {/* Breadcrumb */}
+      <Breadcrumb>
+        <BreadcrumbItem>
+          <Link to="/">Home</Link>
+        </BreadcrumbItem>
+        <BreadcrumbItem active>Events</BreadcrumbItem>
+      </Breadcrumb>
 
-      <h1 className="page-title">Events</h1>
+      {/* Header */}
+      <Row className="mb-4">
+        <Col>
+          <h1 className="page-title">Upcoming Events</h1>
+          <p className="text-muted">
+            Stay engaged with departmental seminars, workshops, and special events.
+          </p>
+        </Col>
+      </Row>
+
       {/* Loading */}
       {loading ? (
-        <Spinner />
+        <div className="d-flex justify-content-center my-5">
+          <Spinner color="primary" />
+        </div>
       ) : (
         <>
-          <div className={styles.grid}>
+          <Row>
             {events.length > 0 ? (
               events.map((event) => (
-                <div className={styles.card} key={event.id}>
-                  {event.banner && (
-                    <img
-                      src={event.banner}
-                      alt={event.title}
-                      className={styles.cardImage}
-                    />
-                  )}
+                <Col md="6" lg="4" className="mb-4" key={event.id}>
+                  <Card className="shadow-sm h-100">
+                    {event.banner && (
+                      <CardImg
+                        top
+                        alt={event.title}
+                        src={event.banner}
+                        style={{ height: "180px", objectFit: "cover" }}
+                      />
+                    )}
+                    <CardBody>
+                      <CardTitle tag="h4" className="mb-2">
+                        {event.title}
+                      </CardTitle>
 
-                  <div className={styles.cardBody}>
-                    <h4 className={styles.cardTitle}>{event.title}</h4>
+                      <div className="mb-2">
+                        <Badge color="info" pill className="me-2">
+                          {new Date(event.date).toLocaleDateString()}
+                        </Badge>
+                        {event.time && (
+                          <Badge color="secondary" pill>
+                            {event.time}
+                          </Badge>
+                        )}
+                      </div>
 
-                    <div className={styles.badgeRow}>
-                      <span className={`${styles.badge} ${styles.badgeInfo}`}>
-                        {new Date(event.date).toLocaleDateString()}
-                      </span>
-
-                      {event.time && (
-                        <span className={`${styles.badge} ${styles.badgeSecondary}`}>
-                          {event.time}
-                        </span>
+                      {event.location && (
+                        <p className="text-muted mb-2">
+                          <i className="fas fa-map-marker-alt mr-2 text-danger"></i>
+                          {event.location}
+                        </p>
                       )}
-                    </div>
 
-                    {event.location && (
-                      <p className={styles.location}>
-                        <FaMapMarkerAlt className={styles.locationIcon} />
-                        {event.location}
-                      </p>
-                    )}
+                      {/* Summary instead of description */}
+                      <CardText className="flex-grow-1">
+                        {event.summary?.length > 150
+                          ? event.summary.substring(0, 150) + "..."
+                          : event.summary}
+                      </CardText>
 
-                    <p className={styles.summary}>
-                      {event.summary?.length > 150
-                        ? event.summary.substring(0, 150) + "..."
-                        : event.summary}
-                    </p>
-
-                    {event.description && (
-                      <Link
-                        to={`/events/${event.id}`}
-                        className={styles.btnPrimary}
-                      >
-                        Learn More
-                      </Link>
-                    )}
-                  </div>
-                </div>
+                      {event.description && (
+                        <Button
+                          color="primary"
+                          size="sm"
+                          tag={Link}
+                          to={`/events/${event.id}`}
+                          className="mt-2 w-100"
+                        >
+                          Learn More
+                        </Button>
+                      )}
+                    </CardBody>
+                  </Card>
+                </Col>
               ))
             ) : (
-              <p className={styles.noEvents}>No upcoming events available.</p>
+              <Col>
+                <p className="text-muted">No upcoming events available.</p>
+              </Col>
             )}
-          </div>
+          </Row>
 
           {/* Pagination */}
           {totalPages > 1 && (
@@ -112,7 +144,7 @@ const EventPage = () => {
           )}
         </>
       )}
-    </div>
+    </Container>
   );
 };
 

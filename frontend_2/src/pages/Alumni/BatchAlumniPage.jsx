@@ -84,7 +84,7 @@ const BatchAlumniPage = () => {
   }
 
   return (
-    <Container className="mt-4">
+    <Container>
       {/* Breadcrumb */}
       <Breadcrumb>
         <BreadcrumbItem>

@@ -62,7 +62,7 @@ const AlumniProfilePage = () => {
     (alumni.gender === "female" ? defaultFemale : defaultMale);
 
   return (
-    <Container className="mt-4">
+    <Container>
       {/* Breadcrumb */}
       <Breadcrumb>
         <BreadcrumbItem>
@@ -126,7 +126,7 @@ const AlumniProfilePage = () => {
 
             {/* Right Column: Info */}
             <Col md="8">
-              <CardTitle tag="h3" className="text-primary mb-3">
+              <CardTitle tag="h3" className="mb-3">
                 Alumni Information
               </CardTitle>
 

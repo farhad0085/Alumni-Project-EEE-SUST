@@ -56,7 +56,11 @@ const FacultyStaff = () => {
       <h1 className="page-title">Our Faculty & Staff</h1>
       <p>Our department is proud to have a team of dedicated and experienced faculty members who are experts in their respective fields.</p>
       <br />
-      {loading ? <Spinner /> : (
+      {loading ? (
+        <div className="d-flex justify-content-center my-5">
+          <Spinner color="primary" />
+        </div>
+      ) : (
         <>
           <div className={styles.facultyGrid}>
             <FacultyCard member={head} />

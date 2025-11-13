@@ -51,7 +51,11 @@ const NoticeBoard = () => {
         <BreadcrumbItem active>Notices</BreadcrumbItem>
       </Breadcrumb>
       <h1 className="page-title">Notice Board</h1>
-      {loading ? <Spinner /> : (
+      {loading ? (
+        <div className="d-flex justify-content-center my-5">
+          <Spinner color="primary" />
+        </div>
+      ) : (
         <div className={styles.listView}>
           {notices.map(notice => (
             <div key={notice.id} className={styles.listItem}>
