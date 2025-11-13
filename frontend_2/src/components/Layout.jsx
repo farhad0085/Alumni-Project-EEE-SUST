@@ -1,7 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import Breadcrumb from './Breadcrumb';
 import styles from '../styles/scss/Layout.module.scss';
 
 const Layout = () => {
@@ -13,8 +12,6 @@ const Layout = () => {
       <Header />
 
       <main className={styles.main}>
-        {!isHomePage && <Breadcrumb />}
-
         {isHomePage ? (
           <Outlet />
         ) : (

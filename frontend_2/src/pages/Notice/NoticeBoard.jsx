@@ -5,7 +5,12 @@ import { setPageTitle } from '../../utils';
 import noticeServices from '../../apis/notices';
 import PageNumberPagination from '../../components/common/Pagination/PageNumberPagination';
 import { FaFilePdf } from "react-icons/fa";
-import { Spinner } from "reactstrap";
+import { Link } from 'react-router-dom'
+import {
+  Spinner,
+  Breadcrumb,
+  BreadcrumbItem,
+} from "reactstrap";
 
 const NoticeBoard = () => {
 
@@ -38,6 +43,13 @@ const NoticeBoard = () => {
 
   return (
     <div>
+      {/* Breadcrumb */}
+      <Breadcrumb>
+        <BreadcrumbItem>
+          <Link to="/">Home</Link>
+        </BreadcrumbItem>
+        <BreadcrumbItem active>Notices</BreadcrumbItem>
+      </Breadcrumb>
       <h1 className="page-title">Notice Board</h1>
       {loading ? <Spinner /> : (
         <div className={styles.listView}>

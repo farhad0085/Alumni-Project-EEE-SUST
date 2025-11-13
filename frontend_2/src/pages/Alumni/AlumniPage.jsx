@@ -78,8 +78,7 @@ const AlumniPage = () => {
   };
 
   return (
-      <Container className="mt-4">
-        {/* Breadcrumb */}
+      <Container>
         <Breadcrumb>
           <BreadcrumbItem>
             <Link to="/">Home</Link>
@@ -87,7 +86,7 @@ const AlumniPage = () => {
           <BreadcrumbItem active>Batches</BreadcrumbItem>
         </Breadcrumb>
 
-        <h1 className="display-5 text-primary mb-4">Our Batches</h1>
+        <h1 className="page-title">Our Batches</h1>
 
         {loading ? (
           <div className="d-flex justify-content-center my-5">

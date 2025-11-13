@@ -20,6 +20,15 @@ body {
   overflow-x: hidden;
 }
 
+a {
+  text-decoration: none !important;
+}
+
+.page-title {
+  font-weight: bold;
+  font-size: 2em;
+}
+
 .container {
   @include container;
 }
