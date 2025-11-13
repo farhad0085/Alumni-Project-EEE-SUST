@@ -69,7 +69,7 @@ const Home = () => {
 
       <div id="explore" className={`page-content ${styles.pageContent}`}>
         <div className="container">
-          <h2 className="section-title">Explore Our Department</h2>
+          <h2 className={styles.sectionTitle}>Explore Our Department</h2>
           <div className={styles.homeCardsGrid}>
             {cardData.map((card, index) => (
               <Link to={card.link} key={index} className={styles.card}>
@@ -88,7 +88,7 @@ const Home = () => {
         aria-labelledby="highlights-title"
       >
         <div className="container">
-          <h2 id="highlights-title" className="section-title">
+          <h2 id="highlights-title" className={styles.sectionTitle}>
             Department Highlights
           </h2>
           <div className={styles.highlightsGrid}>
