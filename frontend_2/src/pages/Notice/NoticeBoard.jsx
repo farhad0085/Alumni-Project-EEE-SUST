@@ -11,6 +11,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
+import Layout from '../../components/Layout';
 
 const NoticeBoard = () => {
 
@@ -42,7 +43,7 @@ const NoticeBoard = () => {
   }, [page]);
 
   return (
-    <div>
+    <Layout>
       {/* Breadcrumb */}
       <Breadcrumb>
         <BreadcrumbItem>
@@ -91,7 +92,7 @@ const NoticeBoard = () => {
           maxVisible={5}
         />
       )}
-    </div>
+    </Layout>
   );
 };
 

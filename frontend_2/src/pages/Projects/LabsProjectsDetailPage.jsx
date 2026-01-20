@@ -15,6 +15,7 @@ import {
 } from "reactstrap";
 import apiServices from "../../apis/labsProjects";
 import { setPageTitle } from "../../utils";
+import Layout from "../../components/Layout";
 
 const LabsProjectsDetailPage = () => {
   const { type, id } = useParams();
@@ -60,7 +61,7 @@ const LabsProjectsDetailPage = () => {
   }
 
   return (
-    <Container className="mt-4">
+    <Layout>
       {/* Breadcrumb */}
       <Breadcrumb>
         <BreadcrumbItem>
@@ -107,7 +108,7 @@ const LabsProjectsDetailPage = () => {
           )}
         </CardBody>
       </Card>
-    </Container>
+    </Layout>
   );
 };
 

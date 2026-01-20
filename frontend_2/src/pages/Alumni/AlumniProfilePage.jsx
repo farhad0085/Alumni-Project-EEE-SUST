@@ -17,6 +17,7 @@ import {
 import apiServices from "../../apis/alumni";
 import defaultMale from "../../assets/images/default-male.jpg";
 import defaultFemale from "../../assets/images/default-female.jpg";
+import Layout from "../../components/Layout";
 
 const AlumniProfilePage = () => {
   const { id } = useParams();
@@ -62,7 +63,7 @@ const AlumniProfilePage = () => {
     (alumni.gender === "female" ? defaultFemale : defaultMale);
 
   return (
-    <Container>
+    <Layout>
       {/* Breadcrumb */}
       <Breadcrumb>
         <BreadcrumbItem>
@@ -205,7 +206,7 @@ const AlumniProfilePage = () => {
           )}
         </CardBody>
       </Card>
-    </Container>
+    </Layout>
   );
 };
 

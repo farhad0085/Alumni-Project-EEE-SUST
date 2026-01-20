@@ -16,6 +16,7 @@ import {
   BreadcrumbItem,
   Badge,
 } from "reactstrap";
+import Layout from "../../components/Layout";
 
 const EventDetailPage = () => {
   const { id } = useParams();
@@ -58,110 +59,112 @@ const EventDetailPage = () => {
   }
 
   return (
-    <Container>
-      {/* Breadcrumb */}
-      <Breadcrumb>
-        <BreadcrumbItem>
-          <Link to="/">Home</Link>
-        </BreadcrumbItem>
-        <BreadcrumbItem>
-          <Link to="/events">Events</Link>
-        </BreadcrumbItem>
-        <BreadcrumbItem active>{item.title}</BreadcrumbItem>
-      </Breadcrumb>
+    <Layout>
+      <Container>
+        {/* Breadcrumb */}
+        <Breadcrumb>
+          <BreadcrumbItem>
+            <Link to="/">Home</Link>
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+            <Link to="/events">Events</Link>
+          </BreadcrumbItem>
+          <BreadcrumbItem active>{item.title}</BreadcrumbItem>
+        </Breadcrumb>
 
-      <Card className="shadow-lg">
-        <CardBody>
-          <Row>
-            {/* Left: Banner */}
-            <Col md="5" className="text-center mb-3 mb-md-0">
-              {item.banner && (
-                <CardImg
-                  top
-                  src={item.banner}
-                  alt={item.title}
-                  style={{
-                    maxHeight: "320px",
-                    objectFit: "cover",
-                    borderRadius: "8px",
-                  }}
-                />
-              )}
-            </Col>
-
-            {/* Right: Info */}
-            <Col md="7">
-              <CardTitle tag="h2" className="text-primary mb-3">
-                {item.title}
-              </CardTitle>
-
-              {item.summary && (
-                <CardText className="text-muted mb-3">{item.summary}</CardText>
-              )}
-
-              {/* Event Meta */}
-              <ul className="list-unstyled text-muted">
-                {item.date && (
-                  <li>
-                    <i className="fas fa-calendar-alt mr-2 text-primary"></i>
-                    {new Date(item.date).toLocaleDateString()}
-                  </li>
-                )}
-                {item.time && (
-                  <li>
-                    <i className="fas fa-clock mr-2 text-primary"></i>
-                    {item.time.substring(0, 5)}
-                  </li>
-                )}
-                {item.location && (
-                  <li>
-                    <i className="fas fa-map-marker-alt mr-2 text-primary"></i>
-                    {item.location}
-                  </li>
-                )}
-              </ul>
-
-              {/* Optional tags (if you add them later) */}
-              {item.tags?.length > 0 && (
-                <div className="mt-2">
-                  {item.tags.map((tag, i) => (
-                    <Badge key={i} color="info" className="me-1">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              )}
-            </Col>
-          </Row>
-
-          {/* Full Description */}
-          {item.description && (
+        <Card className="shadow-lg">
+          <CardBody>
             <Row>
-              <Col>
-                <h3 className="mt-4 mb-2">About this Event</h3>
-                <hr />
-                <div
-                  dangerouslySetInnerHTML={{ __html: item.description }}
-                />
+              {/* Left: Banner */}
+              <Col md="5" className="text-center mb-3 mb-md-0">
+                {item.banner && (
+                  <CardImg
+                    top
+                    src={item.banner}
+                    alt={item.title}
+                    style={{
+                      maxHeight: "320px",
+                      objectFit: "cover",
+                      borderRadius: "8px",
+                    }}
+                  />
+                )}
+              </Col>
+
+              {/* Right: Info */}
+              <Col md="7">
+                <CardTitle tag="h2" className="text-primary mb-3">
+                  {item.title}
+                </CardTitle>
+
+                {item.summary && (
+                  <CardText className="text-muted mb-3">{item.summary}</CardText>
+                )}
+
+                {/* Event Meta */}
+                <ul className="list-unstyled text-muted">
+                  {item.date && (
+                    <li>
+                      <i className="fas fa-calendar-alt mr-2 text-primary"></i>
+                      {new Date(item.date).toLocaleDateString()}
+                    </li>
+                  )}
+                  {item.time && (
+                    <li>
+                      <i className="fas fa-clock mr-2 text-primary"></i>
+                      {item.time.substring(0, 5)}
+                    </li>
+                  )}
+                  {item.location && (
+                    <li>
+                      <i className="fas fa-map-marker-alt mr-2 text-primary"></i>
+                      {item.location}
+                    </li>
+                  )}
+                </ul>
+
+                {/* Optional tags (if you add them later) */}
+                {item.tags?.length > 0 && (
+                  <div className="mt-2">
+                    {item.tags.map((tag, i) => (
+                      <Badge key={i} color="info" className="me-1">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                )}
               </Col>
             </Row>
-          )}
 
-          {/* Published Date */}
-          {item.created_at && (
-            <Row>
-              <Col>
-                <p className="text-muted mt-4">
-                  <small>
-                    Published on {new Date(item.created_at).toLocaleDateString()}
-                  </small>
-                </p>
-              </Col>
-            </Row>
-          )}
-        </CardBody>
-      </Card>
-    </Container>
+            {/* Full Description */}
+            {item.description && (
+              <Row>
+                <Col>
+                  <h3 className="mt-4 mb-2">About this Event</h3>
+                  <hr />
+                  <div
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  />
+                </Col>
+              </Row>
+            )}
+
+            {/* Published Date */}
+            {item.created_at && (
+              <Row>
+                <Col>
+                  <p className="text-muted mt-4">
+                    <small>
+                      Published on {new Date(item.created_at).toLocaleDateString()}
+                    </small>
+                  </p>
+                </Col>
+              </Row>
+            )}
+          </CardBody>
+        </Card>
+      </Container>
+    </Layout>
   );
 };
 

@@ -6,6 +6,7 @@ import apiServices from '../../apis/faculty'
 import defaultMale from "../../assets/images/default-male.jpg";
 import defaultFemale from "../../assets/images/default-female.jpg";
 import { Spinner } from "reactstrap";
+import Layout from '../../components/Layout';
 
 const FacultyStaff = () => {
   const [faculty, setFaculty] = useState([]);
@@ -52,7 +53,7 @@ const FacultyStaff = () => {
   }
 
   return (
-    <div>
+    <Layout>
       <h1 className="page-title">Our Faculty & Staff</h1>
       <p>Our department is proud to have a team of dedicated and experienced faculty members who are experts in their respective fields.</p>
       <br />
@@ -80,7 +81,7 @@ const FacultyStaff = () => {
         </>
       )}
 
-    </div>
+    </Layout>
   );
 };
 

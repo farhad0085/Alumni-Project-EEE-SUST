@@ -15,6 +15,7 @@ import apiServices from "../../apis/alumni";
 import AlumniCard from "../../components/Alumni/AlumniCard";
 import { setPageTitle } from "../../utils";
 import PageNumberPagination from "../../components/common/Pagination/PageNumberPagination";
+import Layout from "../../components/Layout";
 
 const BatchAlumniPage = () => {
   const { session } = useParams();
@@ -84,7 +85,7 @@ const BatchAlumniPage = () => {
   }
 
   return (
-    <Container>
+    <Layout>
       {/* Breadcrumb */}
       <Breadcrumb>
         <BreadcrumbItem>
@@ -166,7 +167,7 @@ const BatchAlumniPage = () => {
           )}
         </>
       )}
-    </Container>
+    </Layout>
   );
 };
 

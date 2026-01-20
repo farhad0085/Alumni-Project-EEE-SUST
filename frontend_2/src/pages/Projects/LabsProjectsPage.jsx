@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  Container,
   Row,
   Col,
   Card,
@@ -16,6 +15,7 @@ import { Link } from "react-router-dom";
 import apiServices from "../../apis/labsProjects";
 import PageNumberPagination from "../../components/common/Pagination/PageNumberPagination";
 import { setPageTitle } from "../../utils";
+import Layout from "../../components/Layout";
 
 
 const LabsProjectsPage = () => {
@@ -90,7 +90,7 @@ const LabsProjectsPage = () => {
   };
 
   return (
-    <Container className="mt-4">
+    <Layout>
       <Breadcrumb>
         <BreadcrumbItem>
           <Link to="/">Home</Link>
@@ -136,7 +136,7 @@ const LabsProjectsPage = () => {
           )}
         </>
       )}
-    </Container>
+    </Layout>
   );
 };
 

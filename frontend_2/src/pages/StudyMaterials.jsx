@@ -1,12 +1,14 @@
-import React from 'react';
+import Layout from '../components/Layout';
 
 const StudyMaterials = () => {
-    return (
-        <div>
-            <h1 className="page-title">Study Materials</h1>
-            <p>This section is under construction. Soon you will find lecture notes, tutorials, and other reference materials here.</p>
-        </div>
-    );
+  return (
+    <Layout>
+      <div>
+        <h1 className="page-title">Study Materials</h1>
+        <p>This section is under construction. Soon you will find lecture notes, tutorials, and other reference materials here.</p>
+      </div>
+    </Layout>
+  );
 };
 
 export default StudyMaterials;

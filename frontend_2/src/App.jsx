@@ -21,18 +21,18 @@ function App() {
     <Switch>
       {/* Main layout */}
       <Route exact path="/" component={Home} />
-      <Route exact path="alumni" component={AlumniPage} />
-      <Route exact path="alumni/:id" component={AlumniProfilePage} />
-      <Route exact path="batches/:session" component={BatchAlumniPage} />
+      <Route exact path="/alumni" component={AlumniPage} />
+      <Route exact path="/alumni/:id" component={AlumniProfilePage} />
+      <Route exact path="/batches/:session" component={BatchAlumniPage} />
 
-      <Route path="notice-board" component={NoticeBoard} />
-      <Route path="study-materials" component={StudyMaterials} />
-      <Route exact path="labs-projects" component={LabsProjectsPage} />
-      <Route exact path="labs-projects/:type/:id" component={LabsProjectsDetailPage} />
-      <Route path="events" component={EventPage} />
-      <Route path="events/:id" component={EventDetailPage} />
-      <Route path="faculty-staff" component={FacultyStaff} />
-      <Route path="faculty-profile/:id" component={FacultyProfilePage} />
+      <Route not path="/notice-board" component={NoticeBoard} />
+      <Route path="/study-materials" component={StudyMaterials} />
+      <Route exact path="/labs-projects" component={LabsProjectsPage} />
+      <Route exact path="/labs-projects/:type(lab|project)/:id" component={LabsProjectsDetailPage} />
+      <Route exact path="/events" component={EventPage} />
+      <Route exact path="/events/:id" component={EventDetailPage} />
+      <Route path="/faculty-staff" component={FacultyStaff} />
+      <Route path="/faculty-profile/:id" component={FacultyProfilePage} />
 
       {/* Routes outside layout */}
       <Route path="/login" component={LoginPage} />

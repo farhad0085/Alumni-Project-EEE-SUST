@@ -9,8 +9,9 @@ import {
   BreadcrumbItem, Button,
   Card, CardBody, CardImg,
   CardText, CardTitle, Col,
-  Container, Row, Spinner
+  Row, Spinner
 } from "reactstrap";
+import Layout from "../../components/Layout";
 
 const EventPage = () => {
   const [events, setEvents] = useState([]);
@@ -42,7 +43,7 @@ const EventPage = () => {
   }, [page]);
 
   return (
-    <Container className="mt-4">
+    <Layout>
       {/* Breadcrumb */}
       <Breadcrumb>
         <BreadcrumbItem>
@@ -144,7 +145,7 @@ const EventPage = () => {
           )}
         </>
       )}
-    </Container>
+    </Layout>
   );
 };
 

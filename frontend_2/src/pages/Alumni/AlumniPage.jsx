@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  Container,
   Row,
   Col,
   Card,
@@ -15,6 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import apiServices from "../../apis/alumni";
 import { setPageTitle } from "../../utils";
+import Layout from "../../components/Layout";
 
 const AlumniPage = () => {
   const [loading, setLoading] = useState(false);
@@ -78,7 +78,7 @@ const AlumniPage = () => {
   };
 
   return (
-      <Container>
+      <Layout>
         <Breadcrumb>
           <BreadcrumbItem>
             <Link to="/">Home</Link>
@@ -133,7 +133,7 @@ const AlumniPage = () => {
             ))}
           </Row>
         )}
-      </Container>
+      </Layout>
   );
 };
 

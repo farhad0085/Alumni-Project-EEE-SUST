@@ -7,6 +7,7 @@ import { setPageTitle, toTitleCase } from "../../utils";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
 import { Spinner } from "reactstrap";
 import styles from "./styles.module.scss";
+import Layout from "../../components/Layout";
 
 const FacultyProfilePage = () => {
   const { id } = useParams();
@@ -52,93 +53,95 @@ const FacultyProfilePage = () => {
     faculty.photo || (faculty.gender === "female" ? defaultFemale : defaultMale);
 
   return (
-    <div className={styles.card}>
-      <div className={styles.cardBody}>
-        <div className={styles.cardContent}>
-          {/* Left Column: Info */}
-          <div className={styles.left}>
-            <h2 className={styles.title}>{faculty.name}</h2>
+    <Layout>
+      <div className={styles.card}>
+        <div className={styles.cardBody}>
+          <div className={styles.cardContent}>
+            {/* Left Column: Info */}
+            <div className={styles.left}>
+              <h2 className={styles.title}>{faculty.name}</h2>
 
-            <div className={styles.details}>
-              <p>
-                <strong>Designation:</strong> {faculty.designation}
-              </p>
-
-              {faculty.email && (
+              <div className={styles.details}>
                 <p>
-                  <strong>Email:</strong>{" "}
-                  <a href={`mailto:${faculty.email}`}>{faculty.email}</a>
+                  <strong>Designation:</strong> {faculty.designation}
                 </p>
-              )}
 
-              {faculty.phone && (
-                <p>
-                  <strong>Phone:</strong>{" "}
-                  <a href={`tel:${faculty.phone}`}>{faculty.phone}</a>
-                </p>
-              )}
+                {faculty.email && (
+                  <p>
+                    <strong>Email:</strong>{" "}
+                    <a href={`mailto:${faculty.email}`}>{faculty.email}</a>
+                  </p>
+                )}
 
-              {faculty.gender && (
-                <p>
-                  <strong>Gender:</strong> {toTitleCase(faculty.gender)}
-                </p>
-              )}
+                {faculty.phone && (
+                  <p>
+                    <strong>Phone:</strong>{" "}
+                    <a href={`tel:${faculty.phone}`}>{faculty.phone}</a>
+                  </p>
+                )}
+
+                {faculty.gender && (
+                  <p>
+                    <strong>Gender:</strong> {toTitleCase(faculty.gender)}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            {/* Right Column: Photo + Buttons */}
+            <div className={styles.right}>
+              <img
+                src={photo}
+                alt={faculty.name}
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src =
+                    faculty.gender === "female"
+                      ? defaultFemale
+                      : defaultMale;
+                }}
+                className={styles.profileImage}
+              />
+
+              <p className={styles.facultyName}>{faculty.name}</p>
+
+              <div className={styles.actionButtons}>
+                {faculty.email && (
+                  <a
+                    href={`mailto:${faculty.email}`}
+                    className={`${styles.btn} ${styles.btnPrimary}`}
+                  >
+                    <FaEnvelope className={styles.icon} />
+                    Email
+                  </a>
+                )}
+                {faculty.phone && (
+                  <a
+                    href={`tel:${faculty.phone}`}
+                    className={`${styles.btn} ${styles.btnSuccess}`}
+                  >
+                    <FaPhone className={styles.icon} />
+                    Call
+                  </a>
+                )}
+              </div>
             </div>
           </div>
 
-          {/* Right Column: Photo + Buttons */}
-          <div className={styles.right}>
-            <img
-              src={photo}
-              alt={faculty.name}
-              onError={(e) => {
-                e.target.onerror = null;
-                e.target.src =
-                  faculty.gender === "female"
-                    ? defaultFemale
-                    : defaultMale;
-              }}
-              className={styles.profileImage}
-            />
-
-            <p className={styles.facultyName}>{faculty.name}</p>
-
-            <div className={styles.actionButtons}>
-              {faculty.email && (
-                <a
-                  href={`mailto:${faculty.email}`}
-                  className={`${styles.btn} ${styles.btnPrimary}`}
-                >
-                  <FaEnvelope className={styles.icon} />
-                  Email
-                </a>
-              )}
-              {faculty.phone && (
-                <a
-                  href={`tel:${faculty.phone}`}
-                  className={`${styles.btn} ${styles.btnSuccess}`}
-                >
-                  <FaPhone className={styles.icon} />
-                  Call
-                </a>
-              )}
+          {/* Description */}
+          {faculty.description && (
+            <div className={styles.section}>
+              <h2>Profile</h2>
+              <hr />
+              <div
+                className={styles.description}
+                dangerouslySetInnerHTML={{ __html: faculty.description }}
+              />
             </div>
-          </div>
+          )}
         </div>
-
-        {/* Description */}
-        {faculty.description && (
-          <div className={styles.section}>
-            <h2>Profile</h2>
-            <hr />
-            <div
-              className={styles.description}
-              dangerouslySetInnerHTML={{ __html: faculty.description }}
-            />
-          </div>
-        )}
       </div>
-    </div>
+    </Layout>
   );
 };
 
