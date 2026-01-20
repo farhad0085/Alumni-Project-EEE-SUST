@@ -1,11 +1,8 @@
-import { Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
+import { Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import NoticeBoard from './pages/Notice/NoticeBoard';
 import StudyMaterials from './pages/StudyMaterials';
 import FacultyStaff from './pages/Faculty/FacultyStaff';
-import Login from './pages/Login';
-import Register from './pages/Register';
 import NotFound from './pages/NotFound';
 import EventPage from './pages/Event/EventPage';
 import EventDetailPage from './pages/Event/EventDetailPage';
@@ -15,33 +12,33 @@ import LabsProjectsDetailPage from './pages/Projects/LabsProjectsDetailPage';
 import AlumniPage from './pages/Alumni/AlumniPage';
 import AlumniProfilePage from './pages/Alumni/AlumniProfilePage';
 import BatchAlumniPage from './pages/Alumni/BatchAlumniPage';
+import LoginPage from './pages/AuthPages/LoginPage/LoginPage';
+import RegisterPage from './pages/AuthPages/RegisterPage/RegisterPage';
 
 
 function App() {
   return (
-    <Routes>
+    <Switch>
       {/* Main layout */}
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route exact path="alumni" element={<AlumniPage />} />
-        <Route exact path="alumni/:id" element={<AlumniProfilePage />} />
-        <Route exact path="batches/:session" element={<BatchAlumniPage />} />
+      <Route exact path="/" component={Home} />
+      <Route exact path="alumni" component={AlumniPage} />
+      <Route exact path="alumni/:id" component={AlumniProfilePage} />
+      <Route exact path="batches/:session" component={BatchAlumniPage} />
 
-        <Route path="notice-board" element={<NoticeBoard />} />
-        <Route path="study-materials" element={<StudyMaterials />} />
-        <Route exact path="labs-projects" element={<LabsProjectsPage />} />
-        <Route exact path="labs-projects/:type/:id" element={<LabsProjectsDetailPage />} />
-        <Route path="events" element={<EventPage />} />
-        <Route path="events/:id" element={<EventDetailPage />} />
-        <Route path="faculty-staff" element={<FacultyStaff />} />
-        <Route path="faculty-profile/:id" element={<FacultyProfilePage />} />
-      </Route>
+      <Route path="notice-board" component={NoticeBoard} />
+      <Route path="study-materials" component={StudyMaterials} />
+      <Route exact path="labs-projects" component={LabsProjectsPage} />
+      <Route exact path="labs-projects/:type/:id" component={LabsProjectsDetailPage} />
+      <Route path="events" component={EventPage} />
+      <Route path="events/:id" component={EventDetailPage} />
+      <Route path="faculty-staff" component={FacultyStaff} />
+      <Route path="faculty-profile/:id" component={FacultyProfilePage} />
 
       {/* Routes outside layout */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+      <Route path="/login" component={LoginPage} />
+      <Route path="/register" component={RegisterPage} />
+      <Route path="*" component={NotFound} />
+    </Switch>
   );
 }
 

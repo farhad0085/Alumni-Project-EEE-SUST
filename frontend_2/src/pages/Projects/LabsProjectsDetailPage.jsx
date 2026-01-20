@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {
   Container,
   Row,
@@ -22,10 +22,6 @@ const LabsProjectsDetailPage = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (type !== "lab" && type !== "project") {
-      return <Navigate to="/404" />;
-    }
-
     const fetchItem = async () => {
       try {
         setLoading(true);

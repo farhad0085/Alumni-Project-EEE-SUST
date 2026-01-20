@@ -8,11 +8,11 @@ import {
 } from "reactstrap";
 import defaultMale from "../../assets/images/default-male.jpg";
 import defaultFemale from "../../assets/images/default-female.jpg";
-import { useNavigate } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const AlumniCard = ({ alumni }) => {
   const profilePicture = alumni?.profile_picture?.picture;
-  const navigate = useNavigate();
+  const history = useHistory();
 
   return (
     <Card className="shadow-sm h-100">
@@ -53,7 +53,7 @@ const AlumniCard = ({ alumni }) => {
           <Button
             color="primary"
             size="sm"
-            onClick={() => navigate(`/alumni/${alumni.id}`)}
+            onClick={() => history.push(`/alumni/${alumni.id}`)}
           >
             View Profile
           </Button>

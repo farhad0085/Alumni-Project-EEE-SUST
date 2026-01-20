@@ -1,9 +1,9 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import styles from '../styles/scss/Layout.module.scss';
 
-const Layout = () => {
+const Layout = ({ children }) => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
@@ -13,11 +13,11 @@ const Layout = () => {
 
       <main className={styles.main}>
         {isHomePage ? (
-          <Outlet />
+          children
         ) : (
           <div className={styles.pageContent}>
             <div className="container">
-              <Outlet />
+              {children}
             </div>
           </div>
         )}

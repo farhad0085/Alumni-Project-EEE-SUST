@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from '../styles/scss/Home.module.scss';
 import { FiUsers, FiClipboard, FiBookOpen, FiCpu, FiCalendar, FiBriefcase } from 'react-icons/fi';
+import Layout from '../components/Layout';
 
 const cardData = [
   {
@@ -52,7 +53,7 @@ const Home = () => {
   };
 
   return (
-    <>
+    <Layout>
       <section className={styles.hero}>
         <div className={styles.heroContent}>
           <h1>Department of Electrical and Electronic Engineering</h1>
@@ -116,7 +117,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-    </>
+    </Layout>
   );
 };
 

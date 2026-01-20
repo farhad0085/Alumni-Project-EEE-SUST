@@ -9,12 +9,18 @@ const api = axios.create({
   },
 });
 
-api.interceptors.request.use(async (config) => {
-  const token = localStorage.getItem(import.meta.env.VITE_APP_AUTH_TOKEN_KEY);
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
+export function getHeaders(additional) {
+  const userToken = localStorage.getItem(import.meta.env.VITE_APP_AUTH_TOKEN_KEY);
+
+  let headers = {
+    ...additional,
+  };
+
+  if (userToken) {
+    headers["Authorization"] = `Token ${userToken}`;
   }
-  return config;
-});
+  return headers;
+}
+
 
 export default api;
