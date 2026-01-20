@@ -100,6 +100,7 @@ const RegisterPage = () => {
                 <input
                   type={showPassword1 ? "text" : "password"}
                   required
+                  autoComplete="new-password"
                   onChange={(e) => setPassword1(e.target.value)}
                 />
                 <label>Password</label>
@@ -116,6 +117,7 @@ const RegisterPage = () => {
                 <input
                   type={showPassword2 ? "text" : "password"}
                   required
+                  autoComplete="new-password"
                   onChange={(e) => setPassword2(e.target.value)}
                 />
                 <label>Confirm Password</label>
