@@ -19,7 +19,7 @@ import RegisterPage from './pages/AuthPages/RegisterPage/RegisterPage';
 function App() {
   return (
     <Switch>
-      {/* Main layout */}
+      {/* Regular Pages */}
       <Route exact path="/" component={Home} />
       <Route exact path="/alumni" component={AlumniPage} />
       <Route exact path="/alumni/:id" component={AlumniProfilePage} />
@@ -34,7 +34,7 @@ function App() {
       <Route path="/faculty-staff" component={FacultyStaff} />
       <Route path="/faculty-profile/:id" component={FacultyProfilePage} />
 
-      {/* Routes outside layout */}
+      {/* Auth Pages */}
       <Route path="/login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
       <Route path="*" component={NotFound} />

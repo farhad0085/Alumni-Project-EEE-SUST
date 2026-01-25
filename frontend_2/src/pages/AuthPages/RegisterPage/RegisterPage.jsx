@@ -27,7 +27,7 @@ const RegisterPage = () => {
   const [session, setSession] = useState("");
 
   useEffect(() => {
-    axios.get("/api/batches/")
+    axios.get("/api/alumni/batches/")
       .then(res => setAvailableSessions(res.data?.results || []))
       .catch(() => toast.error("Failed to load sessions"));
   }, []);
