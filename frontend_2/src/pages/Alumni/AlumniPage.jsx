@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import apiServices from "../../apis/alumni";
 import { setPageTitle } from "../../utils";
 import Layout from "../../components/Layout";
+import styles from "./AlumniPage.module.scss";
 
 const AlumniPage = () => {
   const [loading, setLoading] = useState(false);
@@ -78,62 +79,73 @@ const AlumniPage = () => {
   };
 
   return (
-      <Layout>
-        <Breadcrumb>
-          <BreadcrumbItem>
-            <Link to="/">Home</Link>
-          </BreadcrumbItem>
-          <BreadcrumbItem active>Batches</BreadcrumbItem>
-        </Breadcrumb>
+    <Layout>
+      <Breadcrumb>
+        <BreadcrumbItem>
+          <Link to="/">Home</Link>
+        </BreadcrumbItem>
+        <BreadcrumbItem active>Batches</BreadcrumbItem>
+      </Breadcrumb>
 
-        <h1 className="page-title">Our Batches</h1>
+      <div className={styles.header}>
+        <h1>Our Batches</h1>
+        <p className="text-muted">
+          Browse alumni by graduating batch
+        </p>
+      </div>
 
-        {loading ? (
-          <div className="d-flex justify-content-center my-5">
-            <Spinner color="primary" />
-          </div>
-        ) : batches.length === 0 ? (
-          <p className="text-muted text-center">No batches available.</p>
-        ) : (
-          <Row>
-            {batches.map((batch) => (
-              <Col md={6} lg={4} key={batch.id} className="mb-4">
-                <Card className="shadow-sm h-100">
+      {loading ? (
+        <div className="d-flex justify-content-center my-5">
+          <Spinner color="primary" />
+        </div>
+      ) : batches.length === 0 ? (
+        <p className="text-muted text-center">No batches available.</p>
+      ) : (
+        <Row>
+          {batches.map((batch) => (
+            <Col md={6} lg={4} key={batch.id} className="mb-4">
+              <Card className={`${styles.card} h-100 border-0 shadow-sm`}>
+                <div className={styles.imageWrapper}>
                   {getBatchImage(batch)}
+                </div>
 
-                  <CardBody>
-                    <CardTitle tag="h5" className="text-primary">
-                      {batch.session}
-                      {batch.batch_name ? ` (${batch.batch_name})` : ""}
-                    </CardTitle>
+                <CardBody className="d-flex flex-column">
+                  <CardTitle tag="h5" className={styles.title}>
+                    {batch.session}
+                    {batch.batch_name && (
+                      <span className={styles.subtitle}>
+                        {" "}({batch.batch_name})
+                      </span>
+                    )}
+                  </CardTitle>
 
-                    <CardText className="text-muted">
-                      <div className="d-flex justify-content-between align-items-center">
-                        <div>
-                          <strong>Total Students:</strong> {batch.total_students}
-                        </div>
-                        <div>
-                          <strong>Total Alumni:</strong> {batch.total_alumnies}
-                        </div>
-                      </div>
-                    </CardText>
+                  <CardText className={styles.meta}>
+                    <div>
+                      <strong>{batch.total_students}</strong>
+                      <span> Students</span>
+                    </div>
+                    <div>
+                      <strong>{batch.total_alumnies}</strong>
+                      <span> Alumni</span>
+                    </div>
+                  </CardText>
 
-                    <Button
-                      color="primary"
-                      block
-                      size="sm"
-                      tag={Link}
-                      to={`/batches/${batch.session}`}
-                    >
-                      View Alumni
-                    </Button>
-                  </CardBody>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        )}
-      </Layout>
+                  <Button
+                    color="primary"
+                    size="sm"
+                    tag={Link}
+                    to={`/batches/${batch.session}`}
+                    className="mt-auto"
+                  >
+                    View Alumni →
+                  </Button>
+                </CardBody>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      )}
+    </Layout>
   );
 };
 
