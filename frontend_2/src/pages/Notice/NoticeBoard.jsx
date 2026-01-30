@@ -52,34 +52,40 @@ const NoticeBoard = () => {
         <BreadcrumbItem active>Notices</BreadcrumbItem>
       </Breadcrumb>
       <h1 className="page-title">Notice Board</h1>
+      <p className="text-muted">
+        Stay updated with the latest announcements and official notices.
+      </p>
+
       {loading ? (
         <div className="d-flex justify-content-center my-5">
           <Spinner color="primary" />
         </div>
       ) : (
         <div className={styles.listView}>
-          {notices.map(notice => (
-            <div key={notice.id} className={styles.listItem}>
-              <h3>{notice.title}</h3>
-              <div className={styles.listItemMeta}>
-                <span>Date: {notice.date}</span>
+          {notices.length > 0 ? (
+            notices.map(notice => (
+              <div key={notice.id} className={styles.listItem}>
+                <h3>{notice.title}</h3>
+                <div className={styles.listItemMeta}>
+                  <span>Date: {notice.date}</span>
+                </div>
+                <p>{notice.description}</p>
+
+                {notice.pdf && (
+                  <a
+                    className={noticeStyles.pdfButton}
+                    href={notice.pdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaFilePdf className={noticeStyles.icon} />
+                    View PDF
+                  </a>
+                )}
               </div>
-              <p>{notice.description}</p>
-
-              {notice.pdf && (
-                <a
-                  className={noticeStyles.pdfButton}
-                  href={notice.pdf}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FaFilePdf className={noticeStyles.icon} />
-                  View PDF
-                </a>
-              )}
-
-            </div>
-          ))}
+            ))) : (
+            <p className="text-muted">No notices available at the moment.</p>
+          )}
         </div>
       )}
 
