@@ -55,32 +55,41 @@ const FacultyStaff = () => {
   return (
     <Layout>
       <h1 className="page-title">Our Faculty & Staff</h1>
-      <p>Our department is proud to have a team of dedicated and experienced faculty members who are experts in their respective fields.</p>
-      <br />
+      <p className={styles.pageIntro}>
+        Our department is proud to have a team of dedicated and experienced
+        professionals shaping the future of our students.
+      </p>
+
       {loading ? (
         <div className="d-flex justify-content-center my-5">
           <Spinner color="primary" />
         </div>
       ) : (
         <>
-          <div className={styles.facultyGrid}>
-            <FacultyCard member={head} />
-          </div>
-          <h2 className={styles.sectionTitle}>Other Faculty Members</h2>
+          {head && (
+            <>
+              <h2 className={styles.sectionTitle}>Department Head</h2>
+              <div className={styles.facultyGrid}>
+                <FacultyCard member={head} highlight />
+              </div>
+            </>
+          )}
+
+          <h2 className={styles.sectionTitle}>Faculty Members</h2>
           <div className={styles.facultyGrid}>
             {otherFaculty.map((member) => (
-              <FacultyCard member={member} />
+              <FacultyCard key={member.id} member={member} />
             ))}
           </div>
-          <h2 className={styles.sectionTitle}>Our Staffs</h2>
+
+          <h2 className={styles.sectionTitle}>Staff</h2>
           <div className={styles.facultyGrid}>
             {staffs.map((member) => (
-              <FacultyCard member={member} />
+              <FacultyCard key={member.id} member={member} />
             ))}
           </div>
         </>
       )}
-
     </Layout>
   );
 };
