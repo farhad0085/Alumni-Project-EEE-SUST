@@ -1,17 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import apiServices from "../../apis/events";
 import PageNumberPagination from "../../components/common/Pagination/PageNumberPagination";
 import { setPageTitle } from "../../utils";
-import {
-  Badge,
-  Breadcrumb,
-  BreadcrumbItem, Button,
-  Card, CardBody, CardImg,
-  CardText, CardTitle, Col,
-  Row, Spinner
-} from "reactstrap";
+import { Badge, Breadcrumb, BreadcrumbItem, Spinner, Button } from "reactstrap";
 import Layout from "../../components/Layout";
+import styles from "./EventPage.module.scss";
 
 const EventPage = () => {
   const [events, setEvents] = useState([]);
@@ -23,7 +17,6 @@ const EventPage = () => {
   const totalPages = Math.ceil(count / pageSize);
   setPageTitle("Events");
 
-  // Fetch events
   useEffect(() => {
     const fetchEvents = async () => {
       setLoading(true);
@@ -53,86 +46,86 @@ const EventPage = () => {
       </Breadcrumb>
 
       {/* Header */}
-      <Row className="mb-4">
-        <Col>
-          <h1 className="page-title">Upcoming Events</h1>
-          <p className="text-muted">
-            Stay engaged with departmental seminars, workshops, and special events.
-          </p>
-        </Col>
-      </Row>
+      <div className="mb-4">
+        <h1 className={styles.pageTitle}>Upcoming Events</h1>
+        <p className={styles.subtitle}>
+          Stay engaged with departmental seminars, workshops, and special events.
+        </p>
+      </div>
 
       {/* Loading */}
       {loading ? (
         <div className="d-flex justify-content-center my-5">
           <Spinner color="primary" />
         </div>
+      ) : events.length === 0 ? (
+        <div className={styles.noEvents}>No upcoming events available.</div>
       ) : (
         <>
-          <Row>
-            {events.length > 0 ? (
-              events.map((event) => (
-                <Col md="6" lg="4" className="mb-4" key={event.id}>
-                  <Card className="shadow-sm h-100">
-                    {event.banner && (
-                      <CardImg
-                        top
-                        alt={event.title}
-                        src={event.banner}
-                        style={{ height: "180px", objectFit: "cover" }}
-                      />
-                    )}
-                    <CardBody>
-                      <CardTitle tag="h4" className="mb-2">
-                        {event.title}
-                      </CardTitle>
-
-                      <div className="mb-2">
-                        <Badge color="info" pill className="me-2">
-                          {new Date(event.date).toLocaleDateString()}
+          <div className="row">
+            {events.map(event => (
+              <div className="col-md-6 col-lg-4 mb-4" key={event.id}>
+                <div className={styles.eventCard}>
+                  {event.banner ? (
+                    <img
+                      src={event.banner}
+                      alt={event.title}
+                      className={styles.cardImg}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.replaceWith(
+                          Object.assign(document.createElement("div"), {
+                            textContent: "No Image",
+                            className: `${styles.cardImg} d-flex align-items-center justify-content-center bg-light text-muted`,
+                          })
+                        );
+                      }}
+                    />
+                  ) : (
+                    <div className={`${styles.cardImg} d-flex align-items-center justify-content-center bg-light text-muted`}>
+                      No Image
+                    </div>
+                  )}
+                  <div className={styles.cardBody}>
+                    <h4 className={styles.cardTitle}>{event.title}</h4>
+                    <div className={styles.badges}>
+                      <Badge color="success" pill>
+                        {new Date(event.date).toLocaleDateString()}
+                      </Badge>
+                      {event.time && (
+                        <Badge color="secondary" pill>
+                          {event.time}
                         </Badge>
-                        {event.time && (
-                          <Badge color="secondary" pill>
-                            {event.time}
-                          </Badge>
-                        )}
-                      </div>
-
-                      {event.location && (
-                        <p className="text-muted mb-2">
-                          <i className="fas fa-map-marker-alt mr-2 text-danger"></i>
-                          {event.location}
-                        </p>
                       )}
-
-                      {/* Summary instead of description */}
-                      <CardText className="flex-grow-1">
-                        {event.summary?.length > 150
+                    </div>
+                    {event.location && (
+                      <div className={styles.location}>
+                        <i className="fas fa-map-marker-alt"></i> {event.location}
+                      </div>
+                    )}
+                    {event.summary && (
+                      <div className={styles.summary}>
+                        {event.summary.length > 150
                           ? event.summary.substring(0, 150) + "..."
                           : event.summary}
-                      </CardText>
-
-                      {event.description && (
-                        <Button
-                          color="primary"
-                          size="sm"
-                          tag={Link}
-                          to={`/events/${event.id}`}
-                          className="mt-2 w-100"
-                        >
-                          Learn More
-                        </Button>
-                      )}
-                    </CardBody>
-                  </Card>
-                </Col>
-              ))
-            ) : (
-              <Col>
-                <p className="text-muted">No upcoming events available.</p>
-              </Col>
-            )}
-          </Row>
+                      </div>
+                    )}
+                    {event.description && (
+                      <Button
+                        color="primary"
+                        size="sm"
+                        tag={Link}
+                        to={`/events/${event.id}`}
+                        className="mt-2 w-100"
+                      >
+                        Learn More
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
 
           {/* Pagination */}
           {totalPages > 1 && (
