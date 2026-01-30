@@ -1,0 +1,87 @@
+.cardWrapper {
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.banner {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #f3f4f6;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.summary {
+  color: #475569;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.metaList {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+  color: #64748b;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+
+    i {
+      color: #3b82f6;
+      min-width: 20px;
+    }
+  }
+}
+
+.tags {
+  margin-bottom: 1.5rem;
+
+  .badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    background: #3b82f6;
+    color: #fff;
+  }
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  color: #334155;
+  font-size: 1rem;
+  line-height: 1.7;
+
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
+.published {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin-top: 2rem;
+  text-align: right;
+}
