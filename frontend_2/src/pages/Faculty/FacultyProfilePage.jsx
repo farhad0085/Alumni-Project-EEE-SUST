@@ -5,7 +5,7 @@ import defaultMale from "../../assets/images/default-male.jpg";
 import defaultFemale from "../../assets/images/default-female.jpg";
 import { setPageTitle, toTitleCase } from "../../utils";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
-import { Spinner } from "reactstrap";
+import { Spinner, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import styles from "./styles.module.scss";
 import Layout from "../../components/Layout";
 
@@ -54,6 +54,16 @@ const FacultyProfilePage = () => {
 
   return (
     <Layout>
+      {/* Breadcrumb */}
+      <Breadcrumb>
+        <BreadcrumbItem>
+          <Link to="/">Home</Link>
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+          <Link to="/faculty-staff">Faculty</Link>
+        </BreadcrumbItem>
+        <BreadcrumbItem active>{faculty.name}</BreadcrumbItem>
+      </Breadcrumb>
       <div className={styles.card}>
         <div className={styles.cardBody}>
           <div className={styles.cardContent}>

@@ -5,7 +5,7 @@ import { setPageTitle } from '../../utils';
 import apiServices from '../../apis/faculty'
 import defaultMale from "../../assets/images/default-male.jpg";
 import defaultFemale from "../../assets/images/default-female.jpg";
-import { Spinner } from "reactstrap";
+import { Spinner, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import Layout from '../../components/Layout';
 
 const FacultyStaff = () => {
@@ -54,6 +54,14 @@ const FacultyStaff = () => {
 
   return (
     <Layout>
+      {/* Breadcrumb */}
+      <Breadcrumb>
+        <BreadcrumbItem>
+          <Link to="/">Home</Link>
+        </BreadcrumbItem>
+        <BreadcrumbItem active>Faculty</BreadcrumbItem>
+      </Breadcrumb>
+
       <h1 className="page-title">Our Faculty & Staff</h1>
       <p className={styles.pageIntro}>
         Our department is proud to have a team of dedicated and experienced
