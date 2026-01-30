@@ -5,51 +5,58 @@ import {
   CardTitle,
   CardText,
   Button,
+  Badge,
 } from "reactstrap";
 import defaultMale from "../../assets/images/default-male.jpg";
 import defaultFemale from "../../assets/images/default-female.jpg";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
+import styles from "./AlumniCard.module.scss";
 
 const AlumniCard = ({ alumni }) => {
-  const profilePicture = alumni?.profile_picture?.picture;
   const history = useHistory();
+  const profilePicture = alumni?.profile_picture?.picture;
+  const fallbackImage =
+    alumni.gender === "female" ? defaultFemale : defaultMale;
 
   return (
-    <Card className="shadow-sm h-100">
-      <CardImg
-        top
-        alt="Thumbnail"
-        src={profilePicture || (alumni.gender === "female" ? defaultFemale : defaultMale)}
-        onError={(e) => {
-          e.target.onerror = null; // prevent infinite loop
-          e.target.src = alumni.gender === "female" ? defaultFemale : defaultMale;
-        }}
-        style={{ height: "225px", objectFit: "cover" }}
-      />
+    <Card className={`${styles.card} h-100 border-0 shadow-sm`}>
+      <div className={styles.imageWrapper}>
+        <CardImg
+          top
+          alt={alumni.name}
+          src={profilePicture || fallbackImage}
+          className={styles.image}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = fallbackImage;
+          }}
+        />
+      </div>
+
       <CardBody className="d-flex flex-column">
-        <CardTitle tag="h5" className="mb-3 text-primary">
+        <CardTitle tag="h5" className={styles.name}>
           {alumni.name}
         </CardTitle>
-        <CardText className="flex-grow-1">
-          <span className="row mb-0">
-            <dt className="col-5">Session</dt>
-            <dd className="col-7">{alumni.session || "N/A"}</dd>
 
-            <dt className="col-5">Passing Year</dt>
-            <dd className="col-7">{alumni.passing_year || "N/A"}</dd>
+        <div className={styles.role}>
+          {alumni.designation || "—"}{" "}
+          {alumni.company && `@ ${alumni.company}`}
+        </div>
 
-            <dt className="col-5">Designation</dt>
-            <dd className="col-7">
-              {alumni.designation} at {alumni.company}
-            </dd>
+        <div className={styles.meta}>
+          <Badge color="primary" pill>
+            {alumni.session || "N/A"}
+          </Badge>
+          <Badge color="secondary" pill>
+            {alumni.passing_year || "N/A"}
+          </Badge>
+        </div>
 
-            <dt className="col-5">Address</dt>
-            <dd className="col-7">{alumni.present_address?.address}</dd>
-          </span>
+        <CardText className={styles.address}>
+          {alumni.present_address?.address || "No address provided"}
         </CardText>
 
-        {/* Buttons Section */}
-        <div className="d-flex justify-content-between">
+        <div className={styles.actions}>
           <Button
             color="primary"
             size="sm"
@@ -57,12 +64,12 @@ const AlumniCard = ({ alumni }) => {
           >
             View Profile
           </Button>
-          <div>
+
+          <div className={styles.actionGroup}>
             <Button
               color="secondary"
               outline
               size="sm"
-              className="me-2"
               href={`mailto:${alumni.email}`}
             >
               Email
@@ -73,7 +80,7 @@ const AlumniCard = ({ alumni }) => {
               size="sm"
               href={`tel:${alumni.contact_number}`}
             >
-              Phone
+              Call
             </Button>
           </div>
         </div>
