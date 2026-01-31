@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styles from '../styles/scss/Header.module.scss';
+import { useAuth } from '../contexts/AuthContext';
 
 const Header = () => {
   const [navOpen, setNavOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const headerRef = useRef(null);
+  const auth = useAuth()
 
   const toggleNav = () => {
     setNavOpen(!navOpen);
@@ -65,7 +67,13 @@ const Header = () => {
               <li><NavLink to="/events" onClick={closeNav} className={({ isActive }) => isActive ? styles.active : ""}>Events</NavLink></li>
               <li><NavLink to="/faculty-staff" onClick={closeNav} className={({ isActive }) => isActive ? styles.active : ""}>Faculty</NavLink></li>
               <li><NavLink to="/alumni" onClick={closeNav} className={({ isActive }) => isActive ? styles.active : ""}>Alumni</NavLink></li>
-              <li><NavLink to="/login" onClick={closeNav} className={({ isActive }) => isActive ? styles.active : ""}>Login</NavLink></li>
+              <li>
+                {auth.isAuthenticated ? (
+                  <NavLink to="/logout" onClick={closeNav} className={({ isActive }) => isActive ? styles.active : ""}>Logout</NavLink>
+                ) : (
+                  <NavLink to="/login" onClick={closeNav} className={({ isActive }) => isActive ? styles.active : ""}>Login</NavLink>
+                )}
+              </li>
             </ul>
           </nav>
           <button className={styles.mobileNavToggle} aria-label="Toggle navigation" onClick={toggleNav}>

@@ -1,44 +1,44 @@
-import { Switch, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import NoticeBoard from './pages/Notice/NoticeBoard';
-import StudyMaterials from './pages/StudyMaterials';
-import FacultyStaff from './pages/Faculty/FacultyStaff';
-import NotFound from './pages/NotFound';
-import EventPage from './pages/Event/EventPage';
-import EventDetailPage from './pages/Event/EventDetailPage';
-import FacultyProfilePage from './pages/Faculty/FacultyProfilePage';
-import LabsProjectsPage from './pages/Projects/LabsProjectsPage';
-import LabsProjectsDetailPage from './pages/Projects/LabsProjectsDetailPage';
-import AlumniPage from './pages/Alumni/AlumniPage';
-import AlumniProfilePage from './pages/Alumni/AlumniProfilePage';
-import BatchAlumniPage from './pages/Alumni/BatchAlumniPage';
-import LoginPage from './pages/AuthPages/LoginPage/LoginPage';
-import RegisterPage from './pages/AuthPages/RegisterPage/RegisterPage';
+import { useEffect } from 'react';
+import { useAuth } from './contexts/AuthContext';
+import Routes from './routes/Routes';
+import { ToastContainer } from 'react-toastify';
+import { showErrorMessage } from './utils/toast';
 
 
 function App() {
+  const { isAuthenticated, loadUserInfo } = useAuth()
+
+  useEffect(() => {
+    async function callUserInfo() {
+      if (isAuthenticated) {
+        try {
+          await loadUserInfo();
+        } catch (error) {
+          showErrorMessage(`Error loading user info: ${error}`)
+        }
+      }
+    }
+    callUserInfo()
+    // eslint-disable-next-line
+  }, [])
+
+
   return (
-    <Switch>
-      {/* Regular Pages */}
-      <Route exact path="/" component={Home} />
-      <Route exact path="/alumni" component={AlumniPage} />
-      <Route exact path="/alumni/:id" component={AlumniProfilePage} />
-      <Route exact path="/batches/:session" component={BatchAlumniPage} />
-
-      <Route not path="/notice-board" component={NoticeBoard} />
-      <Route path="/study-materials" component={StudyMaterials} />
-      <Route exact path="/labs-projects" component={LabsProjectsPage} />
-      <Route exact path="/labs-projects/:type(lab|project)/:id" component={LabsProjectsDetailPage} />
-      <Route exact path="/events" component={EventPage} />
-      <Route exact path="/events/:id" component={EventDetailPage} />
-      <Route path="/faculty-staff" component={FacultyStaff} />
-      <Route path="/faculty-profile/:id" component={FacultyProfilePage} />
-
-      {/* Auth Pages */}
-      <Route path="/login" component={LoginPage} />
-      <Route path="/register" component={RegisterPage} />
-      <Route path="*" component={NotFound} />
-    </Switch>
+    <>
+      <Routes />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </>
   );
 }
 

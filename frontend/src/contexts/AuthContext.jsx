@@ -1,6 +1,6 @@
 import { createContext, useState, useContext } from 'react';
-import { registerUser, loginUser, userInfo, updateProfileInfo, logoutUser } from 'apis/auth';
-import { showErrorMessage, showSuccessMessage } from 'utils/toast';
+import { registerUser, loginUser, userInfo, updateProfileInfo, logoutUser } from '../apis/auth';
+import { showErrorMessage, showSuccessMessage } from '../utils/toast';
 import { AUTH_TOKEN_KEY } from '../utils/constants';
 
 
