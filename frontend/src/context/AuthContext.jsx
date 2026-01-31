@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import { createContext, useState, useContext } from 'react';
 import { registerUser, loginUser, userInfo, updateProfileInfo, logoutUser } from 'apis/auth';
 import { showErrorMessage, showSuccessMessage } from 'utils/toast';
 
@@ -46,15 +46,15 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     logoutUser()
-    .then(res => {
-      setIsAuthenticated(false);
-      setUser(null);
-      // clear localStorage
-      localStorage.removeItem(tokenKey)
-    })
-    .catch(() => {
-      showErrorMessage()
-    })
+      .then(res => {
+        setIsAuthenticated(false);
+        setUser(null);
+        // clear localStorage
+        localStorage.removeItem(tokenKey)
+      })
+      .catch(() => {
+        showErrorMessage()
+      })
 
   };
 
