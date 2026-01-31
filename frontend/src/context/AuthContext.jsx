@@ -1,23 +1,23 @@
 import { createContext, useState, useContext } from 'react';
 import { registerUser, loginUser, userInfo, updateProfileInfo, logoutUser } from 'apis/auth';
 import { showErrorMessage, showSuccessMessage } from 'utils/toast';
+import { AUTH_TOKEN_KEY } from '../utils/constants';
 
 
 // Create a Context for the authentication state
 const AuthContext = createContext();
-const tokenKey = import.meta.env.VITE_APP_AUTH_TOKEN_KEY
 
 // Create a Provider component
 export const AuthProvider = ({ children }) => {
   // initially get the state from localStorage
-  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem(tokenKey));
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem(AUTH_TOKEN_KEY));
   const [user, setUser] = useState({});
 
   const register = async (data) => {
     const response = await registerUser(data);
     setIsAuthenticated(true);
     setUser(response.data);
-    localStorage.setItem(tokenKey, response.data.key)
+    localStorage.setItem(AUTH_TOKEN_KEY, response.data.key)
   };
 
   const loadUserInfo = async () => {
@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
     const response = await loginUser({ username, password });
     setIsAuthenticated(true);
     setUser(response.data);
-    localStorage.setItem(tokenKey, response.data.key)
+    localStorage.setItem(AUTH_TOKEN_KEY, response.data.key)
   };
 
   const updateProfile = async (data) => {
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
         setIsAuthenticated(false);
         setUser(null);
         // clear localStorage
-        localStorage.removeItem(tokenKey)
+        localStorage.removeItem(AUTH_TOKEN_KEY)
       })
       .catch(() => {
         showErrorMessage()

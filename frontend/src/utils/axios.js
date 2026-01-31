@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { AUTH_TOKEN_KEY } from './constants';
 
 
 const api = axios.create({
@@ -6,7 +7,7 @@ const api = axios.create({
 });
 
 export function getHeaders(additional) {
-  const userToken = localStorage.getItem(import.meta.env.VITE_APP_AUTH_TOKEN_KEY);
+  const userToken = localStorage.getItem(AUTH_TOKEN_KEY);
 
   let headers = {
     ...additional,
