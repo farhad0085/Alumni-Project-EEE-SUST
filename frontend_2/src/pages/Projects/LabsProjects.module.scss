@@ -1,0 +1,66 @@
+.wrapper {
+  background: #f8fafc;
+  padding: 2rem;
+  border-radius: 16px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    font-weight: 700;
+  }
+
+  p {
+    color: #64748b;
+    font-size: 0.95rem;
+  }
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.tabBtn {
+  border-radius: 999px;
+  padding: 0.45rem 1.2rem;
+  font-weight: 500;
+}
+
+.card {
+  border-radius: 14px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+  border: none;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.imageWrapper {
+  overflow: hidden;
+
+  img {
+    transition: transform 0.3s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.08);
+  }
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.summary {
+  font-size: 0.9rem;
+  color: #475569;
+}

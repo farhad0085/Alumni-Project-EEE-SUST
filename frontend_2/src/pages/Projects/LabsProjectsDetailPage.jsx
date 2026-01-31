@@ -16,6 +16,7 @@ import {
 import apiServices from "../../apis/labsProjects";
 import { setPageTitle } from "../../utils";
 import Layout from "../../components/Layout";
+import styles from "./LabsProjectsDetail.module.scss";
 
 const LabsProjectsDetailPage = () => {
   const { type, id } = useParams();
@@ -31,7 +32,7 @@ const LabsProjectsDetailPage = () => {
             ? await apiServices.loadLabById(id)
             : await apiServices.loadProjectById(id);
         setItem(response.data);
-        setPageTitle(response.data.name || response.data.title)
+        setPageTitle(response.data.name || response.data.title);
       } catch (err) {
         console.error("Failed to load data:", err);
       } finally {
@@ -52,9 +53,11 @@ const LabsProjectsDetailPage = () => {
   if (!item) {
     return (
       <Container className="mt-5 text-center">
-        <p className="text-muted">{type === "lab" ? "Lab" : "Project"} not found.</p>
-        <Link to={"/labs-projects"}>
-          <button className="btn btn-primary">Back</button>
+        <p className="text-muted">
+          {type === "lab" ? "Lab" : "Project"} not found.
+        </p>
+        <Link to="/labs-projects" className="btn btn-primary">
+          Back
         </Link>
       </Container>
     );
@@ -62,52 +65,64 @@ const LabsProjectsDetailPage = () => {
 
   return (
     <Layout>
-      {/* Breadcrumb */}
       <Breadcrumb>
         <BreadcrumbItem>
           <Link to="/">Home</Link>
         </BreadcrumbItem>
         <BreadcrumbItem>
-          <Link to={'/labs-projects'}>
-            Labs & Projects
-          </Link>
+          <Link to="/labs-projects">Labs & Projects</Link>
         </BreadcrumbItem>
         <BreadcrumbItem active>{item.name || item.title}</BreadcrumbItem>
       </Breadcrumb>
 
-      <Card className="shadow-lg">
-        <CardBody>
-          <Row>
-            <Col md="5" className="text-center">
-              <CardImg
-                top
-                src={item.thumbnail}
-                alt={item.name || item.title}
-                style={{ maxHeight: "300px", objectFit: "cover" }}
-              />
-            </Col>
-            <Col md="7">
-              <CardTitle tag="h2" className="text-primary mb-3">
-                {item.name || item.title}
-              </CardTitle>
-              {item.summary && (
-                <CardText className="text-muted mb-3">{item.summary}</CardText>
-              )}
-            </Col>
-          </Row>
-          {item.description && (
-            <Row>
-              <Col>
-                <CardText tag={"h3"} className="mt-4 mb-0">
-                  About
-                </CardText>
-                <hr className="mt-2" />
-                <div dangerouslySetInnerHTML={{ __html: item.description }} />
+      <div className={styles.wrapper}>
+        <Card className="border-0 bg-transparent">
+          <CardBody>
+            <Row className="align-items-center">
+              <Col md="5" className="text-center mb-3 mb-md-0">
+                <CardImg
+                  top
+                  src={item.thumbnail}
+                  alt={item.name || item.title}
+                  className={styles.heroImage}
+                  style={{ maxHeight: "340px", objectFit: "cover" }}
+                />
+              </Col>
+
+              <Col md="7">
+                <span
+                  className={`${styles.badge} ${type === "lab" ? styles.lab : styles.project
+                    }`}
+                >
+                  {type === "lab" ? "Lab" : "Project"}
+                </span>
+
+                <CardTitle tag="h2" className={styles.title}>
+                  {item.name || item.title}
+                </CardTitle>
+
+                {item.summary && (
+                  <CardText className={styles.summary}>
+                    {item.summary}
+                  </CardText>
+                )}
               </Col>
             </Row>
-          )}
-        </CardBody>
-      </Card>
+
+            {item.description && (
+              <Row>
+                <Col>
+                  <h3 className={`mt-4 ${styles.sectionTitle}`}>About</h3>
+                  <hr />
+                  <div
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  />
+                </Col>
+              </Row>
+            )}
+          </CardBody>
+        </Card>
+      </div>
     </Layout>
   );
 };
