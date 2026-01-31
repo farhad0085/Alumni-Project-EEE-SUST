@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
 import axios from "../../../utils/axios";
 import AuthLayout from "../../../components/AuthLayout";
 import { FileUploader } from "react-drag-drop-files";
 import defaultMale from "../../../assets/images/default-male.jpg";
-import { registerUser } from "../services";
-import { loginUser } from "../../../utils/auth";
 import styles from "./RegisterPage.module.scss";
+import { useAuth } from "../../../contexts/AuthContext";
+import { showErrorMessage, showSuccessMessage } from "../../../utils/toast";
 
 const RegisterPage = () => {
+  const auth = useAuth();
   const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [availableSessions, setAvailableSessions] = useState([]);
@@ -29,7 +29,7 @@ const RegisterPage = () => {
   useEffect(() => {
     axios.get("/api/alumni/batches/")
       .then(res => setAvailableSessions(res.data?.results || []))
-      .catch(() => toast.error("Failed to load sessions"));
+      .catch(() => showErrorMessage("Failed to load sessions"));
   }, []);
 
   useEffect(() => {
@@ -53,13 +53,12 @@ const RegisterPage = () => {
     formData.append("batch", session);
     if (profilePicture) formData.append("profile_picture", profilePicture);
 
-    registerUser(formData)
+    auth.register(formData)
       .then(res => {
-        loginUser(res.data?.key);
-        toast.success("Account created");
+        showSuccessMessage("Account created");
         history.push("/profile");
       })
-      .catch(() => toast.error("Registration failed"))
+      .catch(() => showErrorMessage("Registration failed"))
       .finally(() => setLoading(false));
   };
 

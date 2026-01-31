@@ -41,7 +41,6 @@ export const AuthProvider = ({ children }) => {
     catch (error) {
       throw error
     }
-
   };
 
   const logout = () => {

@@ -3,6 +3,7 @@ export const HOME_PAGE = "/"
 // Auth
 export const REGISTER_PAGE = "/register";
 export const LOGIN_PAGE = "/login";
+export const LOGOUT_PAGE = "/logout";
 export const FORGET_PASSWORD_REQUEST = "/forget-password/request";
 export const FORGET_PASSWORD_CONFIRM = "/forget-password/reset/:uid/:token";
 

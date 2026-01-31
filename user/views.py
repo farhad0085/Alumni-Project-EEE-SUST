@@ -54,3 +54,11 @@ class RegisterAPIView(LoggerAPIView):
                 "message": "User registered successfully",
                 "key": token.key
             })
+
+
+class LogoutAPIView(LoggerAPIView):
+
+    def post(self, request):
+        if request.user.is_authenticated:
+            Token.objects.filter(user=request.user).delete()
+        return self.send_200("Logged out successfully.")

@@ -1,24 +1,16 @@
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
 import AuthLayout from "../../../components/AuthLayout";
-import { loginUser } from "../services";
-import { loginUser as loginUserToApp } from "../../../utils/auth";
-
 import styles from "./LoginPage.module.scss";
+import { useAuth } from "../../../contexts/AuthContext";
+import { showErrorMessage, showSuccessMessage } from "../../../utils/toast";
 
 const LoginPage = () => {
+  const auth = useAuth();
   const history = useHistory();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const handleError = (message) => {
-    toast.error(message || "Something went wrong", {
-      position: "bottom-right",
-      autoClose: 5000,
-    });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,14 +18,13 @@ const LoginPage = () => {
 
     setLoading(true);
 
-    loginUser({ username, password })
+    auth.login(username, password)
       .then((res) => {
-        loginUserToApp(res.data?.key);
-        toast.success(res.data?.message || "Logged in successfully");
+        showSuccessMessage(res.data?.message || "Logged in successfully");
         history.push("/profile");
       })
       .catch(() => {
-        handleError("Email or password is incorrect!");
+        showErrorMessage("Email or password is incorrect!");
       })
       .finally(() => setLoading(false));
   };
@@ -63,7 +54,6 @@ const LoginPage = () => {
                 type="password"
                 aria-label="Password"
                 required
-                autoComplete="new-password"
                 onChange={(e) => setPassword(e.target.value)}
               />
               <label>Password</label>

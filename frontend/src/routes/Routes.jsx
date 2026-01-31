@@ -3,6 +3,7 @@ import * as URLS from "./urls";
 import GuestRoute from "./GuestRoute";
 import { Route, Switch } from "react-router-dom";
 import withSuspense from "../utils/withSuspense";
+import PrivateRoute from "./PrivateRoute";
 
 
 const Home = React.lazy(() => import("../pages/Home"));
@@ -20,6 +21,7 @@ const AlumniProfilePage = React.lazy(() => import("../pages/Alumni/AlumniProfile
 const BatchAlumniPage = React.lazy(() => import("../pages/Alumni/BatchAlumniPage"));
 const LoginPage = React.lazy(() => import("../pages/AuthPages/LoginPage/LoginPage"));
 const RegisterPage = React.lazy(() => import("../pages/AuthPages/RegisterPage/RegisterPage"));
+const LogoutPage = React.lazy(() => import("../pages/AuthPages/LogoutPage/LogoutConfirmation"));
 
 
 const Routes = () => {
@@ -44,6 +46,7 @@ const Routes = () => {
       {/* Auth Pages */}
       <GuestRoute exact path={URLS.LOGIN_PAGE} component={withSuspense(LoginPage)} />
       <GuestRoute exact path={URLS.REGISTER_PAGE} component={withSuspense(RegisterPage)} />
+      <PrivateRoute exact path={URLS.LOGOUT_PAGE} component={withSuspense(LogoutPage)} />
       <Route path="*" component={withSuspense(NotFound)} />
     </Switch>
     
