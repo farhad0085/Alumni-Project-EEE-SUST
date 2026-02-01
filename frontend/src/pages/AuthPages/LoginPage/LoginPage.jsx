@@ -4,6 +4,7 @@ import AuthLayout from "../../../components/AuthLayout";
 import styles from "./LoginPage.module.scss";
 import { useAuth } from "../../../contexts/AuthContext";
 import { showErrorMessage, showSuccessMessage } from "../../../utils/toast";
+import { DASHBOARD_PAGE } from "../../../routes/urls";
 
 const LoginPage = () => {
   const auth = useAuth();
@@ -21,7 +22,7 @@ const LoginPage = () => {
     auth.login(username, password)
       .then((res) => {
         showSuccessMessage(res.data?.message || "Logged in successfully");
-        history.push("/profile");
+        history.push(DASHBOARD_PAGE);
       })
       .catch(() => {
         showErrorMessage("Email or password is incorrect!");

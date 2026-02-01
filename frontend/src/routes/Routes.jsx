@@ -22,6 +22,7 @@ const BatchAlumniPage = React.lazy(() => import("../pages/Alumni/BatchAlumniPage
 const LoginPage = React.lazy(() => import("../pages/AuthPages/LoginPage/LoginPage"));
 const RegisterPage = React.lazy(() => import("../pages/AuthPages/RegisterPage/RegisterPage"));
 const LogoutPage = React.lazy(() => import("../pages/AuthPages/LogoutPage/LogoutConfirmation"));
+const DashboardPage = React.lazy(() => import("../pages/Dashboard/Dashboard"));
 
 
 const Routes = () => {
@@ -42,6 +43,9 @@ const Routes = () => {
       <Route exact path="/events/:id" component={withSuspense(EventDetailPage)} />
       <Route exact path="/faculty-staff" component={withSuspense(FacultyStaff)} />
       <Route exact path="/faculty-profile/:id" component={withSuspense(FacultyProfilePage)} />
+
+      {/* Dashboard Pages */}
+      <Route exact path={URLS.DASHBOARD_PAGE} component={withSuspense(DashboardPage)} />
 
       {/* Auth Pages */}
       <GuestRoute exact path={URLS.LOGIN_PAGE} component={withSuspense(LoginPage)} />
