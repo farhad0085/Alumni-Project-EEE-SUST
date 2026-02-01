@@ -12,7 +12,7 @@ export default function Dashboard() {
         <Link to={HOME_PAGE} className={styles.logoLink}>
           <div className={styles.logoArea}>
             <img src="https://www.sust.edu/public/img/sust_logo_big.png" alt="logo" className={styles.logo} />
-            {!collapsed && <span className={styles.logoText}>Dept. of EEE</span>}
+            <span className={`${styles.logoText} ${collapsed ? styles.hidden : ""}`}>Dept. of EEE</span>
           </div>
         </Link>
 

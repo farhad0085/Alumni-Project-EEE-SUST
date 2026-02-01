@@ -9,7 +9,7 @@
   width: 240px;
   background: linear-gradient(180deg, #32324b, #151521);
   color: #fff;
-  transition: width 0.2s ease;
+  transition: width 0.5s ease;
   display: flex;
   flex-direction: column;
 
@@ -22,25 +22,21 @@
 
 .collapsed {
   width: 72px;
+  transition: width 0.5s;
 
   .navItem {
     position: relative;
     justify-content: center;
-
-    &:hover::after {
-      content: attr(data-label);
-      position: absolute;
-      left: 80px;
-      background: #111;
-      color: #fff;
-      padding: 4px 8px;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
   }
 
   &~.main {
     margin-left: 72px;
+    transition: margin-left 0.5s;
+  }
+
+  .logoArea {
+    justify-content: center;
+    gap: 0;
   }
 }
 
@@ -53,8 +49,13 @@
   height: 56px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding: 0rem 1rem;
+  justify-content: flex-start;
   gap: 0.75rem;
+  overflow: hidden;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06); // soft shadow
 }
 
 .logo {
@@ -65,12 +66,30 @@
 .logoText {
   font-weight: 600;
   font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+
+  max-width: 200px;
+  opacity: 1;
+  transform: translateX(0);
+
+  transition:
+    max-width 0.5s ease,
+    opacity 0.5s ease,
+    transform 0.5s ease;
+
+  &.hidden {
+    max-width: 0;
+    opacity: 0;
+    transform: translateX(10px);
+    pointer-events: none;
+  }
 }
 
 .nav {
   display: flex;
   flex-direction: column;
-  margin-top: 0.5rem;
+  margin-top: 0rem;
   overflow-y: auto;
 
   &::-webkit-scrollbar {
@@ -99,6 +118,7 @@
 
 .main {
   margin-left: 240px;
+  transition: margin-left 0.5s;
   flex: 1;
   display: flex;
   flex-direction: column;
