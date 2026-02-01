@@ -14,7 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import apiServices from "../../apis/alumni";
 import { setPageTitle } from "../../utils";
-import Layout from "../../components/Layout";
+import Layout from "../../components/layouts/Layout";
 import styles from "./AlumniPage.module.scss";
 
 const AlumniPage = () => {

@@ -7,7 +7,7 @@ import { setPageTitle, toTitleCase } from "../../utils";
 import { FaEnvelope, FaPhone } from "react-icons/fa";
 import { Spinner, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import styles from "./styles.module.scss";
-import Layout from "../../components/Layout";
+import Layout from "../../components/layouts/Layout";
 
 const FacultyProfilePage = () => {
   const { id } = useParams();

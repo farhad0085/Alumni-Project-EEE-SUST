@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import apiServices from "../../apis/events";
 import { setPageTitle } from "../../utils";
 import { Spinner, Breadcrumb, BreadcrumbItem, Badge, Row, Col } from "reactstrap";
-import Layout from "../../components/Layout";
+import Layout from "../../components/layouts/Layout";
 import styles from "./EventDetailPage.module.scss";
 
 const EventDetailPage = () => {

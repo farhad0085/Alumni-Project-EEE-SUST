@@ -6,7 +6,7 @@ import apiServices from '../../apis/faculty'
 import defaultMale from "../../assets/images/default-male.jpg";
 import defaultFemale from "../../assets/images/default-female.jpg";
 import { Spinner, Breadcrumb, BreadcrumbItem } from "reactstrap";
-import Layout from '../../components/Layout';
+import Layout from '../../components/layouts/Layout';
 
 const FacultyStaff = () => {
   const [faculty, setFaculty] = useState([]);

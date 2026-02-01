@@ -15,7 +15,7 @@ import {
 } from "reactstrap";
 import apiServices from "../../apis/labsProjects";
 import { setPageTitle } from "../../utils";
-import Layout from "../../components/Layout";
+import Layout from "../../components/layouts/Layout";
 import styles from "./LabsProjectsDetail.module.scss";
 
 const LabsProjectsDetailPage = () => {

@@ -4,7 +4,7 @@ import apiServices from "../../apis/events";
 import PageNumberPagination from "../../components/common/Pagination/PageNumberPagination";
 import { setPageTitle } from "../../utils";
 import { Badge, Breadcrumb, BreadcrumbItem, Spinner, Button } from "reactstrap";
-import Layout from "../../components/Layout";
+import Layout from "../../components/layouts/Layout";
 import styles from "./EventPage.module.scss";
 
 const EventPage = () => {

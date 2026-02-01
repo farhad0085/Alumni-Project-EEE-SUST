@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from '../styles/scss/Home.module.scss';
 import { FiUsers, FiClipboard, FiBookOpen, FiCpu, FiCalendar, FiBriefcase } from 'react-icons/fi';
-import Layout from '../components/Layout';
+import Layout from '../components/layouts/Layout';
 
 const cardData = [
   {

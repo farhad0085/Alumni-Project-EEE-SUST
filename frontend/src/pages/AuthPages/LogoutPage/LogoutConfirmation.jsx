@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import styles from "./LogoutConfirmation.module.scss";
-import Layout from "../../../components/Layout";
+import Layout from "../../../components/layouts/Layout";
 import { useAuth } from "../../../contexts/AuthContext";
 
 const LogoutConfirmation = () => {

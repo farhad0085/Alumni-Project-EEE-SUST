@@ -16,7 +16,7 @@ import apiServices from "../../apis/alumni";
 import AlumniCard from "../../components/Alumni/AlumniCard";
 import { setPageTitle } from "../../utils";
 import PageNumberPagination from "../../components/common/Pagination/PageNumberPagination";
-import Layout from "../../components/Layout";
+import Layout from "../../components/layouts/Layout";
 
 const BatchAlumniPage = () => {
   const { session } = useParams();

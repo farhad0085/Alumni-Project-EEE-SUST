@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import apiServices from "../../apis/labsProjects";
 import PageNumberPagination from "../../components/common/Pagination/PageNumberPagination";
 import { setPageTitle } from "../../utils";
-import Layout from "../../components/Layout";
+import Layout from "../../components/layouts/Layout";
 import styles from "./LabsProjects.module.scss";
 
 const LabsProjectsPage = () => {

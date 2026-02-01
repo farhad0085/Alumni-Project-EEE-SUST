@@ -45,7 +45,7 @@ const Routes = () => {
       <Route exact path="/faculty-profile/:id" component={withSuspense(FacultyProfilePage)} />
 
       {/* Dashboard Pages */}
-      <Route exact path={URLS.DASHBOARD_PAGE} component={withSuspense(DashboardPage)} />
+      <PrivateRoute exact path={URLS.DASHBOARD_PAGE} component={withSuspense(DashboardPage)} />
 
       {/* Auth Pages */}
       <GuestRoute exact path={URLS.LOGIN_PAGE} component={withSuspense(LoginPage)} />

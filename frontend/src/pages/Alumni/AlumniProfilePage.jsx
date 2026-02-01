@@ -15,7 +15,7 @@ import {
 import apiServices from "../../apis/alumni";
 import defaultMale from "../../assets/images/default-male.jpg";
 import defaultFemale from "../../assets/images/default-female.jpg";
-import Layout from "../../components/Layout";
+import Layout from "../../components/layouts/Layout";
 import styles from "./AlumniProfilePage.module.scss";
 
 const AlumniProfilePage = () => {

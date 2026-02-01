@@ -11,7 +11,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
 } from "reactstrap";
-import Layout from '../../components/Layout';
+import Layout from '../../components/layouts/Layout';
 
 const NoticeBoard = () => {
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "../../../utils/axios";
-import AuthLayout from "../../../components/AuthLayout";
+import AuthLayout from "../../../components/layouts/AuthLayout";
 import { FileUploader } from "react-drag-drop-files";
 import defaultMale from "../../../assets/images/default-male.jpg";
 import styles from "./RegisterPage.module.scss";

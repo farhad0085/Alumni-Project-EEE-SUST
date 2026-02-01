@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import AuthLayout from "../../../components/AuthLayout";
+import AuthLayout from "../../../components/layouts/AuthLayout";
 import styles from "./LoginPage.module.scss";
 import { useAuth } from "../../../contexts/AuthContext";
 import { showErrorMessage, showSuccessMessage } from "../../../utils/toast";

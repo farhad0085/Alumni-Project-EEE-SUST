@@ -1,6 +1,6 @@
-import Header from './Header';
-import Footer from './Footer';
-import styles from '../styles/scss/Layout.module.scss';
+import Header from '../Header';
+import Footer from '../Footer';
+import styles from '../../styles/scss/Layout.module.scss';
 
 const AuthLayout = ({ children }) => {
 
