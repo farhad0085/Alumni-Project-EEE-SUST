@@ -17,6 +17,7 @@ import apiServices from "../../apis/labsProjects";
 import { setPageTitle } from "../../utils";
 import Layout from "../../components/layouts/Layout";
 import styles from "./LabsProjectsDetail.module.scss";
+import { HOME_PAGE } from "../../routes/urls";
 
 const LabsProjectsDetailPage = () => {
   const { type, id } = useParams();
@@ -67,7 +68,7 @@ const LabsProjectsDetailPage = () => {
     <Layout>
       <Breadcrumb>
         <BreadcrumbItem>
-          <Link to="/">Home</Link>
+          <Link to={HOME_PAGE}>Home</Link>
         </BreadcrumbItem>
         <BreadcrumbItem>
           <Link to="/labs-projects">Labs & Projects</Link>

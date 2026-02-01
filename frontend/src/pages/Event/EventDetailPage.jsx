@@ -5,6 +5,7 @@ import { setPageTitle } from "../../utils";
 import { Spinner, Breadcrumb, BreadcrumbItem, Badge, Row, Col } from "reactstrap";
 import Layout from "../../components/layouts/Layout";
 import styles from "./EventDetailPage.module.scss";
+import { EVENT_LISTING_PAGE, HOME_PAGE } from "../../routes/urls";
 
 const EventDetailPage = () => {
   const { id } = useParams();
@@ -39,7 +40,7 @@ const EventDetailPage = () => {
     return (
       <div className="text-center my-5">
         <p className="text-muted">Event not found.</p>
-        <Link to="/events" className="btn btn-primary">
+        <Link to={EVENT_LISTING_PAGE} className="btn btn-primary">
           Back to Events
         </Link>
       </div>
@@ -54,10 +55,10 @@ const EventDetailPage = () => {
         {/* Breadcrumb */}
         <Breadcrumb>
           <BreadcrumbItem>
-            <Link to="/">Home</Link>
+            <Link to={HOME_PAGE}>Home</Link>
           </BreadcrumbItem>
           <BreadcrumbItem>
-            <Link to="/events">Events</Link>
+            <Link to={EVENT_LISTING_PAGE}>Events</Link>
           </BreadcrumbItem>
           <BreadcrumbItem active>{item.title}</BreadcrumbItem>
         </Breadcrumb>

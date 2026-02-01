@@ -6,6 +6,7 @@ import { setPageTitle } from "../../utils";
 import { Badge, Breadcrumb, BreadcrumbItem, Spinner, Button } from "reactstrap";
 import Layout from "../../components/layouts/Layout";
 import styles from "./EventPage.module.scss";
+import { buildEventPageUrl, HOME_PAGE } from "../../routes/urls";
 
 const EventPage = () => {
   const [events, setEvents] = useState([]);
@@ -40,7 +41,7 @@ const EventPage = () => {
       {/* Breadcrumb */}
       <Breadcrumb>
         <BreadcrumbItem>
-          <Link to="/">Home</Link>
+          <Link to={HOME_PAGE}>Home</Link>
         </BreadcrumbItem>
         <BreadcrumbItem active>Events</BreadcrumbItem>
       </Breadcrumb>
@@ -115,7 +116,7 @@ const EventPage = () => {
                         color="primary"
                         size="sm"
                         tag={Link}
-                        to={`/events/${event.id}`}
+                        to={buildEventPageUrl(event.id)}
                         className="mt-2 w-100"
                       >
                         Learn More

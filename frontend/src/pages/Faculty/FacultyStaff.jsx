@@ -7,6 +7,7 @@ import defaultMale from "../../assets/images/default-male.jpg";
 import defaultFemale from "../../assets/images/default-female.jpg";
 import { Spinner, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import Layout from '../../components/layouts/Layout';
+import { HOME_PAGE } from '../../routes/urls';
 
 const FacultyStaff = () => {
   const [faculty, setFaculty] = useState([]);
@@ -57,7 +58,7 @@ const FacultyStaff = () => {
       {/* Breadcrumb */}
       <Breadcrumb>
         <BreadcrumbItem>
-          <Link to="/">Home</Link>
+          <Link to={HOME_PAGE}>Home</Link>
         </BreadcrumbItem>
         <BreadcrumbItem active>Faculty</BreadcrumbItem>
       </Breadcrumb>

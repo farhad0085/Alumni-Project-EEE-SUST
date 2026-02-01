@@ -17,6 +17,7 @@ import PageNumberPagination from "../../components/common/Pagination/PageNumberP
 import { setPageTitle } from "../../utils";
 import Layout from "../../components/layouts/Layout";
 import styles from "./LabsProjects.module.scss";
+import { HOME_PAGE } from "../../routes/urls";
 
 const LabsProjectsPage = () => {
   const [activeTab, setActiveTab] = useState("labs");
@@ -104,7 +105,7 @@ const LabsProjectsPage = () => {
     <Layout>
       <Breadcrumb>
         <BreadcrumbItem>
-          <Link to="/">Home</Link>
+          <Link to={HOME_PAGE}>Home</Link>
         </BreadcrumbItem>
         <BreadcrumbItem active>Labs & Projects</BreadcrumbItem>
       </Breadcrumb>

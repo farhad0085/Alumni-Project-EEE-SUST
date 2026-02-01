@@ -8,6 +8,7 @@ import { FaEnvelope, FaPhone } from "react-icons/fa";
 import { Spinner, Breadcrumb, BreadcrumbItem } from "reactstrap";
 import styles from "./styles.module.scss";
 import Layout from "../../components/layouts/Layout";
+import { HOME_PAGE } from "../../routes/urls";
 
 const FacultyProfilePage = () => {
   const { id } = useParams();
@@ -57,7 +58,7 @@ const FacultyProfilePage = () => {
       {/* Breadcrumb */}
       <Breadcrumb>
         <BreadcrumbItem>
-          <Link to="/">Home</Link>
+          <Link to={HOME_PAGE}>Home</Link>
         </BreadcrumbItem>
         <BreadcrumbItem>
           <Link to="/faculty-staff">Faculty</Link>

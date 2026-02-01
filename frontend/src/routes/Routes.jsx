@@ -39,8 +39,8 @@ const Routes = () => {
       <Route exact path="/study-materials" component={withSuspense(StudyMaterials)} />
       <Route exact path="/labs-projects" component={withSuspense(LabsProjectsPage)} />
       <Route exact path="/labs-projects/:type(lab|project)/:id" component={withSuspense(LabsProjectsDetailPage)} />
-      <Route exact path="/events" component={withSuspense(EventPage)} />
-      <Route exact path="/events/:id" component={withSuspense(EventDetailPage)} />
+      <Route exact path={URLS.EVENT_LISTING_PAGE} component={withSuspense(EventPage)} />
+      <Route exact path={URLS.EVENT_DETAIL_PAGE} component={withSuspense(EventDetailPage)} />
       <Route exact path="/faculty-staff" component={withSuspense(FacultyStaff)} />
       <Route exact path="/faculty-profile/:id" component={withSuspense(FacultyProfilePage)} />
 
@@ -64,18 +64,6 @@ const Routes = () => {
     //     exact
     //     path={URLS.FORGET_PASSWORD_CONFIRM}
     //     component={withSuspense(ForgetPasswordConfirmPage)}
-    //   />
-
-    //   <Route
-    //     exact
-    //     path={URLS.EVENT_DETAIL_PAGE}
-    //     component={withSuspense(EventPage)}
-    //   />
-
-    //   <Route
-    //     exact
-    //     path={URLS.UPDATE_RESERVE_EVENT_REQUEST_PAGE}
-    //     component={withSuspense(UpdateReserveRequestPage)}
     //   />
 
     //   <Route

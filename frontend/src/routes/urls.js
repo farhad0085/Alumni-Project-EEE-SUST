@@ -8,8 +8,8 @@ export const FORGET_PASSWORD_REQUEST = "/forget-password/request";
 export const FORGET_PASSWORD_CONFIRM = "/forget-password/reset/:uid/:token";
 
 // Event
-export const EVENT_DETAIL_PAGE = "/events/:slug"
-export const UPDATE_RESERVE_EVENT_REQUEST_PAGE = "/event/edit/:slug/event-attendees"
+export const EVENT_LISTING_PAGE = "/events"
+export const EVENT_DETAIL_PAGE = "/events/:id"
 
 // Dashboard
 export const DASHBOARD_PAGE = "/dashboard";
@@ -23,10 +23,6 @@ export const TESTIMONIAL_PAGE = "/testimonials"
 export const NEWSLETTER_PAGE = "/newsletter-subscribe"
 
 
-export const buildEventPageUrl = (slug) => {
-  return EVENT_DETAIL_PAGE.replace(":slug", slug)
-}
-
-export const buildUpdateReserveEventRequestPageUrl = (slug) => {
-  return UPDATE_RESERVE_EVENT_REQUEST_PAGE.replace(":slug", slug)
+export const buildEventPageUrl = (id) => {
+  return EVENT_DETAIL_PAGE.replace(":id", id)
 }

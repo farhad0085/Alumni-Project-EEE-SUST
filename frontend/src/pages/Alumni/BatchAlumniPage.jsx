@@ -17,6 +17,7 @@ import AlumniCard from "../../components/Alumni/AlumniCard";
 import { setPageTitle } from "../../utils";
 import PageNumberPagination from "../../components/common/Pagination/PageNumberPagination";
 import Layout from "../../components/layouts/Layout";
+import { HOME_PAGE } from "../../routes/urls";
 
 const BatchAlumniPage = () => {
   const { session } = useParams();
@@ -92,7 +93,7 @@ const BatchAlumniPage = () => {
         {/* Breadcrumb */}
         <Breadcrumb className="mb-3">
           <BreadcrumbItem>
-            <Link to="/">Home</Link>
+            <Link to={HOME_PAGE}>Home</Link>
           </BreadcrumbItem>
           <BreadcrumbItem>
             <Link to="/alumni">Batches</Link>

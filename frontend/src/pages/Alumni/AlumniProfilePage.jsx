@@ -17,6 +17,7 @@ import defaultMale from "../../assets/images/default-male.jpg";
 import defaultFemale from "../../assets/images/default-female.jpg";
 import Layout from "../../components/layouts/Layout";
 import styles from "./AlumniProfilePage.module.scss";
+import { HOME_PAGE } from "../../routes/urls";
 
 const AlumniProfilePage = () => {
   const { id } = useParams();
@@ -65,7 +66,7 @@ const AlumniProfilePage = () => {
     <Layout>
       <Breadcrumb>
         <BreadcrumbItem>
-          <Link to="/">Home</Link>
+          <Link to={HOME_PAGE}>Home</Link>
         </BreadcrumbItem>
         <BreadcrumbItem>
           <Link to="/alumni">Alumni</Link>

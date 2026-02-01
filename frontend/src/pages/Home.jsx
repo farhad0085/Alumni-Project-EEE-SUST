@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import styles from '../styles/scss/Home.module.scss';
 import { FiUsers, FiClipboard, FiBookOpen, FiCpu, FiCalendar, FiBriefcase } from 'react-icons/fi';
 import Layout from '../components/layouts/Layout';
+import { EVENT_LISTING_PAGE } from '../routes/urls';
 
 const cardData = [
   {
@@ -31,7 +32,7 @@ const cardData = [
   {
     title: 'Events',
     text: 'Join our workshops, seminars, and events.',
-    link: '/events',
+    link: EVENT_LISTING_PAGE,
     icon: <FiCalendar />,
   },
   {
