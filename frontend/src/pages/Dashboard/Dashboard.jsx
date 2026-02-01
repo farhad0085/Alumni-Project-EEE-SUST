@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styles from "./styles.module.scss";
+import { Link } from 'react-router-dom'
+import { HOME_PAGE } from "../../routes/urls";
 
 export default function Dashboard() {
   const [collapsed, setCollapsed] = useState(false);
@@ -7,10 +9,12 @@ export default function Dashboard() {
   return (
     <div className={styles.layout}>
       <aside className={`${styles.sidebar} ${collapsed ? styles.collapsed : ""}`}>
-        <div className={styles.logoArea}>
-          <img src="https://www.sust.edu/public/img/sust_logo_big.png" alt="logo" className={styles.logo} />
-          {!collapsed && <span className={styles.logoText}>EEE SUST</span>}
-        </div>
+        <Link to={HOME_PAGE} className={styles.logoLink}>
+          <div className={styles.logoArea}>
+            <img src="https://www.sust.edu/public/img/sust_logo_big.png" alt="logo" className={styles.logo} />
+            {!collapsed && <span className={styles.logoText}>Dept. of EEE</span>}
+          </div>
+        </Link>
 
         <nav className={styles.nav}>
           <div className={styles.navItem} data-label="Dashboard">
