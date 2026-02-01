@@ -33,6 +33,86 @@ export default function Dashboard() {
             <i className="fas fa-cog" />
             {!collapsed && <span>Settings</span>}
           </div>
+          <div className={styles.navItem} data-label="Dashboard">
+            <i className="fas fa-home" />
+            {!collapsed && <span>Dashboard</span>}
+          </div>
+          <div className={styles.navItem} data-label="Users">
+            <i className="fas fa-users" />
+            {!collapsed && <span>Users</span>}
+          </div>
+          <div className={styles.navItem} data-label="Reports">
+            <i className="fas fa-chart-bar" />
+            {!collapsed && <span>Reports</span>}
+          </div>
+          <div className={styles.navItem} data-label="Settings">
+            <i className="fas fa-cog" />
+            {!collapsed && <span>Settings</span>}
+          </div>
+          <div className={styles.navItem} data-label="Dashboard">
+            <i className="fas fa-home" />
+            {!collapsed && <span>Dashboard</span>}
+          </div>
+          <div className={styles.navItem} data-label="Users">
+            <i className="fas fa-users" />
+            {!collapsed && <span>Users</span>}
+          </div>
+          <div className={styles.navItem} data-label="Reports">
+            <i className="fas fa-chart-bar" />
+            {!collapsed && <span>Reports</span>}
+          </div>
+          <div className={styles.navItem} data-label="Settings">
+            <i className="fas fa-cog" />
+            {!collapsed && <span>Settings</span>}
+          </div>
+          <div className={styles.navItem} data-label="Dashboard">
+            <i className="fas fa-home" />
+            {!collapsed && <span>Dashboard</span>}
+          </div>
+          <div className={styles.navItem} data-label="Users">
+            <i className="fas fa-users" />
+            {!collapsed && <span>Users</span>}
+          </div>
+          <div className={styles.navItem} data-label="Reports">
+            <i className="fas fa-chart-bar" />
+            {!collapsed && <span>Reports</span>}
+          </div>
+          <div className={styles.navItem} data-label="Settings">
+            <i className="fas fa-cog" />
+            {!collapsed && <span>Settings</span>}
+          </div>
+          <div className={styles.navItem} data-label="Dashboard">
+            <i className="fas fa-home" />
+            {!collapsed && <span>Dashboard</span>}
+          </div>
+          <div className={styles.navItem} data-label="Users">
+            <i className="fas fa-users" />
+            {!collapsed && <span>Users</span>}
+          </div>
+          <div className={styles.navItem} data-label="Reports">
+            <i className="fas fa-chart-bar" />
+            {!collapsed && <span>Reports</span>}
+          </div>
+          <div className={styles.navItem} data-label="Settings">
+            <i className="fas fa-cog" />
+            {!collapsed && <span>Settings</span>}
+          </div>
+          <div className={styles.navItem} data-label="Dashboard">
+            <i className="fas fa-home" />
+            {!collapsed && <span>Dashboard</span>}
+          </div>
+          <div className={styles.navItem} data-label="Users">
+            <i className="fas fa-users" />
+            {!collapsed && <span>Users</span>}
+          </div>
+          <div className={styles.navItem} data-label="Reports">
+            <i className="fas fa-chart-bar" />
+            {!collapsed && <span>Reports</span>}
+          </div>
+          <div className={styles.navItem} data-label="Settings">
+            <i className="fas fa-cog" />
+            {!collapsed && <span>Settings</span>}
+          </div>
         </nav>
       </aside>
 
@@ -48,6 +128,25 @@ export default function Dashboard() {
         </header>
 
         <section className={styles.content}>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
+          <h1>Dashboard</h1>
           <h1>Dashboard</h1>
         </section>
       </div>
