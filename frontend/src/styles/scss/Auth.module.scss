@@ -1,0 +1,57 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.authContainer {
+  @include flex-center;
+  min-height: 100vh;
+  background-color: $secondary-color;
+}
+
+.authFormWrapper {
+  background: white;
+  padding: $spacing-2xl;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-lg;
+  width: 100%;
+  max-width: 400px;
+  
+  h2 {
+    text-align: center;
+    color: $primary-color;
+    margin-bottom: $spacing-md;
+  }
+}
+
+.formGroup {
+  margin-bottom: $spacing-md;
+  
+  label {
+    display: block;
+    margin-bottom: $spacing-sm;
+    font-weight: $font-weight-bold;
+  }
+  
+  input {
+    width: 100%;
+    padding: $spacing-md;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-sm;
+  }
+}
+
+.authBtn {
+  @include button-primary;
+  width: 100%;
+  padding: $spacing-md;
+  font-size: $font-size-base;
+}
+
+.authSwitch {
+  text-align: center;
+  margin-top: $spacing-md;
+  
+  a {
+    color: $accent-color;
+    text-decoration: none;
+  }
+}

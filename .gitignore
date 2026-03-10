@@ -1,0 +1,14 @@
+__pycache__
+.env
+env
+venv
+*.log
+*.ipynb
+.claudegit rm -r --cached .claude
+
+staticfiles
+mediafiles
+.vscode
+.claude
+yarn.lock
+package-lock.json

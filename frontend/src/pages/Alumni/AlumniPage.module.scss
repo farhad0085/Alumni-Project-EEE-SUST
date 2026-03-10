@@ -1,0 +1,63 @@
+.header {
+  margin-bottom: 2rem;
+
+  h1 {
+    font-weight: 600;
+  }
+}
+
+.card {
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.25s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  }
+
+  &:hover .image {
+    transform: scale(1.05);
+  }
+}
+
+.imageWrapper {
+  height: 220px;
+  overflow: hidden;
+  background: #f1f5f9;
+}
+
+.image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.noImage {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  font-weight: 400;
+  color: #6b7280;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 1rem;
+}
