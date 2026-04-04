@@ -4,7 +4,7 @@ env
 venv
 *.log
 *.ipynb
-.claudegit rm -r --cached .claude
+.claude
 
 staticfiles
 mediafiles
